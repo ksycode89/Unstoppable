@@ -1,4 +1,4 @@
-package co.mall.prj.oprtin.service;
+package co.mall.prj.option.service;
 
 import lombok.Getter;
 import lombok.Setter;
