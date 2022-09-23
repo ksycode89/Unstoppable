@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.mall.prj.mapper.CartMapper">
-	<select id="cartSelectList"
+<!--  -->
+	<select id="cartCheck"
 		resultType="co.mall.prj.cart.service.CartVO">
-		SELECT * FROM CART
+		SELECT COUNT(*) FROM CART
+		WHERE MEMBER_ID = #{memberId} AND PRODUCT_ID = #{productId};
 	</select>
 
 	<select id="cartSelect"
@@ -32,5 +34,7 @@
 		DELETE CART
 		WHERE CART_ID = #{cartId}
 	</delete>
+	
+	
 
 </mapper>
