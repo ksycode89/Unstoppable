@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.mall.prj.mapper.CartMapper">
+	<select id="cartSelectList"
+		resultType="co.mall.prj.cart.service.CartVO">
+		SELECT * FROM CART
+	</select>
+
+	<select id="cartSelect"
+		resultType="co.mall.prj.cart.service.CartVO">
+		SELECT * FROM CART
+		WHERE MEMBER_ID = #{memberId}
+	</select>
+
+	<insert id="cartInsert"
+		parameterType="co.mall.prj.cart.service.CartVO">
+		INSERT INTO CART
+		VALUES (#{CartId}, #{memberId},
+		#{productId}, #{productName}, #{productPrice}, #{cartQuantity},
+		1)
+	</insert>
+	<!-- 카트 수량 수정 -->
+	<update id="cartUpdate"
+		parameterType="co.mall.prj.cart.service.CartVO">
+		UPDATE CART
+		SET CART_Quantity = #{cartQuantity}
+		WHERE CART_ID = #{cartId}
+	</update>
+
+	<delete id="cartDelete"
+		parameterType="co.mall.prj.cart.service.CartVO">
+		DELETE CART
+		WHERE CART_ID = #{cartId}
+	</delete>
+
+</mapper>
