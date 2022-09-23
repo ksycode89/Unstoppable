@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.mall.prj.cart.command.Cart;
 import co.mall.prj.command.Main;
 import co.mall.prj.common.Command;
 
@@ -28,6 +29,7 @@ public class FrontController extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/main.yd", new Main());
+		map.put("/cart.yd", new Cart());
 
 	}
 
