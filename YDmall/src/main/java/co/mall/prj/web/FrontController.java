@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.mall.prj.board.command.Notice;
 import co.mall.prj.cart.command.Cart;
+import co.mall.prj.cart.command.CartInsert;
 import co.mall.prj.command.Best;
 import co.mall.prj.command.Checkout;
 import co.mall.prj.command.Main;
@@ -42,6 +43,7 @@ public class FrontController extends HttpServlet {
 		map.put("/main.yd", new Main());
 		map.put("/shop.yd", new Shop());
 		map.put("/cart.yd", new Cart());
+		map.put("/cartInsert.yd", new CartInsert());
 		map.put("/checkout.yd", new Checkout());
 		map.put("/productDetail.yd", new ProductDetail());
 		map.put("/member.yd", new Member());

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,9 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<form action="">
+		<input type="text" name="upload">
+		<button type="button" onclick=>상품등록</button>
+	</form>
 
 	<!-- ****** Cart Area Start ****** -->
-	<div class="cart_area section_padding_100 clearfix" >
+	<div class="cart_area section_padding_100 clearfix">
 		<div class="container">
 			<div class="row" style="margin: -50px -15px 100px -15px">
 				<div class="col-12">
@@ -23,7 +28,7 @@
 									<th>총 금액</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="cart_list">
 								<tr>
 									<td class="cart_product_img d-flex align-items-center"><a
 										href="#"><img src="img/product-img/product-9.jpg"
@@ -47,6 +52,31 @@
 									</td>
 									<td class="total_price"><span>$49.88</span></td>
 								</tr>
+								<!-- ----------------------------dd -->
+								<tr>
+									<td class="cart_product_img d-flex align-items-center"><a
+										href="#"><img src="img/product-img/product-9.jpg"
+											alt="Product"></a>
+										<h6>Yellow Cocktail Dress</h6></td>
+
+									<!-- 아래 가격이 상품마다 다른 금액을 입력받을 수 있게 만들어야함 -->
+
+									<td class="price"><span>$49.88</span></td>
+									<td class="qty">
+										<div class="quantity">
+											<span class="qty-minus"
+												onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i
+												class="fa fa-minus" aria-hidden="true"></i></span> <input
+												type="number" class="qty-text" id="qty" step="1" min="1"
+												max="999" name="quantity" value="1"> <span
+												class="qty-plus"
+												onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i
+												class="fa fa-plus" aria-hidden="true"></i></span>
+										</div>
+									</td>
+									<td class="total_price"><span>$49.88</span></td>
+								</tr>
+								
 							</tbody>
 						</table>
 					</div>
@@ -56,7 +86,7 @@
 							<a href="main.yd">쇼핑 계속하기</a>
 						</div>
 						<div class="update-checkout w-50 text-right">
-							<a href="#">clear cart</a> <a href="#">Update cart</a>
+							<a href="#">장바구니 비우기</a> <a href="#">Update cart</a>
 						</div>
 					</div>
 
@@ -126,7 +156,11 @@
 	</div>
 	<!-- ****** Cart Area End ****** -->
 
-
+	<script type="text/javascript">
+ function clearCart(){
+	 document.getElementByid('cart_list').remove('tr');
+ }
+</script>
 
 	<!-- /.wrapper end -->
 </body>

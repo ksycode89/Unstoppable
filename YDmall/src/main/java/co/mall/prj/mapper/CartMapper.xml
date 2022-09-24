@@ -15,7 +15,7 @@
 	<insert id="cartInsert"
 		parameterType="co.mall.prj.cart.service.CartVO">
 		INSERT INTO CART
-		VALUES (#{CartId}, #{memberId},
+		VALUES (#{cartId}, #{memberId},
 		#{productId}, #{productName}, #{productPrice}, #{cartQuantity},
 		1)
 	</insert>
@@ -32,5 +32,6 @@
 		DELETE CART
 		WHERE CART_ID = #{cartId}
 	</delete>
+	
 
 </mapper>

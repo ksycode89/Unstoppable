@@ -14,5 +14,6 @@ public class CartVO {
 	private int productId; // 상품 번호(FK)
 	private String productName; //상품 이름
 	private int cartQuantity; //구매 수량 
+	private int productPrice; // 상품 가격
 	private String cartRole; //장바구니, 관심상품 구분 ex)like=관심상품, busket=장바구니 
 }

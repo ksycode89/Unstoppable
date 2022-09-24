@@ -103,13 +103,19 @@
                             </div>
 
                             <!-- Add to Cart Form -->
-                            <form class="cart clearfix mb-50 d-flex" method="post">
+                            <form class="cart clearfix mb-50 d-flex" method="post" action="cartInsert.yd">
                                 <div class="quantity">
+                                	<input type="hidden" id="cartId" name="cartId" value=20>
+ 							        <input type="hidden" id="memberId" name="memberId" value="20">
+ 							        <input type="hidden" id="productId" name="productId" value=20>
+ 							        <input type="hidden" id="productPrice" name="productPrice" value=50000>
+ 							        <input type="hidden" id="productName" name="productName" value="test">
+ 							        <input type="hidden" id="cartQuantity" name="cartQuantity" value=2>                
                                     <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                    <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1">
+                                    <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" value="1">
                                     <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
                                 </div>
-                                <button type="submit" name="addtocart" value="5" class="btn cart-submit d-block">Add to cart</button>
+                                <input type="submit" name="addtocart" class="btn cart-submit d-block" value="Add to cart"></input>
                             </form>
 
                             <div id="accordion" role="tablist">
