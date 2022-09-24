@@ -10,7 +10,7 @@ public class Shop implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse reponse) {
 		// TODO Auto-generated method stub
-		return "shop";
+		return "page/shop";
 	}
 
 }

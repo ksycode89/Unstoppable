@@ -8,7 +8,6 @@ public interface CartMapper {
 //	카트 불러오기
 	List<CartVO> CartSelectList(String memberId);
 
-	CartVO cartCheck(CartVO vo);
 //	카트 선택(?)
 	CartVO cartSelect(CartVO vo);
 

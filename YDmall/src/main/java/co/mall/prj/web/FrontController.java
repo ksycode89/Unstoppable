@@ -11,12 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.mall.prj.board.command.Notice;
 import co.mall.prj.cart.command.Cart;
 import co.mall.prj.command.Best;
 import co.mall.prj.command.Checkout;
 import co.mall.prj.command.Main;
 import co.mall.prj.command.Shop;
 import co.mall.prj.common.Command;
+import co.mall.prj.member.command.Login;
 import co.mall.prj.member.command.Member;
 import co.mall.prj.member.command.SignUP;
 import co.mall.prj.page.command.Bottom;
@@ -51,6 +53,9 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/best.yd", new Best());
 		map.put("/signUp.yd", new SignUP());
+		map.put("/login.yd", new Login());
+		
+		map.put("/notice.yd", new Notice());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

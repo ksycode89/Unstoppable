@@ -3,23 +3,13 @@ package co.mall.prj.cart.service;
 import java.util.List;
 
 public interface CartService {
-//	카트 불러오기
-	List<CartVO> CartSelectList(String memberId);
-
-	CartVO cartCheck(CartVO vo);
-
-//	카트 선택(?)
+	List<CartVO> CartSelectList();
+	
 	CartVO cartSelect(CartVO vo);
-
-//	카트 추가
+	
 	int cartInsert(CartVO vo);
-
-//	카트 추가
-	int addCart(CartVO vo);
-
-//	카트 수정
+	
 	int cartUpdate(CartVO vo);
-
-//	카트 삭제
+	
 	int cartDelete(CartVO vo);
 }

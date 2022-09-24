@@ -3,7 +3,6 @@
     <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="t" %>
 <!DOCTYPE html>
 <html>
-<head>
 <meta charset="UTF-8">
 <title><t:insertAttribute name="title"/>  </title>
  <meta charset="UTF-8">
@@ -26,6 +25,7 @@
     <link href="css/responsive.css" rel="stylesheet">
     
     
+    
 
 </head>
 <body>
@@ -45,6 +45,18 @@
     <script src="js/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    
+   
+  
+   
+
+    <!-- Page level plugins -->
+    <script src="board/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="board/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="board/js/demo/datatables-demo.js"></script>
+    
     
   
 </body>

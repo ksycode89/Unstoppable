@@ -83,7 +83,7 @@
                                     <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
                                         <ul class="navbar-nav animated" id="nav">
                                             <li class="nav-item active"><a class="nav-link" href="best.yd">BEST</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#">SALE</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="notice.yd">SALE</a></li>
                                             <li class="nav-item"><a class="nav-link" href="top.yd"><span class="karl-level">hot</span> TOP</a></li>
                                             <li class="nav-item"><a class="nav-link" href="bottom.yd">BOTTOM</a></li>
                                             <li class="nav-item"><a class="nav-link" href="outer.yd">OUTER</a></li>
@@ -92,7 +92,7 @@
                                                 <div class="dropdown-menu" aria-labelledby="karlDropdown">
                                                     <a class="dropdown-item" href="notice.yd">notice</a>
                                                     <a class="dropdown-item" href="sale.yd">event</a>
-                                                    <a class="dropdown-item" href="shop.html">review</a>
+                                                    <a class="dropdown-item" href="shop.yd">review</a>
                                                     <a class="dropdown-item" href="productDetail.yd">Product Details</a>
                                                     <a class="dropdown-item" href="cart.yd">Cart</a>
                                                     <a class="dropdown-item" href="checkout.yd">Checkout</a>
@@ -104,7 +104,7 @@
                             </div>
                             <!-- Help Line -->
                             <div class="help-line">
-                                <a href="signUp.yd">로그인</a>  <a href="">회원가입</a>
+                                <a href="login.yd">Login</a>  <a href="signUp.yd">Sign Up</a>
                             </div>
                         </div>
                     </div>
@@ -116,15 +116,15 @@
          <section class="top-discount-area d-md-flex align-items-center">
             <!-- Single Discount Area -->
             <div class="single-discount-area">
-               
+               <div class="sub_line"></div>
             </div>
             <!-- Single Discount Area -->
             <div class="single-discount-area">
-             
+             <div class="sub_line"></div>
             </div>
             <!-- Single Discount Area -->
             <div class="single-discount-area">
-                
+                <div class="sub_line"></div>
             </div>
         </section>
 
