@@ -25,6 +25,7 @@ import co.mall.prj.page.command.Bottom;
 import co.mall.prj.page.command.Outer;
 import co.mall.prj.page.command.Top;
 import co.mall.prj.product.Command.ProductDetail;
+import co.mall.prj.sales.command.Order;
 
 /**
  * Servlet implementation class FrontController
@@ -56,6 +57,7 @@ public class FrontController extends HttpServlet {
 		map.put("/login.yd", new Login());
 		
 		map.put("/notice.yd", new Notice());
+		map.put("/order.yd", new Order());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

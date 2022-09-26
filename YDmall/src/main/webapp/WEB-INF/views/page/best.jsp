@@ -16,5 +16,27 @@ height: 500px
 </head>
 <body>
 <h1>여긴 best</h1>
+
+
+
+
+
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+	
+	
+}
+function showList(){
+	fetch("showList.yd",)
+	
+	
+	
+	
+}
+
+
+
+
+</script>
 </body>
 </html>

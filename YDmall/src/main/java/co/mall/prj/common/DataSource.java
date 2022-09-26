@@ -12,18 +12,18 @@ private static SqlSessionFactory sqlSessionFactory;
 	private DataSource() {};
 	
 	public static SqlSessionFactory getInstance() {
-//		System.out.println("Data1");
-		String resource = "config/mybatis-config.xml";
+		System.out.println("Data1");
+		String resources = "config/mybatis-config.xml";
 		InputStream inputStream;
 		try {
-//			System.out.println("Data2");
-			inputStream = Resources.getResourceAsStream(resource);
+			System.out.println("Data2");
+			inputStream = Resources.getResourceAsStream(resources);
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-//		System.out.println("Data3");
+		System.out.println("Data3");
 		return sqlSessionFactory;
 	}
 }

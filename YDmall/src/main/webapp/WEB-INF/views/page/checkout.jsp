@@ -10,8 +10,8 @@
  <!-- ****** Checkout Area Start ****** -->
         <div class="checkout_area section_padding_100">
             <div class="container">
+         <form action="order.yd" method="post">
                 <div class="row">
-
                     <div class="col-12 col-md-6">
                         <div class="checkout_details_area mt-50 clearfix">
 
@@ -20,19 +20,16 @@
                                 <p>Enter your cupone code</p>
                             </div>
 
-                            <form action="#" method="post">
+                   
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="first_name">First Name <span>*</span></label>
-                                        <input type="text" class="form-control" id="first_name" value="" required>
+                                        <label for="first_name">Member ID <span>*</span></label>
+                                        <input type="text" class="form-control" id="memberId" name="memberId" value="" required>
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="last_name">Last Name <span>*</span></label>
-                                        <input type="text" class="form-control" id="last_name" value="" required>
-                                    </div>
+                                  
                                     <div class="col-12 mb-3">
-                                        <label for="company">Company Name</label>
-                                        <input type="text" class="form-control" id="company" value="">
+                                        <label for="company">sales ID</label>
+                                        <input type="text" class="form-control" id="salesId" name ="salesId" value="">
                                     </div>
                                     <div class="col-12 mb-3">
                                         <label for="country">Country <span>*</span></label>
@@ -88,10 +85,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
                         </div>
                     </div>
-
+                           
                     <div class="col-12 col-md-6 col-lg-5 ml-lg-auto">
                         <div class="order-details-confirmation">
 
@@ -160,12 +156,12 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <a href="#" class="btn karl-checkout-btn">Place Order</a>
+							<input type="submit" value="Order"   class="btn karl-checkout-btn">
                         </div>
                     </div>
 
                 </div>
+ </form>
             </div>
         </div>
         <!-- ****** Checkout Area End ****** -->
