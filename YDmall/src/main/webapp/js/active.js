@@ -14,6 +14,7 @@
     // :: 11.0 Slider Range Price Active Code
     // :: 12.0 PreventDefault a Click
     // :: 13.0 wow Active Code
+    // :: 14.0 장바구니 담기 알림 code
 
     var $window = $(window);
 
@@ -206,5 +207,16 @@
     if ($window.width() > 767) {
         new WOW().init();
     }
+    // :: 14.0
+    function addCart (name, price){
+	if(confirm("장바구니에 추가하시겠습니까?")){
+		location.href = "Cart"
+	}
+}
+	function cartView(){
+		if(confirm("장바구니로 이동하겠습니까?")){
+			location.href="cart.jsp";
+		}
+	}
 
 })(jQuery);
