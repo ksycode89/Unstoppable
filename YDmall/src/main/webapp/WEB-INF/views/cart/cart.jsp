@@ -5,6 +5,51 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+  input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+
+function callNumberAdd(a){
+	var numberText = $(a).parent().find(".qty-text");
+	var qty = numberText.val(); 
+	
+	if(!isNaN(qty))
+		qty++;
+	
+	numberText.val(qty);
+	
+	var productIdx = $(a).parent().parent().parent().find(".price").text();
+	var total = productIdx * qty;
+	
+	$(a).parent().parent().parent().find(".total_price").text(total);
+	return false;
+};
+
+function callNumberMin(a){
+	var numberText = $(a).parent().find(".qty-text");
+	var qty = numberText.val(); 
+	
+	if(qty == 1){
+		return false;
+	}
+	
+	if(!isNaN(qty))
+		qty--;
+	
+	numberText.val(qty);
+	var totalPrice = $(a).parent().parent().parent().find(".total_price").text();
+	var productIdx = $(a).parent().parent().parent().find(".price").text();
+	var total = totalPrice - productIdx;
+	
+	$(a).parent().parent().parent().find(".total_price").text(total);
+	return false;
+};
+
+</script>
 <meta charset="UTF-8">
 <title>장바구니 페이지</title>
 <%
@@ -26,61 +71,35 @@ DecimalFormat dFormat = new DecimalFormat("###,###");
 									<th>가격</th>
 									<th>개수</th>
 									<th>총 금액</th>
-									<th>선택 삭제</th>
+									<th>전체 선택<input type="checkbox"></th>
 								</tr>
 							</thead>
-							<tbody>
-
-
+							<tbody id="asdf">
 								<c:forEach items="${list}" var="ca">
 									<tr>
-										<td class="cart_product_img d-flex align-items-center"><a
-											href="#"><img src="img/product-img/product-9.jpg"
-												alt="Product"></a>
-											<h6>${ca.productName}</h6></td>
-
-										<td>${ca.productPrice }</td>
+										<td class="cart_product_img d-flex align-items-center product-id">
+											<a href="#">
+												<img src="img/product-img/product-9.jpg" alt="Product">
+											</a>
+											<h6>${ca.productName}</h6>
+										</td>
+										<td class="price">${ca.productPrice}</td>
 										<td class="qty">
 											<div class="quantity">
-												<span class="qty-minus"
-													onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i
-													class="fa fa-minus" aria-hidden="true"></i></span> <input
-													type="number" class="qty-text" id="qty" step="1" min="1"
-													max="999" name="quantity" value="1"> <span
-													class="qty-plus"
-													onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i
-													class="fa fa-plus" aria-hidden="true"></i></span>
+												<span class="qty-minus" onclick="callNumberMin(this)">
+													<i class="fa fa-minus" aria-hidden="true"></i>
+												</span> 
+												<input type="number" class="qty-text" step="1" min="1" max="999" name="quantity" value="1"> 
+												<span class="qty-plus" onclick="callNumberAdd(this)">
+													<i class="fa fa-plus" aria-hidden="true"></i>
+												</span>
 											</div>
 										</td>
 										<td class="total_price"><span>${ca.productPrice}</span></td>
+										<td class="d-flex align-items-center"><input type="checkbox"></td>
 									</tr>
-									<!-- 									<td>삭제버튼</td> -->
+<!-- 																		<td>삭제버튼</td> -->
 								</c:forEach>
-
-
-								<tr>
-									<td class="cart_product_img d-flex align-items-center"><a
-										href="#"><img src="img/product-img/product-9.jpg"
-											alt="Product"></a>
-										<h6>Yellow Cocktail Dress</h6></td>
-
-									<!-- 아래 가격이 상품마다 다른 금액을 입력받을 수 있게 만들어야함 -->
-
-									<td class="price"><span>$49.88</span></td>
-									<td class="qty">
-										<div class="quantity">
-											<span class="qty-minus"
-												onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i
-												class="fa fa-minus" aria-hidden="true"></i></span> <input
-												type="number" class="qty-text" id="qty" step="1" min="1"
-												max="999" name="quantity" value="1"> <span
-												class="qty-plus"
-												onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i
-												class="fa fa-plus" aria-hidden="true"></i></span>
-										</div>
-									</td>
-									<td class="total_price"><span>$49.88</span></td>
-								</tr>
 							</tbody>
 						</table>
 					</div>
@@ -158,8 +177,5 @@ DecimalFormat dFormat = new DecimalFormat("###,###");
 
 	<!-- /.wrapper end -->
 
-	<script type="text/javascript">
-		
-	</script>
 </body>
 </html>
