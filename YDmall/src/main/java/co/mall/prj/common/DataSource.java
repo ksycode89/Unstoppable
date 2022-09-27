@@ -7,10 +7,11 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class DataSource {
-private static SqlSessionFactory sqlSessionFactory;
-	
-	private DataSource() {};
-	
+	private static SqlSessionFactory sqlSessionFactory;
+
+	private DataSource() {
+	};
+
 	public static SqlSessionFactory getInstance() {
 		System.out.println("Data1");
 		String resources = "config/mybatis-config.xml";
@@ -22,7 +23,7 @@ private static SqlSessionFactory sqlSessionFactory;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		System.out.println("Data3");
 		return sqlSessionFactory;
 	}

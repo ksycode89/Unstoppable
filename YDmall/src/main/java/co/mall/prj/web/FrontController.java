@@ -16,6 +16,7 @@ import co.mall.prj.admin.command.AdminMemberSelectList;
 import co.mall.prj.admin.command.AdminPage;
 import co.mall.prj.board.command.Notice;
 import co.mall.prj.cart.command.Cart;
+import co.mall.prj.cart.command.cartDelete;
 import co.mall.prj.command.Best;
 import co.mall.prj.command.Checkout;
 import co.mall.prj.command.Main;
@@ -51,7 +52,9 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/main.yd", new Main());
 		map.put("/shop.yd", new Shop());
-		map.put("/cart.yd", new Cart());
+		map.put("/cart.yd", new Cart()); //장바구니 리스트
+		map.put("/cartDelete.yd", new cartDelete()); //장바구니 리스트 개별삭제
+		
 		map.put("/checkout.yd", new Checkout());
 		map.put("/productDetail.yd", new ProductDetail());
 
@@ -65,20 +68,7 @@ public class FrontController extends HttpServlet {
 
 		map.put("/notice.yd", new Notice());
 		map.put("/order.yd", new Order());
-		map.put("/admin.yd", new AdminPage());
-		map.put("/adminChart.yd", new AdminChart());
-			
-		// member 명령집단 저장
-				map.put("/main.yd", new Main()); //첫 화면
-				map.put("/memberLoginForm.yd", new MemberLoginForm()); //로그인 폼
-				map.put("/memberLogin.yd", new MemberLogin()); // 폼 액션 -> 로그인
-				map.put("/memberLogout.yd", new MemberLogout()); //로그아웃
-				map.put("/memberInsert.yd", new MemberInsert()); //회원가입
-				map.put("/ajaxMemberIdCheck.yd", new AjaxMemberIdCheck()); //아이디 중복체크
-				//member 상세페이지 -> 주문 조회 / 구매내역 / 수정 / 탈퇴 만들기 
-				map.put("/memberEditForm.yd", new MemberEditForm()); //mypage(상세정보) 폼
-				map.put("/memberOrderHistory.yd", new MemberOrderHistory()); //구매내역
-		map.put("/adminMemberSelectList.yd", new AdminMemberSelectList());
+
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
