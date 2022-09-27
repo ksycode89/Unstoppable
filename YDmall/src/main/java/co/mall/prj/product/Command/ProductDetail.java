@@ -9,7 +9,7 @@ public class ProductDetail implements Command{
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse reponse) {
-
+		
 		return "product/productDetail";
 	}
 
