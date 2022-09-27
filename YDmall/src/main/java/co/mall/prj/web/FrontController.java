@@ -54,7 +54,7 @@ public class FrontController extends HttpServlet {
 	public FrontController() {
 		super();
 	}
- 
+
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/main.yd", new Main());
 		map.put("/shop.yd", new Shop());
@@ -72,6 +72,32 @@ public class FrontController extends HttpServlet {
 
 		map.put("/notice.yd", new Notice());
 		map.put("/order.yd", new Order());
+
+		map.put("/productDetail2.yd", new ProductDetail());
+
+		map.put("/productManageList.yd", new ProductManageList()); // 관리자용 상품 목록
+		map.put("/productManageRegist.yd", new ProductManageRegist()); // 관리자용 상품 정보 등록
+		map.put("/productManageRegistForm.yd", new ProductManageRegistForm()); // 상품 정보 등록 폼
+		map.put("/productManageEdit.yd", new ProductManageEdit()); // 관리자용 상품 정보 수정
+		map.put("/productManageEditForm.yd", new ProductManageEditForm()); // 상품 정보 수정 폼
+		map.put("/productManageRemove.yd", new ProductManageRemove()); // 관리자용 상품 정보 삭제
+
+		map.put("/admin.yd", new AdminPage());
+		map.put("/adminChart.yd", new AdminChart());
+
+		// member 명령집단 저장
+		map.put("/memberLoginForm.yd", new MemberLoginForm()); // 로그인 폼
+		map.put("/memberLogin.yd", new MemberLogin()); // 폼 액션 -> 로그인
+		map.put("/memberLogout.yd", new MemberLogout()); // 로그아웃
+		map.put("/memberInsert.yd", new MemberInsert()); // 회원가입
+		map.put("/ajaxMemberIdCheck.yd", new AjaxMemberIdCheck()); // 아이디 중복체크
+		// member 상세페이지 -> 주문 조회 / 구매내역 / 수정 / 탈퇴 만들기
+		map.put("/memberEditForm.yd", new MemberEditForm()); // mypage(상세정보) 폼
+		map.put("/memberOrderHistory.yd", new MemberOrderHistory()); // 구매내역
+		map.put("/adminMemberSelectList.yd", new AdminMemberSelectList());
+		map.put("/adminProductSelectList.yd", new AdminProductSelectList());
+		
+
 
 	}
 
