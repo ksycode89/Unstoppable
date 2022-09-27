@@ -26,6 +26,12 @@ import co.mall.prj.page.command.Bottom;
 import co.mall.prj.page.command.Outer;
 import co.mall.prj.page.command.Top;
 import co.mall.prj.product.Command.ProductDetail;
+import co.mall.prj.product.Command.ProductManageEdit;
+import co.mall.prj.product.Command.ProductManageEditForm;
+import co.mall.prj.product.Command.ProductManageList;
+import co.mall.prj.product.Command.ProductManageRegist;
+import co.mall.prj.product.Command.ProductManageRegistForm;
+import co.mall.prj.product.Command.ProductManageRemove;
 import co.mall.prj.sales.command.Order;
 
 /**
@@ -49,7 +55,6 @@ public class FrontController extends HttpServlet {
 		map.put("/checkout.yd", new Checkout());
 		map.put("/productDetail.yd", new ProductDetail());
 		map.put("/member.yd", new Member());
-
 		
 		map.put("/top.yd", new Top());
 		map.put("/bottom.yd", new Bottom());
@@ -62,6 +67,14 @@ public class FrontController extends HttpServlet {
 		map.put("/notice.yd", new Notice());
 		map.put("/order.yd", new Order());
 //		map.put("/productDetail2.yd", new ProductDetail());
+		
+		map.put("/productManageList.yd", new ProductManageList()); // 관리자용 상품 목록
+		map.put("/productManageRegist.yd", new ProductManageRegist()); // 관리자용 상품 정보 등록
+		map.put("/productManageRegistForm.yd", new ProductManageRegistForm()); // 상품 정보 등록 폼
+		map.put("/productManageEdit.yd", new ProductManageEdit()); // 관리자용 상품 정보 수정
+		map.put("/productManageEditForm.yd", new ProductManageEditForm()); // 상품 정보 수정 폼
+		map.put("/productManageRemove.yd", new ProductManageRemove()); // 관리자용 상품 정보 삭제
+
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
