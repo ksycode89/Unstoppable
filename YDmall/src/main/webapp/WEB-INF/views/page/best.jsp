@@ -7,107 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
+
 
 <body>
 	<h1>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;BEST</h1>
 
-	<section class="shop_grid_area section_padding_100">
-		<div class="container">
-			<div class="row">
-				<div class="col-12 col-md-4 col-lg-3">
-					<div class="shop_sidebar_area">
-						<div class="widget catagory mb-50">
 
-							<!--  Side Menu  -->
-							<div class="nav-side-menu">
-								<h6 class="mb-0">Categories</h6>
-								<div class="menu-list">
-									<ul id="menu-content2" class="menu-content collapse out">
-										<!-- BEST -->
-										<li data-toggle="collapse" data-target="#best"
-											class="collapsed"><a href="best.yd">BEST</a></li>
-										<!-- SALE -->
-										<li data-toggle="collapse" data-target="#sale"
-											class="collapsed"><a href="#">SALE</a></li>
-										<!-- TOP -->
-										<li data-toggle="collapse" data-target="#top"
-											class="collapsed"><a href="#">TOP</a>
-											<ul class="sub-menu collapse" id="top">
-												<li><input type="hidden" id="productMinor"
-													name="productMinor" value="T-SHIRT"> <a href="">SHIRT</a>
-												</li>
-												<li><input type="hidden" id="productMinor"
-													name="productMinor" value="HOOD"> <a href="#">HOOD</a>
-												</li>
-											</ul></li>
-										<!-- BOTTOM -->
-										<li data-toggle="collapse" data-target="#bottom"
-											class="collapsed"><a href="#">BOTTOM</a>
-											<ul class="sub-menu collapse" id="bottom">
-												<li><a href="#">Bags</a></li>
-												<li><a href="#">Purses</a></li>
-											</ul></li>
-										<!-- OUTER -->
-										<li data-toggle="collapse" data-target="#outer"
-											class="collapsed"><a href="#">OUTER</a>
-											<ul class="sub-menu collapse" id="outer">
-												<li><a href="#">Eyewear Style 1</a></li>
-												<li><a href="#">Eyewear Style 2</a></li>
-												<li><a href="#">Eyewear Style 3</a></li>
-											</ul></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-12 col-md-8 col-lg-9">
-					<div class="shop_grid_product_area">
-						<div class="row">
-							<!-- Single gallery Item -->
-							<c:forEach items="${list }" var="p">
-								<c:if test="${p.productDefault eq '1'}">
-									<div
-										class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig"
-										data-wow-delay="0.2s">
-										<!-- Product Image -->
-										<div class="product-img">
-											<img src="img/product-img/product-1.jpg"
-												alt="${p.productAttach }">
-											<div class="product-quicview">
-												<a href="javascript:selectProduct('${p.productName }');"><i
-													class="ti-plus"></i></a>
-											</div>
-										</div>
-										<!-- Product Description -->
-										<div class="product-description">
-											<h4 class="product-price">￦${p.productPrice }</h4>
-											<p>${p.productName }</p>
-											<!-- Add to Cart -->
-											<a href="cart.yd" class="add-to-cart-btn">ADD TO CART</a>
-										</div>
-									</div>
-								</c:if>
-							</c:forEach>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div>
-			<form id="frm" action=productDetail.yd method="post">
-				<input type="hidden" id="pName" name="pName">
-			</form>
-		</div>
-	</section>
-	<script type="text/javascript">
-		function selectProduct(name) {
-			document.getElementById("pName").value = name;
-			frm.submit();
-		}
-	</script>
 </body>
 </html>
