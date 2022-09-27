@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.mall.prj.admin.command.AdminChart;
+import co.mall.prj.admin.command.AdminMemberSelectList;
+import co.mall.prj.admin.command.AdminPage;
 import co.mall.prj.board.command.Notice;
 import co.mall.prj.cart.command.Cart;
 import co.mall.prj.cart.command.cartDelete;
@@ -19,8 +22,14 @@ import co.mall.prj.command.Checkout;
 import co.mall.prj.command.Main;
 import co.mall.prj.command.Shop;
 import co.mall.prj.common.Command;
+import co.mall.prj.member.command.AjaxMemberIdCheck;
 import co.mall.prj.member.command.Login;
-import co.mall.prj.member.command.Member;
+import co.mall.prj.member.command.MemberEditForm;
+import co.mall.prj.member.command.MemberInsert;
+import co.mall.prj.member.command.MemberLogin;
+import co.mall.prj.member.command.MemberLoginForm;
+import co.mall.prj.member.command.MemberLogout;
+import co.mall.prj.member.command.MemberOrderHistory;
 import co.mall.prj.member.command.SignUP;
 import co.mall.prj.page.command.Bottom;
 import co.mall.prj.page.command.Outer;
@@ -48,20 +57,18 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/checkout.yd", new Checkout());
 		map.put("/productDetail.yd", new ProductDetail());
-		map.put("/member.yd", new Member());
 
-		
 		map.put("/top.yd", new Top());
 		map.put("/bottom.yd", new Bottom());
 		map.put("/outer.yd", new Outer());
-		
+
 		map.put("/best.yd", new Best());
 		map.put("/signUp.yd", new SignUP());
 		map.put("/login.yd", new Login());
-		
+
 		map.put("/notice.yd", new Notice());
 		map.put("/order.yd", new Order());
-//		map.put("/productDetail2.yd", new ProductDetail());
+
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -73,7 +80,7 @@ public class FrontController extends HttpServlet {
 		String page = uri.substring(contextPath.length());
 
 		System.out.println("page : " + page);
-	
+
 		Command command = map.get(page);
 
 		String viewPage = command.exec(request, response);
@@ -81,10 +88,16 @@ public class FrontController extends HttpServlet {
 		System.out.println("커맨드아래 : " + viewPage);
 
 		if (!viewPage.endsWith(".yd")) {
+			if (viewPage.startsWith("admin")) {
+				viewPage = viewPage + ".tiles";
+				System.out.println(viewPage);
 
-			viewPage = viewPage + ".tiles";
-			
-			System.out.println("tiles 체크 : " + viewPage);
+			} else {
+
+				viewPage = viewPage + ".tiles";
+
+				System.out.println("tiles 체크 : " + viewPage);
+			}
 
 			RequestDispatcher dis = request.getRequestDispatcher(viewPage);
 			dis.forward(request, response);

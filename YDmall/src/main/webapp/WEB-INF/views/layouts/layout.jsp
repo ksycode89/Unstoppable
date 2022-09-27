@@ -25,6 +25,10 @@
     <link href="css/responsive.css" rel="stylesheet">
     
     
+
+
+    <!-- Custom styles for this page -->
+    <link href="admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     
 
 </head>

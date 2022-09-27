@@ -19,22 +19,24 @@
 
 						</div>
 
-						<form action="#" method="post">
+						<form action="memberLogin.yd"
+							method="post">
 							<div class="row">
 								<div class="col-12 mb-3">
 									<label for="memberId">ID</label> <input type="text"
-										class="form-control" id="company" value="">
+										class="form-control" id="memberId" name="memberId"
+										required="required">
 								</div>
 								<div class="col-12 mb-3">
-									<label for="memberPassword"> Passoword</label> <input
-										type="text" class="form-control" id="company" value="">
+									<label for="memberPassword">Password</label> <input type="password"
+										class="form-control" id="memberPassword" name="memberPassword"
+										required="required">
 								</div>
-
-								<a href="#" id="join_btn" class="btn karl-checkout-btn">Join</a>
+							</div>
+							<input type="submit" id="join_btn" class="btn karl-checkout-btn" value="Join">&nbsp;&nbsp;&nbsp;
 						</form>
 					</div>
 				</div>
-
 
 
 			</div>

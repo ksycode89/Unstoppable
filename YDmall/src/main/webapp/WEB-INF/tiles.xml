@@ -22,6 +22,25 @@
   	<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
   </definition>
   
+  
+  
+  <definition name="happy.admin" template="/WEB-INF/views/adminLayouts/layout.jsp">
+    
+    <put-attribute name="title" value="무적관리조" />
+    <put-attribute name="side" value="/WEB-INF/views/adminLayouts/side.jsp" />
+    <put-attribute name="menu" value="/WEB-INF/views/adminLayouts/menu.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/views/adminLayouts/footer.jsp" />
+
+    <put-attribute name="body" value="" />
+
+
+  </definition>
+  
+  
+  <definition name="WILDCARD:admin/*/*" extends="happy.admin">
+  	<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+  </definition>
+  
 
   
 </tiles-definitions>
