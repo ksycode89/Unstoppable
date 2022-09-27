@@ -1,62 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="java.text.DecimalFormat"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <style>
-  input[type=number]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-	}
+input[type=number]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
 
-function callNumberAdd(a){
-	var numberText = $(a).parent().find(".qty-text");
-	var qty = numberText.val(); 
-	
-	if(!isNaN(qty))
-		qty++;
-	
-	numberText.val(qty);
-	
-	var productIdx = $(a).parent().parent().parent().find(".price").text();
-	var total = productIdx * qty;
-	
-	$(a).parent().parent().parent().find(".total_price").text(total);
-	return false;
-};
-
-function callNumberMin(a){
-	var numberText = $(a).parent().find(".qty-text");
-	var qty = numberText.val(); 
-	
-	if(qty == 1){
-		return false;
-	}
-	
-	if(!isNaN(qty))
-		qty--;
-	
-	numberText.val(qty);
-	var totalPrice = $(a).parent().parent().parent().find(".total_price").text();
-	var productIdx = $(a).parent().parent().parent().find(".price").text();
-	var total = totalPrice - productIdx;
-	
-	$(a).parent().parent().parent().find(".total_price").text(total);
-	return false;
-};
-
-</script>
 <meta charset="UTF-8">
 <title>장바구니 페이지</title>
-<%
-String cartId = session.getId();
-DecimalFormat dFormat = new DecimalFormat("###,###");
-%>
 </head>
+
 <body>
 	<!-- ****** Cart Area Start ****** -->
 	<div class="cart_area section_padding_100 clearfix">
@@ -71,7 +30,12 @@ DecimalFormat dFormat = new DecimalFormat("###,###");
 									<th>가격</th>
 									<th>개수</th>
 									<th>총 금액</th>
-									<th>전체 선택<input type="checkbox"></th>
+									<th>
+										<input type="checkbox" id="checkAll" class="cartCheckbox" onclick="checkAllBtn(this)">
+									</th>
+									<th>
+										<button>전체 삭제</button>
+									</th>
 								</tr>
 							</thead>
 							<tbody id="asdf">
@@ -88,17 +52,24 @@ DecimalFormat dFormat = new DecimalFormat("###,###");
 											<div class="quantity">
 												<span class="qty-minus" onclick="callNumberMin(this)">
 													<i class="fa fa-minus" aria-hidden="true"></i>
-												</span> 
-												<input type="number" class="qty-text" step="1" min="1" max="999" name="quantity" value="1"> 
+												</span>
+													<input type="number" class="qty-text" step="1" min="1" max="999" name="quantity" value="1"> 
 												<span class="qty-plus" onclick="callNumberAdd(this)">
 													<i class="fa fa-plus" aria-hidden="true"></i>
 												</span>
 											</div>
 										</td>
-										<td class="total_price"><span>${ca.productPrice}</span></td>
-										<td class="d-flex align-items-center"><input type="checkbox"></td>
+										<td class="total_price">
+											<span>${ca.productPrice}</span>
+										</td>
+										<td class="d-flex align-items-center">
+											<input type="checkbox" name="check" id="check" class="cartCheckbox" onclick="checkBtn(this)">
+										</td>
+										<td>
+											<button>삭제</button>
+										</td>
 									</tr>
-<!-- 																		<td>삭제버튼</td> -->
+									<!-- 																		<td>삭제버튼</td> -->
 								</c:forEach>
 							</tbody>
 						</table>
@@ -109,11 +80,12 @@ DecimalFormat dFormat = new DecimalFormat("###,###");
 							<a href="main.yd">쇼핑 계속하기</a>
 						</div>
 						<div class="update-checkout w-50 text-right">
-							<a href="#" id="clearCart">장바구니 비우기</a> <a href="#">전체 상품 주문</a>
+							<!-- 								<a href="#" id="clearCart">장바구니 비우기</a> -->
+							<a href="#" id="clearCart">전체 상품 주문</a>
+							<a href="#">선택 상품 주문</a>
 							<!-- 							location.href -->
 						</div>
 					</div>
-
 				</div>
 			</div>
 
@@ -160,12 +132,12 @@ DecimalFormat dFormat = new DecimalFormat("###,###");
 						</div>
 
 						<ul class="cart-total-chart">
-							<li><span>상품 가격</span> <span>50,000원</span></li>
-							<li><span>배송비</span> <span>+ 2,500원</span></li>
-							<li><span><strong>최종 결제 금액</strong></span> <span><strong>52,500원</strong></span></li>
+							<li><span>상품 가격</span> <span>선택한 상품의 총 가격</span></li>
+							<li><span>포인트</span> <span> 얼마 사용</span></li>
+							<li><span>배송비</span> <span>선택한 배송비 적용되게</span></li>
+							<li><span><strong>최종 결제 금액</strong></span> <span><strong class="final_price">배송비, 포인트 사용 후 최종 결제 가격</strong></span></li>
 						</ul>
-						<a href="checkout.html" class="btn karl-checkout-btn">Proceed
-							to checkout</a>
+						<a href="checkout.html" class="btn karl-checkout-btn">상품 주문</a>
 					</div>
 				</div>
 			</div>
@@ -176,6 +148,136 @@ DecimalFormat dFormat = new DecimalFormat("###,###");
 
 
 	<!-- /.wrapper end -->
+	<script type="text/javascript">
+		//상품 수 늘릴 때 금액 계산
+		function callNumberAdd(a) {
+			var numberText = $(a).parent().find(".qty-text");
+			var qty = numberText.val();
 
+			if (!isNaN(qty))
+				qty++;
+
+			numberText.val(qty);
+
+			var productIdx = $(a).parent().parent().parent().find(".price").text();
+			var total = productIdx * qty;
+
+			$(a).parent().parent().parent().find(".total_price").text(total);
+			return false;
+		};
+		// 상품 수 줄일때 금액계산
+		function callNumberMin(a) {
+			var numberText = $(a).parent().find(".qty-text");
+			var qty = numberText.val();
+			if (qty == 1) {
+				return false;
+			}
+			if (!isNaN(qty))
+				qty--;
+			numberText.val(qty);
+			var totalPrice = $(a).parent().parent().parent().find(".total_price").text();
+			var productIdx = $(a).parent().parent().parent().find(".price").text();
+			var total = totalPrice - productIdx;
+
+			$(a).parent().parent().parent().find(".total_price").text(total);
+			return false;
+		};
+
+
+		//텍스트칸에 숫자 입력 시 금액 변경
+// 		$(function callNumberUpdaet(a){
+// 			var updatePorduct = $(a).parent().find(".qty-text");
+// 			var qty = updateProduct.val();
+			
+// 			if(qty < 1){
+// 				return false;
+// 			}
+// 			$(".qty-text").change(function (){
+// 				var totalPrice = $(a).parent().parent().parent().find(".total_price").text();
+// 				var productIdx = $(a).parent().parent().parent().find(".price").text();
+// 				var total = totalPrice - productIdx;
+
+// 				$(a).parent().parent().parent().find(".total_price").text(total);
+// 				return false;
+// 				qty.parentElement.parentElement.parentElement.children.item(3).textContent = qty.value *
+// 				qty.parentElement.parentElement.parentElement.children.item(1).textContent
+// 			});
+// 		});
+		let qtys = document.querySelectorAll(".qty-text");
+		console.log(qtys);
+		qtys.forEach((qty) => {
+			qty.addEventListener('change', function () {
+				if(qty < 1){
+					return false;
+				}
+				qty.parentElement.parentElement.parentElement.children.item(3).textContent = 
+					qty.value * qty.parentElement.parentElement.parentElement.children.item(1).textContent
+			});
+		});
+		
+		
+		//체크박스
+		let btns = document.getElementsByClassName("cartCheckbox");
+		let checkedNum = 0;
+		function checkAllBtn(AllBtn) {
+			if (AllBtn.checked) {
+				for (let i = 0; i < btns.length; i++) {
+					btn = btns.item(i);
+					btn.checked = true;
+					checkedNum = btns.length - 1;
+				}
+			} else {
+				for (let i = 0; i < btns.length; i++) {
+					btn = btns.item(i);
+					btn.checked = false;
+					checkedNum = 0;
+				}
+			}
+		}
+		//개별 체크박스 클릭시 전체 체크박스 버튼도 클릭/해제되게 
+		function checkBtn(btn) {
+			if (btn.checked) {
+				checkedNum++;
+			} else {
+				checkedNum--;
+			}
+			if (checkedNum == btns.length - 1) {
+				document.getElementById("checkAll").checked = true;
+			} else {
+				document.getElementById("checkAll").checked = false;
+			}
+		}
+		
+		//원화 콤마 표시
+		function number_format(num){
+   			return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
+		}
+		//컴마 추가
+		function addComma(value){
+			value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		    return value; 
+		}
+		//컴마 제거
+		function minusComma(value){
+			value = value.replace(/[^\d]+/g, "");
+		    return value; 
+		}
+		//금액 컴파 표기
+// 		$(function(){
+// 			var num = $(".total_price").val()
+// 			num2 = $.numberWithCommas(parseInt(num));
+// 		})
+// 		$.numberWithCommas = function (x){
+// 			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+// 		}
+// 		function Comma(strNum){
+// 			return strNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+// 		}
+// 		컴마 제거
+// 		$.withoutCommas = function (x) {
+// 			return x.toString().replace(",", '');
+// 		}
+	</script>
 </body>
+
 </html>
