@@ -48,7 +48,7 @@ public class FrontController extends HttpServlet {
 	public FrontController() {
 		super();
 	}
-
+ 
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/main.yd", new Main());
 		map.put("/shop.yd", new Shop());
