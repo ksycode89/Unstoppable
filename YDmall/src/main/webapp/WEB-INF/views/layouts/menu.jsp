@@ -104,7 +104,7 @@
                             </div>
                             <!-- Help Line -->
                             <div class="help-line">
-                                <a href="login.yd">Login</a>  <a href="signUp.yd">Sign Up</a>
+                                <a href="login.yd">Login</a>  <a href="signUp.yd">Sign Up</a>  <a href="admin.yd">Admin Page</a>
                             </div>
                         </div>
                     </div>
