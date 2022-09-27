@@ -1,4 +1,4 @@
-package co.mall.prj.page.command;
+package co.mall.prj.product.Command;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import co.mall.prj.product.service.ProductService;
 import co.mall.prj.product.service.ProductServiceImpl;
 import co.mall.prj.product.service.ProductVO;
 
-public class Outer implements Command{
+public class ProductManageList implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse reponse) {
@@ -20,7 +20,7 @@ public class Outer implements Command{
 		list = dao.productSelectList();
 		request.setAttribute("list", list);
 		
-		return "page/outer";
+		return "product/productManageList";
 	}
 
 }

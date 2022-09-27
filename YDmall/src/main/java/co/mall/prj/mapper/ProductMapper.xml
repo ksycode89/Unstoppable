@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.mall.prj.mapper.ProductMapper">
+	<select id="productSelectList" resultType="co.mall.prj.product.service.ProductVO">
+		SELECT *
+		FROM PRODUCT 
+		ORDER BY PRODUCT_ID
+	</select>
+
+	<select id="productSelect" resultType="co.mall.prj.product.service.ProductVO">
+		SELECT *
+		FROM PRODUCT
+		WHERE PRODUCT_NAME = #{productName} AND PRODUCT_DEFAULT = 1
+		
+	</select>
+	
+	<select id="productSelect2" resultType="co.mall.prj.product.service.ProductVO">
+		SELECT *
+		FROM PRODUCT
+		WHERE PRODUCT_ID = #{productId}
+	</select>
+
+	<insert id="productInsert">
+		<selectKey keyProperty="productId" resultType="int"
+			order="BEFORE">
+			SELECT CASE
+			WHEN MAX(PRODUCT_ID) IS NULL THEN 1
+			ELSE MAX(PRODUCT_ID) + 1 END AS FROM PRODUCT
+		</selectKey>
+
+		INSERT INTO PRODUCT
+		VALUES(#{productId},#{productMajor},#{productMinor},#{productName},#{productSize},#{productPrice},#{productQuantity},#{productEvent},#{productDefault},#{productAttach},#{productAttachDir},#{productExplain})
+
+	</insert>
+
+	<update id="productUpdate">
+		UPDATE PRODUCT
+		SET PRODUCT_SIZE = #{productSize},
+		PRODUCT_PRICE = #{productPrice},
+		PRODUCT_QUANTITY = #{productQuantity},
+		PRODUCT_EVENT = #{productEvent},
+		PRODUCT_ATTACH = #{productAttach},
+		PRODUCT_ATTACH_DIR = #{productAttachDir},
+		PRODUCT_EXPLAIN = #{productExplain}
+		WHERE PRODUCT_ID = #{productId}
+	</update>
+
+	<delete id="productDelete">
+		DELETE FROM MEMBER
+		WHERE PRODUCT_NAME = #{productName}
+	</delete>
+
+</mapper>
