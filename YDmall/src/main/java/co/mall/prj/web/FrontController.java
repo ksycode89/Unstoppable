@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import co.mall.prj.admin.command.AdminChart;
 import co.mall.prj.admin.command.AdminMemberSelectList;
 import co.mall.prj.admin.command.AdminPage;
+import co.mall.prj.admin.command.AdminProductSelectList;
 import co.mall.prj.board.command.Notice;
 import co.mall.prj.cart.command.Cart;
 import co.mall.prj.command.Best;
@@ -79,6 +80,7 @@ public class FrontController extends HttpServlet {
 		map.put("/memberEditForm.yd", new MemberEditForm()); // mypage(상세정보) 폼
 		map.put("/memberOrderHistory.yd", new MemberOrderHistory()); // 구매내역
 		map.put("/adminMemberSelectList.yd", new AdminMemberSelectList());
+		map.put("/adminProductSelectList.yd", new AdminProductSelectList());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
