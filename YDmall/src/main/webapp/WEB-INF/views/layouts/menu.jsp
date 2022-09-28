@@ -88,17 +88,16 @@
                                             <li class="nav-item"><a class="nav-link" href="top.yd"><span class="karl-level">hot</span> TOP</a></li>
                                             <li class="nav-item"><a class="nav-link" href="bottom.yd">BOTTOM</a></li>
                                             <li class="nav-item"><a class="nav-link" href="outer.yd">OUTER</a></li>
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">board</a>
-                                                <div class="dropdown-menu" aria-labelledby="karlDropdown">
-                                                    <a class="dropdown-item" href="notice.yd">notice</a>
-                                                    <a class="dropdown-item" href="sale.yd">event</a>
-                                                    <a class="dropdown-item" href="shop.yd">review</a>
-                                                    <a class="dropdown-item" href="productDetail.yd">Product Details</a>
-                                                    <a class="dropdown-item" href="cart.yd">Cart</a>
-                                                    <a class="dropdown-item" href="checkout.yd">Checkout</a>
-                                                </div>
-                                            </li>
+                                            <li class="nav-item dropdown"><a
+											class="nav-link dropdown-toggle" href="#" id="karlDropdown"
+											role="button" data-toggle="dropdown" aria-haspopup="true"
+											aria-expanded="false">board</a>
+											<div class="dropdown-menu" aria-labelledby="karlDropdown">
+												<a class="dropdown-item" href="noticeSelectList.yd">notice</a>
+												<a class="dropdown-item" href="reviewSelectList.yd">review</a>
+												<a class="dropdown-item" href="qnaSelectList.yd">q & a</a>
+
+											</div></li>
                                         </ul>
                                     </div>
                                 </nav>
