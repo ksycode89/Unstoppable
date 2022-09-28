@@ -23,7 +23,7 @@ h1 {
 		<li onclick="kakaoLogin();"><a href="javascript:void(0)"> <img
 				alt="" src="img/kakao_login_medium_narrow.png">
 		</a></li>
-		<li onclick="kakaoLogout() "><a href="javascript:void(0)"> <span>카카오
+		<li onclick="Logout() "><a href="javascript:void(0)"> <span>카카오
 					로그아웃</span>
 		</a></li>
 	</ul>
@@ -63,7 +63,7 @@ function kakaoLogin() {
     })
   }
 	
-function kakaoOut(){
+/* function kakaoOut(){
 	Kakao.Auth.logout()
 	  .then(function(response) {
 	    console.log(Kakao.Auth.getAccessToken()); // null
@@ -73,7 +73,10 @@ function kakaoOut(){
 	  });
 	
 	
-}	
+}	 */
+
+
+
 	
 	
 function kakaoLogout() {

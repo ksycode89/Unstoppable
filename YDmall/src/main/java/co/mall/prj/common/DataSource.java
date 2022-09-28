@@ -13,18 +13,18 @@ public class DataSource {
 	};
 
 	public static SqlSessionFactory getInstance() {
-		System.out.println("Data1");
+//		System.out.println("Data1");
 		String resources = "config/mybatis-config.xml";
 		InputStream inputStream;
 		try {
-			System.out.println("Data2");
+//			System.out.println("Data2");
 			inputStream = Resources.getResourceAsStream(resources);
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		System.out.println("Data3");
+		System.out.println("Data connected");
 		return sqlSessionFactory;
 	}
 }

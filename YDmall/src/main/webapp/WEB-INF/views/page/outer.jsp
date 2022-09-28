@@ -20,7 +20,7 @@
 						<div class="widget catagory mb-50">
 
 							<!--  Side Menu  -->
-							<div class="nav-side-menu">
+							<d	iv class="nav-side-menu">
 								<h6 class="mb-0">Catagories</h6>
 								<div class="menu-list">
 									<ul id="menu-content2" class="menu-content collapse out">
@@ -125,11 +125,9 @@
 					</div>
 				</div>
 			</div>
-		</div>
 <form id="frm" action=productDetail.yd method="post">
 				<input type="hidden" id="pName" name="pName">
 			</form>
-		</div>
 	</section>
 	<script type="text/javascript">
 		function selectProduct(name) {

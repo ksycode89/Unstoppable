@@ -2,10 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.mall.prj.mapper.SalesMapper">
 
-<insert id="insertOrder" >
 
-	insert into sales(SALES_ID,MEMBER_ID) 
-	values(#{salesId},#{memberId})
+<select id="salesSelectList" resultType="co.mall.prj.sales.service.SalesVO"> 
+
+	select * from sales
+	
+</select>
+
+
+
+<insert id="insertOrder" parameterType="co.mall.prj.sales.service.SalesVO">
+
+	INSERT INTO SALES(SALES_ID,MEMBER_ID) 
+	VALUES(#{salesId},#{memberId})
 
 </insert>
 
