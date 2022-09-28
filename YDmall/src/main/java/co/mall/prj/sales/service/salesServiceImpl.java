@@ -1,5 +1,7 @@
 package co.mall.prj.sales.service;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import co.mall.prj.common.DataSource;
@@ -10,13 +12,19 @@ public class salesServiceImpl implements salesService{
 	SalesMapper map = dao.getMapper(SalesMapper.class);
 	
 	
+
+	@Override
+	public List<SalesVO> salesSelectList() {
+		
+		return map.salesSelectList();
+	}
+
 	
 	@Override
 	public int insertOrder(SalesVO vo) {
-		System.out.println("impi : "+ "impl check");
+//		System.out.println("impi : "+ "impl check");
 				return map.insertOrder(vo);
 	}
-	
 
 
 }
