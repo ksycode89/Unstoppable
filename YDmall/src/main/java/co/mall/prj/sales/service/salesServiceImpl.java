@@ -12,11 +12,13 @@ public class salesServiceImpl implements salesService{
 	SalesMapper map = dao.getMapper(SalesMapper.class);
 	
 	
+
 	@Override
 	public List<SalesVO> salesSelectList() {
 		
 		return map.salesSelectList();
 	}
+
 	
 	@Override
 	public int insertOrder(SalesVO vo) {

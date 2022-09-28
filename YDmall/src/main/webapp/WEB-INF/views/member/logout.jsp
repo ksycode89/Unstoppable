@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-상세정보조회 - 이미지 넣어주기
+	<div align="center">
+		<form action="logout.yd" method="post"></form>
+	</div>
+
 </body>
 </html>

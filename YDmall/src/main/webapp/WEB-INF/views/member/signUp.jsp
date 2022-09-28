@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,32 +32,38 @@
 							method="post">
 							<div class="row">
 								<div class="col-12 mb-3">
-									<label for="memberId">ID</label> <input type="text"
-										class="form-control" id="company" name="memberId"
+									<label for="memberId">ID<span>*</span></label> <input type="text"
+										class="form-control" id="memberId" name="memberId"
 										required="required" value=""> <br>
 
 									<div class="custom-control custom-checkbox d-block mb-2">
+										<label class="custom-control-label" for="customCheck2">ID중복체크</label>
 										<input type="checkbox" class="custom-control-input"
-											id="customCheck2" onclick="idChek()"> <label
-											class="custom-control-label" for="customCheck2">ID중복체크</label>
+											id="customCheck2" onclick="idChek()">
 									</div>
 
 								</div>
 								<div class="col-12 mb-3">
-									<label for="memberPassword"> Passoword</label> <input
-										type="password" class="form-control" id="company"
+									<label for="memberPassword"> Passoword<span>*</span></label> <input
+										type="password" class="form-control" id="memberPassword"
 										name="memberPassword" required="required" value="">
 								</div>
 								<div class="col-12 mb-3">
-									<label for="memberPassword2">Check Passoword</label> <input
+									<label for="memberPassword2">Check Passoword<span>*</span></label> <input
 										type="password" class="form-control" id="memberPassword2"
 										name="memberPassword2" required="required" value="">
+
 								</div>
 
 								<div class="col-md-6 mb-3">
 									<label for="first_name">Name <span>*</span></label> <input
-										type="text" class="form-control" id="first_name"
+										type="text" class="form-control" id="memberName"
 										name="memberName" value="" required="required">
+								</div>
+								<div class="col-md-6 mb-3">
+									<input type="radio" name="gender" id="men" checked><label
+										for="men">남</label> <input type="radio" name="gender"
+										id="wamen"><label for="wamen">여</label>
 								</div>
 
 								<!-- 
@@ -77,9 +84,8 @@
 
 								<div class="col-12 mb-3">
 									<label for="street_address">Address <span>*</span></label> <input
-										type="text" class="form-control mb-3" id="street_address"
-										value=""> <input type="text" class="form-control"
-										id="street_address2" name="memberAddress" value="">
+										type="text" class="form-control mb-3" id="memberAddress"
+										name="memberAddress" value="">
 								</div>
 
 
@@ -91,7 +97,7 @@
 								</div>
 								<div class="col-12 mb-4">
 									<label for="email_address">Email<span>*</span></label> <input
-										type="email" class="form-control" id="email_address"
+										type="email" class="form-control" id="memberEmail"
 										name="memberEmail" value="">
 								</div>
 
@@ -265,12 +271,6 @@
 
 부 칙(시행일) 이 약관은 2019년 10월 11일부터 시행합니다.</textarea>
 									</div>
-									<div class="custom-control custom-checkbox d-block mb-2">
-										<input type="checkbox" class="custom-control-input"
-											id="customCheck2"> <label
-											class="custom-control-label" for="customCheck2">Create
-											an accout</label>
-									</div>
 
 								</div>
 							</div>
@@ -280,10 +280,14 @@
 						</form>
 					</div>
 				</div>
-				<script type="text/javascript">
+
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
 	function formCheck() {
 		let pass1 = document.getElementById("memberPassword").value;
-		let pass2 = document.getElementById("pwc").value;
+		let pass2 = document.getElementById("memberPassword2").value;
 		let idChecked = document.getElementById("btn").value;
 		
 		if(idChecked == 'No') {
@@ -321,10 +325,6 @@ function respnseResult(data){  //fetch처리 CallBack함수
 }
 </script>
 
-
-			</div>
-		</div>
-	</div>
 
 </body>
 </html>

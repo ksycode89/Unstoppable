@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -8,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 
 
        
@@ -93,6 +95,7 @@
 											role="button" data-toggle="dropdown" aria-haspopup="true"
 											aria-expanded="false">board</a>
 											<div class="dropdown-menu" aria-labelledby="karlDropdown">
+
 												<a class="dropdown-item" href="noticeSelectList.yd">notice</a>
 												<a class="dropdown-item" href="reviewSelectList.yd">review</a>
 												<a class="dropdown-item" href="qnaSelectList.yd">q & a</a>

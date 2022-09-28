@@ -24,10 +24,13 @@ public class MemberLogin implements Command {
 		vo = dao.memberSelect(vo);
 		
 		if(vo != null) {
-			session.setAttribute("id", vo.getMemberId()); //이름
+			session.setAttribute("id", vo.getMemberId()); //아이디
 			session.setAttribute("author", vo.getMemberAuthor()); //권한
 			session.setAttribute("password", vo.getMemberPassword());//비번
 			session.setAttribute("name", vo.getMemberName()); //이름
+			session.setAttribute("address", vo.getMemberAddress()); //주소
+			session.setAttribute("tel", vo.getMemberTel()); //번호
+			session.setAttribute("email", vo.getMemberEmail()); //이메일
 			session.setAttribute("message", vo.getMemberName() + "님 환영합니다.");
 		} else {
 			//실패(아이디인지 비번인지 알려주는 기능 추가하면 좋을듯)

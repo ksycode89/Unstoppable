@@ -5,12 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.mall.prj.common.Command;
 
-public class Login implements Command {
+public class MemberSelect implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse reponse) {
-		// 
-		return "member/login";
+		// 내정보 조회 백진희조용해
+		return "member/memberMyPage";
 	}
 
 }
