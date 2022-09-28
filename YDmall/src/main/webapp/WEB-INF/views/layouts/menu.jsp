@@ -107,12 +107,19 @@
                             </div>
                             <!-- Help Line -->
                             <div class="help-line">
-                            	<c:if test="${empty  id }">
-                                <a href="login.yd">Login</a>  <a href="signUp.yd">Sign Up</a> 
-                            	</c:if>
-                            	<c:if test="${ author eq 'admin'}">
-                                 </c:if>
-                                 <a href="admin.yd">Admin Page</a>
+                            	<c:if test="${ empty id }">
+								<a href="login.yd">Login</a>
+								<a href="signUp.yd">회원가입</a>
+
+							</c:if>
+							<c:if test="${not empty id }">
+								<a href="logout.yd">Logout</a>
+							</c:if>
+
+							<c:if test="${author eq '관리자'}">
+								<a href="admin.yd">Admin Page</a>
+							</c:if>
+
                             </div>
                         </div>
                     </div>
