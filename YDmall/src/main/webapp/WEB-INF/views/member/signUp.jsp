@@ -9,7 +9,7 @@
 
 <style type="text/css">
 #terms_of_service {
-	width: 550px;
+	width: 450px;
 	height: 200px;
 }
 </style>
@@ -32,14 +32,14 @@
 							method="post">
 							<div class="row">
 								<div class="col-12 mb-3">
-									<label for="memberId">ID<span>*</span></label> <input type="text"
-										class="form-control" id="memberId" name="memberId"
+									<label for="memberId">ID<span>*</span></label> <input
+										type="text" class="form-control" id="memberId" name="memberId"
 										required="required" value=""> <br>
 
-									<div class="custom-control custom-checkbox d-block mb-2">
-										<label class="custom-control-label" for="customCheck2">ID중복체크</label>
-										<input type="checkbox" class="custom-control-input"
-											id="customCheck2" onclick="idChek()">
+									<div style="padding-left: 0px;"
+										class="custom-control custom-checkbox d-block mb-2">
+										<input type="checkbox" id="customCheck2" value="" onclick="idChek()">
+										<label for="customCheck2">ID중복체크</label>
 									</div>
 
 								</div>
@@ -49,9 +49,10 @@
 										name="memberPassword" required="required" value="">
 								</div>
 								<div class="col-12 mb-3">
-									<label for="memberPassword2">Check Passoword<span>*</span></label> <input
-										type="password" class="form-control" id="memberPassword2"
-										name="memberPassword2" required="required" value="">
+									<label for="memberPassword2">Check Passoword<span>*</span></label>
+									<input type="password" class="form-control"
+										id="memberPassword2" name="memberPassword2"
+										required="required" value="">
 
 								</div>
 
@@ -61,9 +62,8 @@
 										name="memberName" value="" required="required">
 								</div>
 								<div class="col-md-6 mb-3">
-									<input type="radio" name="gender" id="men" checked><label
-										for="men">남</label> <input type="radio" name="gender"
-										id="wamen"><label for="wamen">여</label>
+									<input type="radio" id="memberGender" name="memberGender" value="man" disabled>남
+									<input type="radio" id="memberGender" name="memberGender" value="woman" checked>여
 								</div>
 
 								<!-- 
@@ -102,13 +102,14 @@
 								</div>
 
 								<div class="col-12">
-									<div class="custom-control custom-checkbox d-block mb-2">
-										<input type="checkbox" class="custom-control-input"
+									<div class="custom-control custom-checkbox d-block mb-2" style="padding-left: 0px;" >
+										<input type="checkbox"
 											id="customCheck1"> <label
-											class="custom-control-label" for="customCheck1">이용약관
-											및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</label>
+										for="customCheck1">이용약관
+											및 개인정보수집 및 이용, 쇼핑정보 수신(필수)에 모두 동의합니다.</label>
+									</div>
 										<textarea id="terms_of_service" rows="" cols=""
-											readonly="readonly" style="margin-left: -25px">제1조(목적)
+											readonly="readonly" style="margin-left: 0px">제1조(목적)
 이 약관은 주식회사 라우코하우스(전자상거래 사업자)가 운영하는 주식회사 라우코하우스 사이버 몰(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리.의무 및 책임사항을 규정함을 목적으로 합니다.
 ※「PC통신, 무선 등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한 이 약관을 준용합니다.」
 
@@ -269,14 +270,13 @@
 ① “몰”과 이용자 간에 발생한 전자상거래 분쟁에 관한 소송은 제소 당시의 이용자의 주소에 의하고, 주소가 없는 경우에는 거소를 관할하는 지방법원의 전속관할로 합니다. 다만, 제소 당시 이용자의 주소 또는 거소가 분명하지 않거나 외국 거주자의 경우에는 민사소송법상의 관할법원에 제기합니다.
 ② “몰”과 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.
 
-부 칙(시행일) 이 약관은 2019년 10월 11일부터 시행합니다.</textarea>
-									</div>
+부 칙(시행일) 이 약관은 2019년 10월 11일부터 시행합니다.</textarea>	
 
 								</div>
 							</div>
 							<br> <input type="hidden" name="memberAuthor" value="회원">
-							<br> <a href="memberInsert.yd" class="btn karl-checkout-btn">가입</a>
-							<input type="submit">
+							<br> 
+							<input type="submit"  class="btn karl-checkout-btn" value="가입">
 						</form>
 					</div>
 				</div>
@@ -288,9 +288,14 @@
 	function formCheck() {
 		let pass1 = document.getElementById("memberPassword").value;
 		let pass2 = document.getElementById("memberPassword2").value;
-		let idChecked = document.getElementById("btn").value;
+		let idChecked = document.getElementById("customCheck2").checked;
+		let cusCheck = document.getElementById("customCheck1").checked;
 		
-		if(idChecked == 'No') {
+		console.log(pass1);
+		console.log(pass2);
+		console.log(idChecked);
+		
+		if(idChecked == false) {
 			alert("아이디 중복체크를 해주세요.");
 			return false;
 		}
@@ -298,10 +303,15 @@
 		if(pass1 != pass2) {
 			alert("패스워드가 일치하지 않습니다.");
 			document.getElementById("memberPassword").value = "";
-			document.getElementById("pwc").value = "";
-			document.getElementById("memberPassword").focus();
+			document.getElementById("memberPassword2").value = "";
+			document.getElementById("memberPassword2").focus();
 			return false;
-		}	
+		}
+		
+		if(cusCheck == false){
+			alert("이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(필수)에 모두 동의해주싶시오.");
+			return false;
+		}
 		return true;
 	}
 	
@@ -313,12 +323,13 @@
 }
 
 function respnseResult(data){  //fetch처리 CallBack함수
-	if(data == '1') {
+	if(data == '사용가능') {
     	alert("사용할 수 있는 아이디 입니다.");
-		document.getElementById("btn").value = "Yes";
+		document.getElementById("customCheck2").checked=true;
 		document.getElementById("memberPassword").focus();
     }else{
     	alert("사용할 수 없는 아이디 입니다.");
+    	document.getElementById("customCheck2").checked=false;
     	document.getElementById("memberId").value = "";
     	document.getElementById("memberId").focus();
     }

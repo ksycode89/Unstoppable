@@ -28,6 +28,7 @@ public class MemberLogin implements Command {
 			session.setAttribute("author", vo.getMemberAuthor()); //권한
 			session.setAttribute("password", vo.getMemberPassword());//비번
 			session.setAttribute("name", vo.getMemberName()); //이름
+			session.setAttribute("gender", vo.getMemberGender()); //성별
 			session.setAttribute("address", vo.getMemberAddress()); //주소
 			session.setAttribute("tel", vo.getMemberTel()); //번호
 			session.setAttribute("email", vo.getMemberEmail()); //이메일
