@@ -33,11 +33,14 @@
 	<update id="memberUpdate"
 		parameterType="co.mall.prj.member.service.MemberVO">
 		UPDATE MEMBER
-		SET MEMBER_PASSWORD = #{memberPassword},
-			MEMBER_NAME = #{memberName},
-			MEMBER_TEL = #{memberTel},
-			MEMBER_ADDRESS = #{memberAddress},
-			MEMBER_EMAIL = #{memberEmail}
+		<set>
+		<if test="memberPassword != null">MEMBER_PASSWORD = #{memberPassword},</if>
+		<if test="memberName != null">MEMBER_NAME = #{memberName},</if>	
+		<if test="memberTel != null">MEMBER_TEL = #{memberTel},</if>
+		<if test="memberAddress != null">MEMBER_ADDRESS = #{memberAddress},</if>
+		<if test="memberGender != null">MEMBER_GENDER = #{memberGender},</if>
+		<if test="memberEmail != null">MEMBER_EMAIL = #{memberEmail}</if>
+		</set> 
 		WHERE MEMBER_ID = #{memberId}
 	</update>
 
@@ -48,7 +51,7 @@
 	
 	<!-- 아이디 중복 체크 -->
 	<select id="isMemberId" resultType="boolean">
-	SELECT CASE WHEN COUNT(MEMBER_ID) > 0 THEN 1 ELSE 0 end AS ID
+	SELECT CASE WHEN COUNT(MEMBER_ID) > 0 THEN 0 ELSE 1 end AS ID
 	FROM MEMBER
 	WHERE MEMBER_ID = #{id}
 	</select>
