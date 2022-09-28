@@ -86,7 +86,7 @@ position: sticky;
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">상품 기준</h6>
-                        <a class="collapse-item" href="login.html">요기</a>
+                        <a class="collapse-item" href="monthStatistics.yd">월별통계</a>
                         <a class="collapse-item" href="register.html">뭘</a>
                         <a class="collapse-item" href="forgot-password.html"> 넣죠</a>
                         <div class="collapse-divider"></div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,7 +105,12 @@
                             </div>
                             <!-- Help Line -->
                             <div class="help-line">
-                                <a href="login.yd">Login</a>  <a href="signUp.yd">Sign Up</a>  <a href="admin.yd">Admin Page</a>
+                            	<c:if test="${empty  id }">
+                                <a href="login.yd">Login</a>  <a href="signUp.yd">Sign Up</a> 
+                            	</c:if>
+                            	<c:if test="${ author eq 'admin'}">
+                                 </c:if>
+                                 <a href="admin.yd">Admin Page</a>
                             </div>
                         </div>
                     </div>

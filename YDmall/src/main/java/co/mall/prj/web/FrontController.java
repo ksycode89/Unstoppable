@@ -15,6 +15,7 @@ import co.mall.prj.admin.command.AdminChart;
 import co.mall.prj.admin.command.AdminMemberSelectList;
 import co.mall.prj.admin.command.AdminPage;
 import co.mall.prj.admin.command.AdminProductSelectList;
+import co.mall.prj.admin.command.MonthStatistics;
 import co.mall.prj.board.command.Notice;
 import co.mall.prj.cart.command.Cart;
 import co.mall.prj.command.Best;
@@ -74,6 +75,7 @@ public class FrontController extends HttpServlet {
 		map.put("/order.yd", new Order());
 
 		map.put("/productDetail2.yd", new ProductDetail());
+		map.put("/monthStatistics.yd", new MonthStatistics());
 
 		map.put("/productManageList.yd", new ProductManageList()); // 관리자용 상품 목록
 		map.put("/productManageRegist.yd", new ProductManageRegist()); // 관리자용 상품 정보 등록
