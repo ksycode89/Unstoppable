@@ -101,6 +101,19 @@
 												<a class="dropdown-item" href="qnaSelectList.yd">q & a</a>
 
 											</div></li>
+											<c:if test="${ not empty id }">
+											<li class="nav-item dropdown"><a
+												class="nav-link dropdown-toggle" href="memberMyPage.yd"
+												id="karlDropdown" role="button" data-toggle="dropdown"
+												aria-haspopup="true" aria-expanded="false">MyPage</a>
+												<div class="dropdown-menu" aria-labelledby="karlDropdown">
+													<a class="dropdown-item" href="memberMyPage.yd">정보조회</a> 
+													<a class="dropdown-item" href="memberOrder.yd">주문조회</a>
+														<a class="dropdown-item" href="memberOrderHistory.yd">구매내역</a>
+													<a class="dropdown-item" href="memberDelete.yd">회원탈퇴</a>
+												</div></li>
+										</c:if>
+											
                                         </ul>
                                     </div>
                                 </nav>
