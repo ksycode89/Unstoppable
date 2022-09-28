@@ -138,23 +138,25 @@ input[type=number]::-webkit-inner-spin-button {
 							<li><span>상품 가격</span> <span id="productSum"></span></li>
 							<li><span>포인트</span> <span><input type="hidden" id="subTotal" name="subTotal">얼마 사용</span></li>
 							<li><span>배송비</span> 
-<%-- 							<c:if text="${ca.productPrice >= 50000}"> --%>
-<!-- 								<span>무료</span> -->
-<%-- 							</c:if> --%>
-<!-- 								<span>2,500원</span> -->
-<%-- 							<c:choose> --%>
-<%-- 									<c:when test="${ca.productPrice >= 50000}"> --%>
-<!-- 										<span>무료</span> -->
-<%-- 									</c:when> --%>
-<%-- 									<c:otherwise> --%>
-<!-- 										<span>2,500원</span> -->
-<%-- 									</c:otherwise> --%>
-<%-- 								</c:choose> --%>
+								<span id="deli"></span>
 							</li>
 <!-- 최종 결제 금액 -->
-							<li><span><strong>최종 결제 금액</strong></span> <span><strong class="final_price">배송비, 포인트 사용 후 최종 결제 가격</strong></span></li>
+							<li>
+								<span>
+									<strong>최종 결제 금액</strong>
+								</span>
+								<span>
+									<strong id="final_price">-원
+										<input type="hidden" id="finalPrice">
+									</strong>
+								</span>
+							</li>
 						</ul>
-						<a href="checkout.html" class="btn karl-checkout-btn">상품 주문</a>
+						<form action="checkout.yd" method="post" >
+							<input type="submit"class="btn karl-checkout-btn" value="상품 주문">
+							<input type="hidden" name="" id="">
+						</form>
+<!-- 						<a href="checkout.html" class="btn karl-checkout-btn">상품 주문</a> -->
 					</div>
 				</div>
 			</div>
@@ -168,7 +170,7 @@ input[type=number]::-webkit-inner-spin-button {
 	<script type="text/javascript">
 	//원화 콤마 표시
 			function number_format(num){
-	   			return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
+	   			 num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
 			}
 			//콤마찍기
 			function comma(str) {
@@ -185,7 +187,7 @@ input[type=number]::-webkit-inner-spin-button {
 			var productIdx = $(a).parent().parent().parent().find(".price").text();
 			const pi = productIdx.replace(",","").replace("원","");
 			total = pi * qty;
-			$(a).parent().parent().parent().find(".total_price").text(total+"원");
+			$(a).parent().parent().parent().find(".total_price").text(comma(total)+"원");
 			return false;
 		};
 // 상품 수 줄일때 금액계산
@@ -206,7 +208,7 @@ input[type=number]::-webkit-inner-spin-button {
 			
 			var total = tp - pi;
 
-			$(a).parent().parent().parent().find(".total_price").text(total+"원");
+			$(a).parent().parent().parent().find(".total_price").text(comma(total)+"원");
 			return false;
 		};
 //텍스트칸에 숫자 입력 시 금액 변경
@@ -219,8 +221,8 @@ input[type=number]::-webkit-inner-spin-button {
 				}
 				const total = qty.parentElement.parentElement.parentElement.children.item(1).textContent.replace(",","").replace("원","");
 				
-				console.log(qty.parentElement.parentElement.parentElement.children.item(1).textContent);
-				qty.parentElement.parentElement.parentElement.children.item(3).textContent = qty.value * total+"원";
+// 				console.log(qty.parentElement.parentElement.parentElement.children.item(1).textContent);
+				qty.parentElement.parentElement.parentElement.children.item(3).textContent = comma(qty.value * total)+"원";
 			});
 		});
 //체크박스
@@ -263,11 +265,24 @@ input[type=number]::-webkit-inner-spin-button {
 					sum += parseInt(a[i].innerText.replace(",","").replace("원",""));
 				}
 			}
-			
-			document.getElementById("productSum").innerText=sum+"원";
+
+			document.getElementById("finalPrice").innerText=sum
+			document.getElementById("productSum").innerText=comma(sum)+"원";
 			console.log(sum)
 			console.log(document.getElementById("productSum"))
-			console.log(a[0].parentElement)
+			console.log(document.getElementById('productSum').innerText)
+			
+		 	document.getElementsByClassName('final_price').innerText=20500;
+			if(sum >= 50000){
+				document.getElementById('deli').innerText="무료";
+				document.getElementById('final_price').innerText=comma(sum)+"원";
+				
+			}else if( sum < 50000){
+				document.getElementById('deli').innerText="2,500원";
+				document.getElementById('final_price').innerText=comma(sum + 2500)+"원";
+			}
+			
+			
 		}
 //전체 상품 주문
 		function allTotal(){
@@ -276,13 +291,29 @@ input[type=number]::-webkit-inner-spin-button {
 			for(let i=0; i<all.length; i++){
 					sum += parseInt(all[i].innerText.replace(",","").replace("원",""));
 			}
-				console.log(sum);
-			document.getElementById("productSum").innerText=sum+"원";
+			document.getElementById("finalPrice").innerText=sum
+			document.getElementById("productSum").innerText=comma(sum)+"원";
+				console.log(document.getElementById("finalPrice").innerText);
+				
+				if(sum >= 50000){
+					document.getElementById('deli').innerText="무료";
+					document.getElementById('final_price').innerText=comma(sum)+"원";
+					
+				}else if( sum < 50000){
+					document.getElementById('deli').innerText="2,500원";
+					document.getElementById('final_price').innerText=comma(sum + 2500)+"원";
+				}
 		}
 
 //최종 결제 가격(배송비, 포인트 사용 후)
 		function finalPrice(){
+			let a = document.getElementById("finalPrice").innerText
+			if(a >= 50000){
+				document.getElementsByClassName('final_price').innerText="무료";
+			}
+		 document.getElementsByClassName('final_price').innerText=3500;
 		}
+		
 	</script>
 </body>
 
