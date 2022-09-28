@@ -26,6 +26,7 @@ public class MemberInsert implements Command {
 		vo.setMemberEmail(request.getParameter("memberEmail")); // 11
 
 		System.out.println("vo: " + vo);
+		
 		int n = dao.memberInsert(vo);
 		String viewPage = null; // 돌려줄 페이지
 		if (n != 0) {

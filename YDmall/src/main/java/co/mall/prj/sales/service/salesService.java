@@ -1,8 +1,11 @@
 package co.mall.prj.sales.service;
 
+import java.util.List;
+
 public interface salesService {
-	
-	
-	 int insertOrder(SalesVO vo);
+
+//	List<SalesVO> salesSelectList(SalesVO vo);
+//	SalesVO salesSelect(SalesVO vo);
+	int insertOrder(SalesVO vo);
 
 }

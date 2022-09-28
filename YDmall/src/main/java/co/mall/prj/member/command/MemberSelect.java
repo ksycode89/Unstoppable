@@ -5,15 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.mall.prj.common.Command;
 
-public class MemberEditForm implements Command {
+public class MemberSelect implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse reponse) {
-		// 상세페이지 폼 호출 
-		System.out.println("상세페이지, 넘어옴^^");
-		
-		//수정 값
-		return "member/memberDetailPage";
+		// 내정보 조회
+		return "member/memberMyPage";
 	}
 
 }

@@ -12,6 +12,7 @@ public class MemberLogout implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 로그아웃
 		HttpSession session = request.getSession();
+		System.out.println(session);
 		String name = (String) session.getAttribute("name"); // java -> session에 담긴이름
 		session.invalidate(); //서버가 만든 세션 완전삭제
 		request.setAttribute("message",name + "님 로그아웃 되었습니다.");

@@ -8,6 +8,9 @@ import co.mall.prj.mapper.SalesMapper;
 public class salesServiceImpl implements salesService{
 	SqlSession dao = DataSource.getInstance().openSession(true);
 	SalesMapper map = dao.getMapper(SalesMapper.class);
+	
+	
+	
 	@Override
 	public int insertOrder(SalesVO vo) {
 		System.out.println("impi : "+ "impl check");

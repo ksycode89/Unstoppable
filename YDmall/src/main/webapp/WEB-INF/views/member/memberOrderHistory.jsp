@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Tables</title>
+    <title>내 구매내역</title>
 
 <style type="text/css">
 #content-wrapper{
@@ -83,36 +83,36 @@ margin-right:auto;
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">구매내역</h1>
+                    <h1 class="h3 mb-2 text-gray-800">My구매내역</h1>
                     <p class="mb-4">구매내역 보기<a target="_blank"
                             href="https://google.com"> [누르면 링크]</a></p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">공지일지도</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">${name }님의 총 구매내역입니다.</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>주문번호</th>
+                                            <th>상품명</th>
+                                            <th>주문일자</th>
+                                            <th>옵션</th>
+                                            <th>가격</th>
+                                            <th>배송상태</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>주문번호</th>
+                                            <th>상품명</th>
+                                            <th>주문일자</th>
+                                            <th>옵션</th>
+                                            <th>가격</th>
+                                            <th>배송상태</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -617,8 +617,6 @@ margin-right:auto;
                 </div>
             </div>
         </div>
-
-    
   
 </body>
 </html>

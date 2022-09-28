@@ -23,12 +23,19 @@ import co.mall.prj.command.Shop;
 import co.mall.prj.common.Command;
 import co.mall.prj.member.command.AjaxMemberIdCheck;
 import co.mall.prj.member.command.Login;
-import co.mall.prj.member.command.MemberEditForm;
+import co.mall.prj.member.command.Logout;
+import co.mall.prj.member.command.MemberDelete;
+import co.mall.prj.member.command.MemberDeleteAction;
+import co.mall.prj.member.command.MemberEdit;
+import co.mall.prj.member.command.MemberEditAction;
 import co.mall.prj.member.command.MemberInsert;
 import co.mall.prj.member.command.MemberLogin;
 import co.mall.prj.member.command.MemberLoginForm;
 import co.mall.prj.member.command.MemberLogout;
+import co.mall.prj.member.command.MemberMyPage;
+import co.mall.prj.member.command.MemberOrder;
 import co.mall.prj.member.command.MemberOrderHistory;
+import co.mall.prj.member.command.MemberSelect;
 import co.mall.prj.member.command.SignUP;
 import co.mall.prj.page.command.Bottom;
 import co.mall.prj.page.command.Outer;
@@ -60,8 +67,6 @@ public class FrontController extends HttpServlet {
 		map.put("/outer.yd", new Outer());
 
 		map.put("/best.yd", new Best());
-		map.put("/signUp.yd", new SignUP());
-		map.put("/login.yd", new Login());
 
 		map.put("/notice.yd", new Notice());
 		map.put("/order.yd", new Order());
@@ -69,16 +74,24 @@ public class FrontController extends HttpServlet {
 		map.put("/adminChart.yd", new AdminChart());
 
 		// member 명령집단 저장
-		map.put("/main.yd", new Main()); // 첫 화면
+		map.put("/signUp.yd", new SignUP());
+		map.put("/login.yd", new Login());
+		map.put("/logout.yd", new Logout());
 		map.put("/memberLoginForm.yd", new MemberLoginForm()); // 로그인 폼
 		map.put("/memberLogin.yd", new MemberLogin()); // 폼 액션 -> 로그인
-		map.put("/memberLogout.yd", new MemberLogout()); // 로그아웃
+		//map.put("/memberLogout.yd", new MemberLogout()); // 로그아웃
 		map.put("/memberInsert.yd", new MemberInsert()); // 회원가입
 		map.put("/ajaxMemberIdCheck.yd", new AjaxMemberIdCheck()); // 아이디 중복체크
 		// member 상세페이지 -> 주문 조회 / 구매내역 / 수정 / 탈퇴 만들기
-		map.put("/memberEditForm.yd", new MemberEditForm()); // mypage(상세정보) 폼
+		map.put("/memberMyPage.yd", new MemberMyPage()); // mypage(상세정보) 폼
 		map.put("/memberOrderHistory.yd", new MemberOrderHistory()); // 구매내역
 		map.put("/adminMemberSelectList.yd", new AdminMemberSelectList());
+		map.put("/memberDelete.yd", new MemberDelete()); //회원탈퇴 폼
+		map.put("/memberDeleteAction.yd", new MemberDeleteAction()); //탈퇴처리
+		map.put("/memberEditAction.yd", new MemberEditAction()); // 회원정보수정
+		map.put("/memberEdit.yd", new MemberEdit()); //내정보수정 폼
+		map.put("/memberOrder.yd", new MemberOrder()); //주문현황 
+		map.put("/memberSelect.yd", new MemberSelect()); // 내 정보조회
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -98,22 +111,28 @@ public class FrontController extends HttpServlet {
 		System.out.println("커맨드아래 : " + viewPage);
 
 		if (!viewPage.endsWith(".yd")) {
-			if (viewPage.startsWith("admin")) {
-				viewPage = viewPage + ".tiles";
-				System.out.println(viewPage);
-
+			if (viewPage.startsWith("ajax:")) { //ajax를 사용할 때
+				response.setContentType("text/html; charset=UTF-8");
+				response.getWriter().append(viewPage.substring(5));
+				return;
 			} else {
-
-				viewPage = viewPage + ".tiles";
-
-				System.out.println("tiles 체크 : " + viewPage);
+				if (viewPage.startsWith("no:")) { // Tiles 적용 안할때
+				//= if (viewPage.startsWith("noTiles:")) {}
+					//viewPage = "/WEB-INF/views/" + viewPage + ".jsp"; 
+					
+					viewPage = "/WEB-INF/views/" + viewPage.substring(3) + ".jsp";
+					
+				} else {
+					viewPage = viewPage + ".tiles"; // tiles layout 사용
+				}
+				
+				System.out.println("viewPage: " + viewPage);
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+				dispatcher.forward(request, response);
 			}
-
-			RequestDispatcher dis = request.getRequestDispatcher(viewPage);
-			dis.forward(request, response);
-
 		} else {
-			response.sendRedirect(viewPage);
+			response.sendRedirect(viewPage); //.do return
 		}
 
 	}

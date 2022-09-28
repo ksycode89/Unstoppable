@@ -43,7 +43,7 @@
 
 	<!-- 회원 탈퇴 -->
 	<delete id="memberDelete" parameterType="co.mall.prj.member.service.MemberVO">
-	DELECT FROM MEMBER WHERE MEMBER_ID = #{memberId}
+	DELETE FROM MEMBER WHERE MEMBER_ID = #{memberId}
 	</delete>
 	
 	<!-- 아이디 중복 체크 -->
