@@ -21,5 +21,5 @@ public interface CartMapper {
 	int cartUpdate(CartVO vo);
 
 //	카트 삭제
-	int cartDelete(CartVO vo);
+	int cartDelete(String memberId);
 }
