@@ -1,4 +1,4 @@
-package co.mall.prj.board.command;
+package co.mall.prj.board.notice.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,7 +9,6 @@ public class Notice implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse reponse) {
-		// TODO Auto-generated method stub
 		return "board/notice";
 	}
 

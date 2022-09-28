@@ -16,7 +16,20 @@ import co.mall.prj.admin.command.AdminMemberSelectList;
 import co.mall.prj.admin.command.AdminPage;
 import co.mall.prj.admin.command.AdminProductSelectList;
 import co.mall.prj.admin.command.MonthStatistics;
-import co.mall.prj.board.command.Notice;
+import co.mall.prj.board.command.BoardDelete;
+import co.mall.prj.board.command.BoardEdit;
+import co.mall.prj.board.command.BoardEditForm;
+import co.mall.prj.board.command.BoardInsert;
+import co.mall.prj.board.notice.command.Notice;
+import co.mall.prj.board.notice.command.NoticeSelect;
+import co.mall.prj.board.notice.command.NoticeSelectList;
+import co.mall.prj.board.notice.command.NoticeWriteForm;
+import co.mall.prj.board.qna.command.QnaSelect;
+import co.mall.prj.board.qna.command.QnaSelectList;
+import co.mall.prj.board.qna.command.QnaWriteForm;
+import co.mall.prj.board.review.command.ReviewSelect;
+import co.mall.prj.board.review.command.ReviewSelectList;
+import co.mall.prj.board.review.command.ReviewWriteForm;
 import co.mall.prj.cart.command.Cart;
 import co.mall.prj.command.Best;
 import co.mall.prj.command.Checkout;
@@ -99,7 +112,23 @@ public class FrontController extends HttpServlet {
 		map.put("/adminMemberSelectList.yd", new AdminMemberSelectList());
 		map.put("/adminProductSelectList.yd", new AdminProductSelectList());
 		
-
+		//게시판//
+		map.put("/noticeSelectList.yd", new NoticeSelectList()); // 공지사항
+		map.put("/noticeSelect.yd", new NoticeSelect()); // 
+		map.put("/noticeWriteForm.yd", new NoticeWriteForm());
+		
+		map.put("/reviewSelectList.yd", new ReviewSelectList()); // 리뷰
+		map.put("/reviewSelect.yd", new ReviewSelect()); // 
+		map.put("/reviewWriteForm.yd", new ReviewWriteForm());
+		
+		map.put("/qnaSelectList.yd", new QnaSelectList()); // QnA
+		map.put("/qnaSelect.yd", new QnaSelect()); // 
+		map.put("/qnaWriteForm.yd", new QnaWriteForm());
+		
+		map.put("/boardInsert.yd", new BoardInsert());	// 게시판CRUD
+		map.put("/boardEditForm.yd", new BoardEditForm());  
+		map.put("/boardEdit.yd", new BoardEdit());
+		map.put("/boardDelete.yd", new BoardDelete()); 
 
 	}
 
