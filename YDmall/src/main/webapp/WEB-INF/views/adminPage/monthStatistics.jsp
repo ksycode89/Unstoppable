@@ -144,17 +144,7 @@
 	
 	<script type="text/javascript">
 	
-	function  tt () {
-		
-	 let a = document.getElementsByClassName("total-money");
-	 let b =[...a]
-	 b.forEach(b=>{
-		 
-		 console.log(b.innerText);
 
-	 })
-
-	}
 	
 
 	
