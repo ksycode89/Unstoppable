@@ -55,7 +55,7 @@
 								<div class="col-12 mb-3">
 									<label for="street_address">Gender <span>*</span></label> <input
 										type="text" class="form-control mb-3" id="street_address"
-										name="memberGender" value="${gender }">
+										name="memberGender" value="${gender }" readonly="readonly">
 								</div>
 
 								<!-- 

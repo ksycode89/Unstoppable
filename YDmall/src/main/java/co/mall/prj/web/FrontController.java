@@ -147,6 +147,7 @@ public class FrontController extends HttpServlet {
 		map.put("/boardEdit.yd", new BoardEdit());
 		map.put("/boardDelete.yd", new BoardDelete()); 
 
+		
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

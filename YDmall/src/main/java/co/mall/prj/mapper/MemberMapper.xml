@@ -37,7 +37,6 @@
 		parameterType="co.mall.prj.member.service.MemberVO">
 		UPDATE MEMBER
 		<set>
-
 		<if test="memberPassword != null">MEMBER_PASSWORD = #{memberPassword},</if>
 		<if test="memberName != null">MEMBER_NAME = #{memberName},</if>	
 		<if test="memberTel != null">MEMBER_TEL = #{memberTel},</if>
