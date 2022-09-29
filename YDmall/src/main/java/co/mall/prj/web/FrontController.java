@@ -167,9 +167,9 @@ public class FrontController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("utf-8");
-		String uri = request.getRequestURI();
-		String contextPath = request.getContextPath();
+		request.setCharacterEncoding("utf-8"); 
+		String uri = request.getRequestURI(); 
+		String contextPath = request.getContextPath(); 
 		String page = uri.substring(contextPath.length());
 
 		System.out.println("page : " + page);
@@ -179,7 +179,6 @@ public class FrontController extends HttpServlet {
 		String viewPage = command.exec(request, response);
 
 		System.out.println("커맨드아래 : " + viewPage);
-
 		if (!viewPage.endsWith(".yd")) {
 			if (viewPage.startsWith("ajax:")) { //ajax를 사용할 때
 				response.setContentType("text/html; charset=UTF-8");

@@ -10,8 +10,8 @@ import co.mall.prj.common.DataSource;
 import co.mall.prj.mapper.SalesMapper;
 
 public class salesServiceImpl implements salesService{
-	SqlSession dao = DataSource.getInstance().openSession(true);
-	SalesMapper map = dao.getMapper(SalesMapper.class);
+	SqlSession dao = DataSource.getInstance().openSession(true); //DB연결 
+	SalesMapper map = dao.getMapper(SalesMapper.class); //mapper연결
 	
 	
 
