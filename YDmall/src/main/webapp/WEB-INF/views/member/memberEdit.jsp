@@ -37,12 +37,12 @@
 								<div class="col-12 mb-3">
 									<label for="memberPassword"> Passoword</label> <input
 										type="password" class="form-control" id="company"
-										name="memberPassword" required="required" value="">
+										name="memberPassword" value=null  >
 								</div>
 								<div class="col-12 mb-3">
 									<label for="memberPassword2">Check Passoword</label> <input
 										type="password" class="form-control" id="memberPassword2"
-										name="memberPassword2" required="required" value="">
+										name="memberPassword2"  >
 								</div>
 
 								<div class="col-md-6 mb-3">

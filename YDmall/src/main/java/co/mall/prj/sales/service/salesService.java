@@ -12,6 +12,10 @@ public interface salesService {
 	
 	public List<SalesVO> salesSelectList ();
 	
+	public List<SalesVO> ajaxMemberStat (SalesVO vo);
+	
+	
+	
 
 
 }

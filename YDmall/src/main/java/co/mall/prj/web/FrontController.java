@@ -15,6 +15,7 @@ import co.mall.prj.admin.command.AdminChart;
 import co.mall.prj.admin.command.AdminMemberSelectList;
 import co.mall.prj.admin.command.AdminPage;
 import co.mall.prj.admin.command.AdminProductSelectList;
+import co.mall.prj.admin.command.AjaxMemberStat;
 import co.mall.prj.admin.command.MonthStatistics;
 import co.mall.prj.board.command.BoardDelete;
 import co.mall.prj.board.command.BoardEdit;
@@ -104,6 +105,9 @@ public class FrontController extends HttpServlet {
 
 		map.put("/admin.yd", new AdminPage());
 		map.put("/adminChart.yd", new AdminChart());
+		map.put("/adminProductSelectList.yd", new AdminProductSelectList());
+		map.put("/adminMemberSelectList.yd", new AdminMemberSelectList());
+		map.put("/ajaxMemberStat.yd", new AjaxMemberStat());
 
 		// member 명령집단 저장
 
@@ -120,14 +124,12 @@ public class FrontController extends HttpServlet {
 		// member 상세페이지 -> 주문 조회 / 구매내역 / 수정 / 탈퇴 만들기
 		map.put("/memberMyPage.yd", new MemberMyPage()); // mypage(상세정보) 폼
 		map.put("/memberOrderHistory.yd", new MemberOrderHistory()); // 구매내역
-		map.put("/adminMemberSelectList.yd", new AdminMemberSelectList());
 		map.put("/memberDelete.yd", new MemberDelete()); //회원탈퇴 폼
 		map.put("/memberDeleteAction.yd", new MemberDeleteAction()); //탈퇴처리
 		map.put("/memberEditAction.yd", new MemberEditAction()); // 회원정보수정
 		map.put("/memberEdit.yd", new MemberEdit()); //내정보수정 폼
 		map.put("/memberOrder.yd", new MemberOrder()); //주문현황 
 		map.put("/memberSelect.yd", new MemberSelect()); // 내 정보조회
-		map.put("/adminProductSelectList.yd", new AdminProductSelectList());
 		
 		//게시판//
 		map.put("/noticeSelectList.yd", new NoticeSelectList()); // 공지사항
@@ -170,7 +172,10 @@ public class FrontController extends HttpServlet {
 				response.setContentType("text/html; charset=UTF-8");
 				response.getWriter().append(viewPage.substring(5));
 				return;
-			} else {
+			} else if (viewPage.startsWith("ajaxList") ){
+				
+			}
+			else {
 				if (viewPage.startsWith("no:")) { // Tiles 적용 안할때
 				//= if (viewPage.startsWith("noTiles:")) {}
 					//viewPage = "/WEB-INF/views/" + viewPage + ".jsp"; 

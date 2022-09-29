@@ -13,6 +13,7 @@ public class SalesVO {
 	private int salesQuantity; //구매 수량
 
 	private String productName; //판매된 상품 이름
+	private String productSize; //판매된 상품 사이즈
 
 	private int salesTotalPrice; //주문 총액
 	private String salesDate; //구매 일자
