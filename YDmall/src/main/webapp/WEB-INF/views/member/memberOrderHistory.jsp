@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="JiniZzang"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,7 +90,7 @@
 				<!-- DataTales Example -->
 				<div class="card shadow mb-4">
 					<div class="card-header py-3">
-						<h6 class="m-0 font-weight-bold text-primary">${name }님의총
+						<h6 class="m-0 font-weight-bold text-primary">${id }님의총
 							구매내역입니다.</h6>
 					</div>
 					<div class="card-body">
@@ -105,6 +105,7 @@
 										<th>총 주문금액</th>
 										<th>구매일</th>
 										<th>배송상태</th>
+										<th>구매확정</th>
 									</tr>
 								</thead>
 								<tfoot>
@@ -115,20 +116,26 @@
 										<th>총 주문금액</th>
 										<th>구매일</th>
 										<th>배송상태</th>
+										<th>구매확정</th>
+
 									</tr>
 								</tfoot>
 								<!-- DB에서 가져오는 곳 -->
 								<tbody>
-									<c:forEach items="${list }" var="vo">
+									<JiniZzang:forEach items="${name}" var="merong">
 										<tr>
-											<td>${vo.salesId }</td>
-											<td>${vo.salesQuantity }</td>
-											<td>${vo.productName }</td>
-											<td>${vo.salesTotalPrice }</td>
-											<td>${vo.salesDate }</td>
-											<td>${vo.salesDeliveryStatus }</td>
+											<td>${ merong.salesId}</td>
+											<td>${ merong.salesQuantity}</td>
+											<td>${ merong.productName}</td>
+											<td>${ merong.salesTotalPrice}</td>
+											<td>${ merong.salesDate.substring(0,11)}</td>
+											<td>${ merong.salesDeliveryStatus}</td>
+											<td><JiniZzang:if
+													test="${ merong.salesDeliveryStatus eq '배송완료'}">
+													<button>구매확정</button>
+												</JiniZzang:if></td>
 										</tr>
-									</c:forEach>
+									</JiniZzang:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -156,26 +163,6 @@
 		class="fas fa-angle-up"></i>
 	</a>
 
-	<!-- Logout Modal-->
-	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-					<button class="close" type="button" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body">Select "Logout" below if you are ready
-					to end your current session.</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button"
-						data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="login.html">Logout</a>
-				</div>
-			</div>
-		</div>
+
 </body>
 </html>
