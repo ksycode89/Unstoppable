@@ -4,7 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <style>
 input[type=number]::-webkit-inner-spin-button {
@@ -36,45 +35,54 @@ input[type=number]::-webkit-inner-spin-button {
 									</th>
 <!--상품 전체 삭제 -->
 									<th>
-										<button>전체 삭제</button>
+										<form action="clearCart.yd" method="post" class="update-checkout w-50 text-right">
+											<input type="hidden" id="memberId" name="memberId" value="${ca.memberId}">
+											<input type="hidden" id="productId" name="productId" value="${ca.productId}">
+											<input type="submit" value="전체 삭제">
+										</form>
 									</th>
 								</tr>
 							</thead>
 							<tbody id="asdf">
-								<c:forEach items="${list}" var="ca">
-									<tr>
-										<td class="cart_product_img d-flex align-items-center product-id">
-											<a href="#">
-												<img src="img/product-img/product-9.jpg" alt="Product">
-											</a>
-											<h6>${ca.productName}</h6>
-										</td>
-										<td class="price">
-<%-- 									&#8361;	<c:out value="${ca.productPrice}"/>원 --%>
-										<fmt:formatNumber value="${ca.productPrice}" pattern="#,###"/>원
-										</td>
-										<td class="qty">
-											<div class="quantity">
-												<span class="qty-minus" onclick="callNumberMin(this)">
+                        		<c:forEach items="${list}" var="ca">
+                           			<tr>
+<!-- 상품 이미지                           			 -->
+                            			<td class="cart_product_img d-flex align-items-center">
+                                			<a href="#">
+                                				<img src="img/product-img/product-9.jpg" alt="IMAGE">
+<%--이미지 경로                       				<img src="img/product-img/${ca.productAttach }" alt="IMAGE"> --%>
+                                			</a>
+<!-- 상품명                                			 -->
+                                 			<h6>${ca.productName}</h6>
+                             			</td>
+<!-- 상품 가격                             			 -->
+                              			<td class="price">
+                                			<fmt:formatNumber value="${ca.productPrice}" pattern="#,###" />원
+                            			</td>
+                           				<td class="qty">
+                                			<div class="quantity">
+                                			   	<span class="qty-minus" onclick="callNumberMin(this)">
 													<i class="fa fa-minus" aria-hidden="true"></i>
-												</span>
-													<input type="number" class="qty-text" step="1" min="1" max="999" name="quantity" value="1">
+                                			   	</span>
+<!-- 상품 수량 설정                                			   	 -->
+                                 			   	<input type="number" class="qty-text" step="1" min="1" max="999" name="quantity" value=${ca.cartQuantity }>
 												<span class="qty-plus" onclick="callNumberAdd(this)">
-													<i class="fa fa-plus" aria-hidden="true"></i>
-												</span>
-											</div>
-										</td>
-										<td class="total_price">
-<%-- 										<c:out value="${ca.productPrice}"/>원 --%>
-											<fmt:formatNumber value="${ca.productPrice}" pattern="#,###"/>원
-										</td>
+                                       				<i class="fa fa-plus" aria-hidden="true"></i>
+                                    			</span>
+                                 			</div>
+                             			</td>
+                           				<td class="total_price">
+                               				<fmt:formatNumber value="${ca.productPrice * ca.cartQuantity}" pattern="#,###" />원
+                             			</td>
 <!-- 개별 선택 체크 박스 -->
 										<td class="d-flex align-items-center"><input type="checkbox" name="check" id="check" class="cartCheckbox" onclick="checkBtn(this)">
 										</td>
 <!--상품 행별 삭제 -->
 										<td>
-											<form action="/cart/delete" method="post" class="">
-												<button class="delete_btn" data-memberid="${ca.memberId}">삭제</button>
+											<form action="cartListDelete.yd" method="post" class="update-checkout w-50 text-right">
+												<input type="hidden" id="memberId" name="memberId" value="${ca.memberId}">
+												<input type="hidden" id="productId" name="productId" value="${ca.productId}">
+												<input type="submit" value="삭제">
 											</form>
 										</td>
 									</tr>
@@ -87,7 +95,7 @@ input[type=number]::-webkit-inner-spin-button {
 						<div class="back-to-shop w-50">
 							<a href="main.yd">쇼핑 계속하기</a>
 						</div>
-<!-- 전체/선택 상품 결제 -->
+<!-- 8.전체/7.선택 상품 주문 -->
 						<div class="update-checkout w-50 text-right">
 							<a href="#" id="buyAll" onclick="allTotal()">전체 상품 주문</a>
 							<a href="#" id="butSelect" onclick="subTotal()">선택 상품 주문</a>
@@ -116,7 +124,6 @@ input[type=number]::-webkit-inner-spin-button {
 							<h5>배송</h5>
 							<p>5만원 이상 구매 시 배송비 무료</p>
 						</div>
-
 						<div class="custom-control custom-radio mb-30">
 							<input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" checked="checked">
 							<label class="custom-control-label d-flex align-items-center justify-content-between" for="customRadio2">
@@ -126,8 +133,7 @@ input[type=number]::-webkit-inner-spin-button {
 					</div>
 				</div>
 				
-<!-- 최종 결제칸 -->
-<!-- 선택/전체 상품 결제 합산 금액 -->
+<!-- 구매 상품 최종 계산 탭 -->
 				<div class="col-12 col-lg-4">
 					<div class="cart-total-area mt-70">
 						<div class="cart-page-heading">
@@ -156,7 +162,6 @@ input[type=number]::-webkit-inner-spin-button {
 							<input type="submit"class="btn karl-checkout-btn" value="상품 주문">
 							<input type="hidden" name="" id="">
 						</form>
-<!-- 						<a href="checkout.html" class="btn karl-checkout-btn">상품 주문</a> -->
 					</div>
 				</div>
 			</div>
@@ -168,16 +173,17 @@ input[type=number]::-webkit-inner-spin-button {
 
 	<!-- /.wrapper end -->
 	<script type="text/javascript">
-	//원화 콤마 표시
-			function number_format(num){
-	   			 num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
-			}
-			//콤마찍기
-			function comma(str) {
-			    str = String(str);
-			    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
-			}
-//상품 수 늘릴 때 금액 계산
+//1.원화 콤마 표시
+		function number_format(num){
+	   		 num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
+		}
+//2.콤마 콜백함수
+		function comma(str) {
+		    str = String(str);
+		    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+		}
+			
+//3.상품 수 늘릴 때 금액 계산
 		function callNumberAdd(a) {
 			var numberText = $(a).parent().find(".qty-text");
 			var qty = numberText.val();
@@ -185,12 +191,15 @@ input[type=number]::-webkit-inner-spin-button {
 				qty++;
 			numberText.val(qty);
 			var productIdx = $(a).parent().parent().parent().find(".price").text();
+//3-1.콤마, 원이 붙어있는 가격을 정수로 변환
 			const pi = productIdx.replace(",","").replace("원","");
 			total = pi * qty;
+//3-2.계산 후 콜백함수 이용하여 콤마 붙여줌
 			$(a).parent().parent().parent().find(".total_price").text(comma(total)+"원");
 			return false;
 		};
-// 상품 수 줄일때 금액계산
+		
+//4.상품 수 줄일때 금액계산
 		function callNumberMin(a) {
 			var numberText = $(a).parent().find(".qty-text");
 			var qty = numberText.val();
@@ -202,16 +211,16 @@ input[type=number]::-webkit-inner-spin-button {
 			numberText.val(qty);
 			var totalPrice = $(a).parent().parent().parent().find(".total_price").text();
 			var productIdx = $(a).parent().parent().parent().find(".price").text();
-			
+//4-1.상품 수 줄일때 금액계산 위해 정수로 변환
 			const pi = productIdx.replace(",","").replace("원","");
 			const tp = totalPrice.replace(",","").replace("원","");
-			
 			var total = tp - pi;
-
+//4-2.계산된 금액에 콜백함수로 콤마 붙여줌
 			$(a).parent().parent().parent().find(".total_price").text(comma(total)+"원");
 			return false;
 		};
-//텍스트칸에 숫자 입력 시 금액 변경
+		
+//5.텍스트칸에 숫자 입력 시 금액 변경
 		let qtys = document.querySelectorAll(".qty-text");
 		qtys.forEach((qty) => {
 			qty.addEventListener('change', function () {
@@ -219,15 +228,17 @@ input[type=number]::-webkit-inner-spin-button {
 					alert('최소 설정 가는 개수는 1개입니다.');
 					qty.value = 1;
 				}
+//5-1.총액에 콤마 제거
 				const total = qty.parentElement.parentElement.parentElement.children.item(1).textContent.replace(",","").replace("원","");
-				
-// 				console.log(qty.parentElement.parentElement.parentElement.children.item(1).textContent);
+//5-2.계산 후 콤마 콜백함수 호출하여 다시 붙여줌
 				qty.parentElement.parentElement.parentElement.children.item(3).textContent = comma(qty.value * total)+"원";
 			});
 		});
-//체크박스
+		
+//6.체크박스
 		let btns = document.getElementsByClassName("cartCheckbox");
 		let checkedNum = 0;
+//6-1.전체 체크 클릭 시 하위의 체크박스들 모두 체크
 		function checkAllBtn(AllBtn) {
 			if (AllBtn.checked) {
 				for (let i = 0; i < btns.length; i++) {
@@ -243,7 +254,7 @@ input[type=number]::-webkit-inner-spin-button {
 				}
 			}
 		}
-//개별 체크박스 클릭시 전체 체크박스 버튼도 클릭/해제되게 
+//6-2.개별 체크박스 클릭시 최상위의 전체 체크박스 버튼도 클릭/해제되게 
 		function checkBtn(btn) {
 			if (btn.checked) {
 				checkedNum++;
@@ -256,64 +267,55 @@ input[type=number]::-webkit-inner-spin-button {
 				document.getElementById("checkAll").checked = false;
 			}
 		}
-//선택 상품 주문
+		
+//7.선택 상품 주문
 		function subTotal() {
 			let sum = 0;
 			let a = document.getElementsByClassName('total_price');
 			for (let i = 0; i < a.length; i++) {
 				if (a[i].parentElement.children[4].firstChild.checked) {
+//7-1.체크된 상품의 가격에 붙어있는 콤마, 원 제거 
 					sum += parseInt(a[i].innerText.replace(",","").replace("원",""));
 				}
 			}
-
+//7-2.합산된 상품 금액에 콤마와 원 붙여줌
 			document.getElementById("finalPrice").innerText=sum
 			document.getElementById("productSum").innerText=comma(sum)+"원";
-			console.log(sum)
-			console.log(document.getElementById("productSum"))
-			console.log(document.getElementById('productSum').innerText)
-			
-		 	document.getElementsByClassName('final_price').innerText=20500;
+		 	document.getElementsByClassName('final_price').innerText;
+//7-3.상품 총 구매 금액이 5만원 이상이면 배송비 무료, 미만이면 배송비 2,500원이 포함되어 계산 
 			if(sum >= 50000){
 				document.getElementById('deli').innerText="무료";
 				document.getElementById('final_price').innerText=comma(sum)+"원";
-				
 			}else if( sum < 50000){
-				document.getElementById('deli').innerText="2,500원";
+				document.getElementById('deli').innerText="+ 2,500원";
 				document.getElementById('final_price').innerText=comma(sum + 2500)+"원";
 			}
-			
-			
 		}
-//전체 상품 주문
+		
+//8.전체 상품 주문
 		function allTotal(){
 			let sum=0;
 			let all = document.getElementsByClassName('total_price');
 			for(let i=0; i<all.length; i++){
-					sum += parseInt(all[i].innerText.replace(",","").replace("원",""));
+//8-1.콤마 제거
+				sum += parseInt(all[i].innerText.replace(",","").replace("원",""));
 			}
 			document.getElementById("finalPrice").innerText=sum
+//8-2.계산 후 콤마 붙여줌
 			document.getElementById("productSum").innerText=comma(sum)+"원";
-				console.log(document.getElementById("finalPrice").innerText);
-				
+//8-3.5만원 이상 무료 배송, 미만은 배송비 2,500원 추가
 				if(sum >= 50000){
 					document.getElementById('deli').innerText="무료";
 					document.getElementById('final_price').innerText=comma(sum)+"원";
-					
 				}else if( sum < 50000){
-					document.getElementById('deli').innerText="2,500원";
+					document.getElementById('deli').innerText="+ 2,500원";
 					document.getElementById('final_price').innerText=comma(sum + 2500)+"원";
-				}
+				}	
 		}
-
-//최종 결제 가격(배송비, 포인트 사용 후)
-		function finalPrice(){
-			let a = document.getElementById("finalPrice").innerText
-			if(a >= 50000){
-				document.getElementsByClassName('final_price').innerText="무료";
-			}
-		 document.getElementsByClassName('final_price').innerText=3500;
-		}
-		
+//9.장바구니 리스트 행별 삭제 버튼
+	function deleteCart(){
+	
+} 
 	</script>
 </body>
 
