@@ -12,7 +12,7 @@ public interface CartService {
 	
 	int cartUpdate(CartVO vo);
 	
-	int cartDelete(CartVO vo);
-	
 	void cartDeleteAll(String memberId);
+
+	int cartDelete(String memberId);
 }

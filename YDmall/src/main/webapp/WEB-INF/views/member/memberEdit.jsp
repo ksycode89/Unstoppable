@@ -37,18 +37,25 @@
 								<div class="col-12 mb-3">
 									<label for="memberPassword"> Passoword</label> <input
 										type="password" class="form-control" id="company"
-										name="memberPassword" required="required" value="">
+										name="memberPassword" value="${password }">
 								</div>
 								<div class="col-12 mb-3">
 									<label for="memberPassword2">Check Passoword</label> <input
 										type="password" class="form-control" id="memberPassword2"
-										name="memberPassword2" required="required" value="">
+										name="memberPassword2" value="${password }">
 								</div>
 
 								<div class="col-md-6 mb-3">
 									<label for="first_name">Name <span>*</span></label> <input
 										type="text" class="form-control" id="first_name"
-										name="memberName" value="${name }" readonly="readonly">
+										name="memberName" value="${name}" readonly="readonly">
+								</div>
+								
+								
+								<div class="col-12 mb-3">
+									<label for="street_address">Gender <span>*</span></label> <input
+										type="text" class="form-control mb-3" id="street_address"
+										name="memberGender" value="${gender }">
 								</div>
 
 								<!-- 
@@ -70,18 +77,18 @@
 								<div class="col-12 mb-3">
 									<label for="street_address">Address <span>*</span></label> <input
 										type="text" class="form-control mb-3" id="street_address"
-										name="memberAddress" value="">
+										name="memberAddress" value="${address }">
 								</div>
 
 								<div class="col-12 mb-3">
 									<label for="phone_number">Phone Number<span>*</span></label> <input
 										type="text" class="form-control" id="phone_number" min="0"
-										name="memberTel" value="">
+										name="memberTel" value="${tel }">
 								</div>
 								<div class="col-12 mb-4">
 									<label for="email_address">Email<span>*</span></label> <input
 										type="email" class="form-control" id="email_address"
-										name="memberEmail" value="">
+										name="memberEmail" value="${email }">
 								</div>
 								<br> <input type="hidden" name="memberAuthor" value="회원">
 							<br> <input type="submit" class="btn karl-checkout-btn"

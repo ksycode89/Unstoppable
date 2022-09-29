@@ -23,7 +23,7 @@
 					<div class="checkout_details_area mt-50 clearfix">
 
 						<div class="cart-page-heading">
-							<h5>${name }님 정보 조회</h5>
+							<h5>${name }님정보 조회</h5>
 						</div>
 
 						<form action="memberSelect.yd" onsubmit="return formCheck()"
@@ -38,13 +38,21 @@
 								<div class="col-12 mb-3">
 									<label for="memberPassword"> Passoword</label> <input
 										type="password" class="form-control" id="company"
-										name="memberPassword" required="required" value="${password }" readonly="readonly">
+										name="memberPassword" required="required" value="${password }"
+										readonly="readonly">
 								</div>
 
 								<div class="col-md-6 mb-3">
 									<label for="first_name">Name <span>*</span></label> <input
 										type="text" class="form-control" id="first_name"
 										name="memberName" value="${name }" readonly="readonly">
+								</div>
+
+								
+								<div class="col-12 mb-3">
+									<label for="street_address">Gender <span>*</span></label> <input
+										type="text" class="form-control mb-3" id="street_address"
+										name="memberAddress" value="${gender }">
 								</div>
 
 								<!-- 
@@ -82,7 +90,7 @@
 										name="memberEmail" value="${email }" readonly="readonly">
 								</div>
 								<br> <input type="hidden" name="memberAuthor" value="회원">
-								<br> 
+								<br>
 						</form>
 						<form action="memberEdit.yd">
 							<br> <input type="submit" class="btn karl-checkout-btn"
