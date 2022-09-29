@@ -23,7 +23,7 @@ h1 {
 		<li onclick="kakaoLogin();"><a href="javascript:void(0)"> <img
 				alt="" src="img/kakao_login_medium_narrow.png">
 		</a></li>
-		<li onclick="Logout() "><a href="javascript:void(0)"> <span>카카오
+		<li onclick="out() "><a href="javascript:void(0)"> <span>카카오
 					로그아웃</span>
 		</a></li>
 	</ul>
@@ -50,7 +50,6 @@ function kakaoLogin() {
           success: function (response) {
         	  console.log(response)
         	  alert('카카오 로그인 완료');
-        	 location.href="main.yd";
           },
           fail: function (error) {
             console.log(error)
@@ -75,8 +74,16 @@ function kakaoLogin() {
 	
 }	 */
 
-
-
+function out (){
+	
+ Kakao.Auth.logout()
+.then(function(response) {
+  console.log(Kakao.Auth.getAccessToken()); // null
+})
+.catch(function(error) {
+  console.log('Not logged in.');
+});
+}
 	
 	
 function kakaoLogout() {

@@ -11,13 +11,12 @@ import lombok.ToString;
 @Setter
 @ToString
 public class CartVO {
-	private String memberId; //회원 테이블의 id, 외래키 
-	private int cartId; //장바구니 번호(PK)
-	private int productId; // 상품 번호(FK)
-	private String productName; //상품 이름
-	private int productPrice; 
-	private int cartQuantity; //구매 수량 
-	private String cartRole; //장바구니, 관심상품 구분 ex)like=관심상품, busket=장바구니 
-	
-	
+	private String memberId; // 회원 아이디
+//	private String productId; // 상품 번호
+	private int productId; // 상품 번호
+	private String productName; // 상품명
+	private int productPrice; // 상품 가격
+	private String ProductAttach; // 상품 파일명
+	private int cartQuantity; // 구매 수량
+
 }

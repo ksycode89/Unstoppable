@@ -10,4 +10,10 @@ public interface SalesMapper {
 	public List<SalesVO> salesSelectList ();
 	List<SalesVO> salesSelect(SalesVO vo);
 	int insertOrder(SalesVO vo);
+	
+	public List<SalesVO> ajaxMemberStat(SalesVO vo) ;
+	public List<SalesVO> ajaxProductStat(SalesVO vo) ;
+	int AjaxMemberSpend(SalesVO vo);//구매금액 도출 맴버
+	
+	int ajaxDelvCheck(SalesVO vo);//배송수정
 }

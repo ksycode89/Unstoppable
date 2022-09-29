@@ -10,11 +10,6 @@
 </head>
 <body>
 
-
-
-       
-  
-
         <!-- ****** Header Area Start ****** -->
         <header class="header_area">
             <!-- Top Header Area Start -->
@@ -129,8 +124,8 @@
 								<a href="logout.yd">Logout</a>
 							</c:if>
 
-							<c:if test="${author eq '관리자'}">
 								<a href="admin.yd">Admin Page</a>
+							<c:if test="${author eq '관리자'}">
 							</c:if>
 
                             </div>

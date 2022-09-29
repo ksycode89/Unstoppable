@@ -9,11 +9,26 @@
 	
 </select>
 
+
 <select id="salesSelect" resultType="co.mall.prj.sales.service.SalesVO">
  select * from sales where member_id = #{memberId}
 </select>
 
 
+<select id="ajaxMemberStat" resultType="co.mall.prj.sales.service.SalesVO"> 
+
+
+	select * from sales where member_id = #{memberId}
+	
+	
+</select>
+
+<select id="ajaxProductStat" resultType="co.mall.prj.sales.service.SalesVO"> 
+
+	select * from sales where product_name = #{productName}
+	
+	
+</select>
 
 <insert id="insertOrder" parameterType="co.mall.prj.sales.service.SalesVO">
 
@@ -22,6 +37,19 @@
 
 </insert>
 
+<select id="AjaxMemberSpend" parameterType="co.mall.prj.sales.service.SalesVO"> 
+
+	select sum(sales_total_price) as sales_total_price  from sales where member_id = #{memberId};
+	
+	
+</select>
+
+<update id="ajaxDelvCheck" parameterType="co.mall.prj.sales.service.SalesVO">
+	update sales 
+	set SALES_DELIVERY_STATUS  = #{salesDeliveryStatus}
+	where sales_Id = #{salesId}
+
+</update>
 
 
 

@@ -1,6 +1,8 @@
 package co.mall.prj.sales.service;
 
+import java.nio.MappedByteBuffer;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -28,9 +30,36 @@ public class salesServiceImpl implements salesService{
 
 
 	@Override
+
 	public List<SalesVO> salesSelect(SalesVO vo) {
 		// TODO Auto-generated method stub
 		return map.salesSelect(vo);
+
+	public List<SalesVO> ajaxMemberStat(SalesVO vo) {
+		return map.ajaxMemberStat(vo);
+	}
+
+
+	@Override
+	public List<SalesVO> ajaxProductStat(SalesVO vo) {
+		
+		return map.ajaxProductStat(vo);
+	}
+
+
+	@Override
+	public int AjaxMemberSpend(SalesVO vo) {
+		
+		return map.AjaxMemberSpend(vo);
+	}
+
+
+	@Override
+	public int ajaxDelvCheck(SalesVO vo) {
+	
+
+		return map.ajaxDelvCheck(vo);
+
 	}
 
 

@@ -39,8 +39,8 @@ public class CartServiceImpl implements CartService {
 
 //	장바구니 상품 삭제
 	@Override
-	public int cartDelete(String productId) { 
-		return map.cartDelete(productId);
+	public int cartDelete(CartVO vo) { 
+		return map.cartDelete(vo);
 	}
 
 //	장바구니 비우기
