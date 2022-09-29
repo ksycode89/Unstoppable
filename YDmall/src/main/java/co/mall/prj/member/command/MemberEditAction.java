@@ -24,16 +24,20 @@ public class MemberEditAction implements Command {
 				vo.setMemberGender(request.getParameter("memberGender")); // 9
 				vo.setMemberBirth(request.getParameter("memberBirth")); // 10
 				vo.setMemberEmail(request.getParameter("memberEmail")); // 11
+				
 				System.out.println("내 정보수정 페이지 도착");
 				System.out.println("수정페이지 vo : " + vo);
+				
 				String viewPage = "member/memberMessage";
+				
+				
 				int result = dao.memberUpdate(vo);
 				if(result != 0) {
 					vo = dao.memberSelect(vo);
 					request.setAttribute("message", vo.getMemberName() + "님의 정보가 수정되었습니다.");
 				}else {
 					request.setAttribute("message", "회원정보가 수정되지 않았습니다.");
-				}
+				} //세션끊어주고 다시불러오던지, 로그인(?회원가입?)할때 세션을 받지말던지 둘중한가지 방법 선택해서 만들기.... ㅎ 0929
 		return viewPage;
 	}
 

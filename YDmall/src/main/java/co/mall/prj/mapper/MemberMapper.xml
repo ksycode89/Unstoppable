@@ -15,7 +15,7 @@
 		FROM MEMBER
 		WHERE MEMBER_ID = #{memberId}
 		<if test="memberPassword != null">
-		AND MEMBER_PASSWORD = #{memberPassword}
+			AND MEMBER_PASSWORD = #{memberPassword}
 		</if>
 	</select>
 
@@ -23,10 +23,13 @@
 	<insert id="memberInsert"
 		parameterType="co.mall.prj.member.service.MemberVO">
 		INSERT INTO MEMBER
-		(member_id, member_password, member_name, member_tel,
-		member_address, member_gender, member_birth, member_email)
+		(member_id, member_password,
+		member_name, member_tel,
+		member_address, member_gender, member_birth,
+		member_email)
 		VALUES(#{memberId},#{memberPassword},#{memberName},
-		#{memberTel},#{memberAddress}, #{memberGender},#{memberBirth},#{memberEmail})
+		#{memberTel},#{memberAddress},
+		#{memberGender},#{memberBirth},#{memberEmail})
 	</insert>
 
 	<!-- 회원정보 수정 -->
@@ -42,19 +45,23 @@
 		<if test="memberGender != null">MEMBER_GENDER = #{memberGender},</if>
 		<if test="memberEmail != null">MEMBER_EMAIL = #{memberEmail}</if>
 		</set> 
+
 		WHERE MEMBER_ID = #{memberId}
 	</update>
 
 	<!-- 회원 탈퇴 -->
-	<delete id="memberDelete" parameterType="co.mall.prj.member.service.MemberVO">
-	DELETE FROM MEMBER WHERE MEMBER_ID = #{memberId}
+	<delete id="memberDelete"
+		parameterType="co.mall.prj.member.service.MemberVO">
+		DELETE FROM MEMBER WHERE MEMBER_ID = #{memberId}
 	</delete>
-	
+
 	<!-- 아이디 중복 체크 -->
 	<select id="isMemberId" resultType="boolean">
+
 	SELECT CASE WHEN COUNT(MEMBER_ID) > 0 THEN 0 ELSE 1 end AS ID
 	FROM MEMBER
 	WHERE MEMBER_ID = #{id}
+
 	</select>
 
 </mapper>

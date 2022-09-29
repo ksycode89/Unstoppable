@@ -9,8 +9,8 @@ public interface salesService {
 //	SalesVO salesSelect(SalesVO vo);
 	int insertOrder(SalesVO vo);
 
-	
-	public List<SalesVO> salesSelectList ();
+	 List<SalesVO> salesSelectList ();
+	List<SalesVO> salesSelect(SalesVO vo);
 	
 	public List<SalesVO> ajaxMemberStat (SalesVO vo);
 	public List<SalesVO> ajaxProductStat (SalesVO vo);

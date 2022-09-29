@@ -30,6 +30,11 @@ public class salesServiceImpl implements salesService{
 
 
 	@Override
+
+	public List<SalesVO> salesSelect(SalesVO vo) {
+		// TODO Auto-generated method stub
+		return map.salesSelect(vo);
+
 	public List<SalesVO> ajaxMemberStat(SalesVO vo) {
 		return map.ajaxMemberStat(vo);
 	}
@@ -54,6 +59,7 @@ public class salesServiceImpl implements salesService{
 	
 
 		return map.ajaxDelvCheck(vo);
+
 	}
 
 
