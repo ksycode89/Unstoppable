@@ -34,7 +34,7 @@
 	<delete id="cartDelete"
 		parameterType="co.mall.prj.cart.service.CartVO">
 		DELETE CART
-		WHERE CART_ID = #{cartId}
+		WHERE MEMBER_ID = #{memberId}
 	</delete>
 
 </mapper>

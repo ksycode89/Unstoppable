@@ -16,9 +16,9 @@ public class AjaxMemberIdCheck implements Command {
 		MemberService dao = new MemberServiceImpl();
 		String id = request.getParameter("id");
 		boolean b = dao.isMemberId(id);
-		String str = "ajax:0"; //페이지에 돌려줄 값을 담을 변수
+		String str = "ajax:불가능"; //페이지에 돌려줄 값을 담을 변수
 		if(b) {
-			str ="ajax:1";  //view Resolve에 Ajax호출이라는 것을 알려주기 위해
+			str ="ajax:사용가능";  //view Resolve에 Ajax호출이라는 것을 알려주기 위해
 		}
 		return str;  
 	}

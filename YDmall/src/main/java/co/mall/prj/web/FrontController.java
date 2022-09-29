@@ -81,6 +81,7 @@ public class FrontController extends HttpServlet {
 		map.put("/main.yd", new Main());
 		map.put("/shop.yd", new Shop());
 		map.put("/cart.yd", new Cart());
+//		map.put("/cartDelete.yd", new CartDelete());
 		map.put("/checkout.yd", new Checkout());
 		map.put("/productDetail.yd", new ProductDetail());
 
@@ -109,15 +110,13 @@ public class FrontController extends HttpServlet {
 		map.put("/adminMemberSelectList.yd", new AdminMemberSelectList());
 		map.put("/ajaxMemberStat.yd", new AjaxMemberStat());
 
+		
 		// member 명령집단 저장
-
 		map.put("/signUp.yd", new SignUP());
 		map.put("/login.yd", new Login());
 		map.put("/logout.yd", new Logout());
-
-
 		map.put("/memberLoginForm.yd", new MemberLoginForm()); // 로그인 폼
-		map.put("/memberLogin.yd", new MemberLogin()); // 폼 액션 -> 로그인
+		map.put("/memberLogin.yd", new MemberLogin()); // 폼 액션 -> 로그인처리
 		//map.put("/memberLogout.yd", new MemberLogout()); // 로그아웃
 		map.put("/memberInsert.yd", new MemberInsert()); // 회원가입
 		map.put("/ajaxMemberIdCheck.yd", new AjaxMemberIdCheck()); // 아이디 중복체크
@@ -130,6 +129,8 @@ public class FrontController extends HttpServlet {
 		map.put("/memberEdit.yd", new MemberEdit()); //내정보수정 폼
 		map.put("/memberOrder.yd", new MemberOrder()); //주문현황 
 		map.put("/memberSelect.yd", new MemberSelect()); // 내 정보조회
+		
+		map.put("/adminProductSelectList.yd", new AdminProductSelectList());
 		
 		//게시판//
 		map.put("/noticeSelectList.yd", new NoticeSelectList()); // 공지사항
