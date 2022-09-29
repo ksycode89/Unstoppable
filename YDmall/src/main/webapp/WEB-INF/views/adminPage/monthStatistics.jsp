@@ -12,6 +12,12 @@
 <style type="text/css">
 .hidden-data{
 }
+
+#tset{
+border: 1px solid red;
+height: 300px;
+flex: right;
+}
 </style>
 
 </head>
@@ -24,7 +30,7 @@
 
 	<!-- Content Wrapper -->
 	<div id="content-wrapper" class="d-flex flex-column"
-		style="width: 1200px">
+		style="width: 1200px; " >
 
 		<!-- Main Content -->
 		<div id="content">
@@ -37,15 +43,40 @@
 			<div class="container-fluid">
 
 				<!-- Page Heading -->
-				<h1 class="h3 mb-2 text-gray-800">고객관리</h1>
+				<h1 class="h3 mb-2 text-gray-800">통계</h1>
 				<p class="mb-4">
 					공지공지 <a target="_blank" href="https://google.com"> [누르면 링크]</a>
+							
+							<form  name=form1 action="memberStat.yd"  onsubmit="return chekcNull()" method="post">
+					<div style="display: inline; margin-left: 15px "> 
+							<label for="member_stat">고객통계 - </label>
+							<input type="text" id="member_stat" name="memberId">
+							<input type="submit" value="검색"  >
+					</div>
+							</form>
+							
+							<form   name=form2 action="productStat.yd" onsubmit="return chekcNull2()" method="post">
+				     <div  style=" margin-left: 10px">
+							<label for="member_stat">상품 통계 - </label>
+							<input type="text" id="product_stat" name="productName">
+							<input type="submit" value="검색"   >
+							
+					</div>
+							</form>
+							
+							<div  style=" margin-left: 10px">
+							<label for="member_stat">총액 통계 - </label>
+							<input type="text" id = "total_spending" readonly="readonly">
+							<input type="button" value="총액"  onclick="memberSpendingSum()" >
+							</div>
 				</p>
 
 				<!-- DataTales Example -->
 				<div class="card shadow mb-4">
 					<div class="card-header py-3">
-						<h6 class="m-0 font-weight-bold text-primary">공지일지도</h6>
+						<h6 class="m-0 font-weight-bold text-primary">상품/고객통계</h6>
+						<span id=total_spending>총액 : </span>
+						<span id=total_spending>구매수 : </span>
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
@@ -58,7 +89,7 @@
 										<th>Member ID</th>
 										<th>Product Name</th>
 										<th>Sales Quantity</th>
-										<th>Sales Total Price</th>
+										<th>Sales Price</th>
 										<th>Sales Date</th>
 									</tr>
 								</thead>
@@ -74,30 +105,21 @@
 									<td> ${vo.salesQuantity}	</td>
 									<td class="total-money" > ${vo.salesTotalPrice }</td>
 								<c:set var="price_sum" value="${price_sum + vo.salesTotalPrice}" />
-									<td > ${vo.salesDate.substring(0	,10)} </td>
+									<td > ${vo.salesDate.substring(0,10)} </td>
 									
 									</tr>
 									</c:forEach>
-									
 
 
 								</tbody>
 								<tfoot>
-						
+							
 								</tfoot>
 							</table>
-							<br><br>
-							<div style="display: inline; margin-left: 50px"> 
-							<label for="member_stat">고객통계 - </label>
-							<input type="text" id="member_stat" name="memberId">
-								<button onclick="searchMem()"> 검색</button>
-							</div>
+									<input type="hidden" id="test0001" value="<c:out value="${ price_sum}"></c:out> ">
 							
-							<div  style="display: inline; margin-left: 250px">
-							<label for="member_stat">상품 통계 - </label>
-							<input type="text" id="product_stat" name="productName">
-								<button onclick="tt()"> 검색</button>
-							</div>
+							<br><br>
+							
 							<br><br><br>
 							
 							
@@ -106,6 +128,8 @@
 				</div>
 
 			</div>
+			
+		
 			<!-- /.container-fluid -->
 
 		</div>
@@ -161,10 +185,71 @@
 			});
 		})
 	}
-
 	
-
+	function chekcNull() {
+		let a = document.getElementById('member_stat').value;
+		
+		if(a == ""){
+		
+			
+			return "";
+		}
+		return "memberStat.yd";
+	}
 	
+	function chekcNull2() {
+		let a = document.getElementById('product_stat').value;
+		
+		if(a == ""){
+		
+			
+			return "";
+		}
+		return "productStat.yd";
+	}
+	//d우선안씀
+	function ajaxMember(){ 
+		let id = document.getElementById("member_stat").value;
+		fetch('ajaxMemberSpend.yd?id='+id)
+		.then(response => response.text())
+		.then(data=> {
+			console.log(data)
+			
+			
+		}); 
+}
+	member_stat
+	function  memberSpendingSum() {
+		let a = document.getElementsByClassName('total-money');
+		let b = [...a];
+		let summ=0;
+		b.forEach(sum=>{
+			summ+=parseInt(sum.innerText);
+			
+			console.log(sum.innerText)
+
+		})
+
+		document.getElementById("total_spending").value= summ+'원'
+		
+	}
+	//판매수량
+	function  memberSpendingSum() {
+		let a = document.getElementsByClassName('total-money');
+		let b = [...a];
+		let summ=0;
+		b.forEach(sum=>{
+			summ+=parseInt(sum.innerText);
+			
+			console.log(sum.innerText)
+
+		})
+
+		document.getElementById("total_spending").value= summ+'원'
+		
+	}
+	
+	alert
 	
 	</script>
 </body>

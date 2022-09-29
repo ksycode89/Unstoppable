@@ -15,7 +15,11 @@ import co.mall.prj.admin.command.AdminChart;
 import co.mall.prj.admin.command.AdminMemberSelectList;
 import co.mall.prj.admin.command.AdminPage;
 import co.mall.prj.admin.command.AdminProductSelectList;
+import co.mall.prj.admin.command.AjaxDelvCheck;
+import co.mall.prj.admin.command.AjaxMemberSpend;
 import co.mall.prj.admin.command.AjaxMemberStat;
+import co.mall.prj.admin.command.Delivery;
+import co.mall.prj.admin.command.MemberStat;
 import co.mall.prj.admin.command.MonthStatistics;
 import co.mall.prj.board.command.BoardDelete;
 import co.mall.prj.board.command.BoardEdit;
@@ -112,6 +116,11 @@ public class FrontController extends HttpServlet {
 		map.put("/adminProductSelectList.yd", new AdminProductSelectList());
 		map.put("/adminMemberSelectList.yd", new AdminMemberSelectList());
 		map.put("/ajaxMemberStat.yd", new AjaxMemberStat());
+		map.put("/memberStat.yd", new MemberStat());
+		map.put("/ajaxMemberSpend.yd", new AjaxMemberSpend());
+		map.put("/delivery.yd", new Delivery());
+		map.put("/ajaxDelvCheck.yd", new AjaxDelvCheck());
+		
 
 		
 		// member 명령집단 저장
@@ -133,7 +142,6 @@ public class FrontController extends HttpServlet {
 		map.put("/memberOrder.yd", new MemberOrder()); //주문현황 
 		map.put("/memberSelect.yd", new MemberSelect()); // 내 정보조회
 		
-		map.put("/adminProductSelectList.yd", new AdminProductSelectList());
 		
 		//게시판//
 		map.put("/noticeSelectList.yd", new NoticeSelectList()); // 공지사항

@@ -35,4 +35,26 @@ public class salesServiceImpl implements salesService{
 	}
 
 
+	@Override
+	public List<SalesVO> ajaxProductStat(SalesVO vo) {
+		
+		return map.ajaxProductStat(vo);
+	}
+
+
+	@Override
+	public int AjaxMemberSpend(SalesVO vo) {
+		
+		return map.AjaxMemberSpend(vo);
+	}
+
+
+	@Override
+	public int ajaxDelvCheck(SalesVO vo) {
+	
+
+		return map.ajaxDelvCheck(vo);
+	}
+
+
 }
