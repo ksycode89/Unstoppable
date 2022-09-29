@@ -10,4 +10,6 @@ public interface SalesMapper {
 	public List<SalesVO> salesSelectList ();
 	
 	int insertOrder(SalesVO vo);
+	
+	public List<SalesVO> ajaxMemberStat(SalesVO vo) ;
 }

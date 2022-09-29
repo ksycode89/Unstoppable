@@ -9,7 +9,12 @@
 	
 </select>
 
+<select id="ajaxMemberStat" resultType="co.mall.prj.sales.service.SalesVO"> 
 
+	select * from sales where member_id = #{memberId}
+	
+	
+</select>
 
 <insert id="insertOrder" parameterType="co.mall.prj.sales.service.SalesVO">
 

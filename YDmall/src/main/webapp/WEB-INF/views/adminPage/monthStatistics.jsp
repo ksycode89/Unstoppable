@@ -49,7 +49,7 @@
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-						<button onclick="tt()">a</button>
+			
 							<table class="table table-bordered" id="dataTable" width="100%"
 								cellspacing="0">
 								<thead>
@@ -83,17 +83,24 @@
 
 								</tbody>
 								<tfoot>
-					
-									<tr>
-										<th>Sales ID</th>
-										<th>Member ID</th>
-										<th>Product Name</th>
-										<th>Sales Quantity</th>
-										<th>Total :  원</th>
-										<th>Sales Date</th>
-									</tr>
+						
 								</tfoot>
 							</table>
+							<br><br>
+							<div style="display: inline; margin-left: 50px"> 
+							<label for="member_stat">고객통계 - </label>
+							<input type="text" id="member_stat" name="memberId">
+								<button onclick="searchMem()"> 검색</button>
+							</div>
+							
+							<div  style="display: inline; margin-left: 250px">
+							<label for="member_stat">상품 통계 - </label>
+							<input type="text" id="product_stat" name="productName">
+								<button onclick="tt()"> 검색</button>
+							</div>
+							<br><br><br>
+							
+							
 						</div>
 					</div>
 				</div>
@@ -143,7 +150,17 @@
 	</div>
 	
 	<script type="text/javascript">
-	
+	function  searchMem() {
+		let id = document.getElementById("member_stat").value
+
+		fetch('ajaxMemberStat.yd?id='+id)
+		.then(result => result.text())
+		.then(data => {
+			dataforEach(element => {
+				
+			});
+		})
+	}
 
 	
 

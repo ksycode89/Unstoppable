@@ -9,7 +9,7 @@ public class AdminProductSelectList implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse reponse) {
-		// TODO Auto-generated method stub
+
 		return "admin/adminPage/adminProductSelectList";
 	}
 
