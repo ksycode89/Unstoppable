@@ -23,9 +23,13 @@ public class Cart implements Command {
 //		session.getAttribute("id");
 //		System.out.println("456456456"+session.getAttribute("id"));
 		vo.setMemberId("kkk");
-		System.out.println(vo);
+//		vo.setProductId(Integer.valueOf("productId"));
 		list = dao.cartSelect(vo);
-		System.out.println(list);
+		
+		for(CartVO vv : list) {
+			System.out.println(vv.getMemberId());
+		}
+		
 		request.setAttribute("list", list);
 
 		return "cart/cart";
