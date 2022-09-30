@@ -15,4 +15,6 @@ public interface CartService {
 	void cartDeleteAll(String memberId);
 
 	int cartDelete(CartVO vo);
+	
+	int clearCart(CartVO vo);
 }

@@ -9,8 +9,7 @@
 	</select>
 
 	<!-- 한명조회 -->
-	<select id="memberSelect"
-		resultType="co.mall.prj.member.service.MemberVO">
+	<select id="memberSelect" resultType="co.mall.prj.member.service.MemberVO">
 		SELECT *
 		FROM MEMBER
 		WHERE MEMBER_ID = #{memberId}
@@ -20,48 +19,48 @@
 	</select>
 
 	<!-- 회원가입 -->
-	<insert id="memberInsert"
-		parameterType="co.mall.prj.member.service.MemberVO">
+	<insert id="memberInsert" parameterType="co.mall.prj.member.service.MemberVO">
 		INSERT INTO MEMBER
-		(member_id, member_password,
-		member_name, member_tel,
-		member_address, member_gender, member_birth,
-		member_email)
+			(member_id, member_password,
+			 member_name, member_tel,
+			 member_address, member_gender, member_birth,
+			 member_email)
 		VALUES(#{memberId},#{memberPassword},#{memberName},
-		#{memberTel},#{memberAddress},
-		#{memberGender},#{memberBirth},#{memberEmail})
+				#{memberTel},#{memberAddress},
+				#{memberGender},#{memberBirth},#{memberEmail})
 	</insert>
 
 	<!-- 회원정보 수정 -->
-	<update id="memberUpdate"
-		parameterType="co.mall.prj.member.service.MemberVO">
+	<update id="memberUpdate" parameterType="co.mall.prj.member.service.MemberVO">
 		UPDATE MEMBER
-
-		<set>
-		<if test="memberPassword != null">MEMBER_PASSWORD = #{memberPassword},</if>
-		<if test="memberName != null">MEMBER_NAME = #{memberName},</if>	
-		<if test="memberTel != null">MEMBER_TEL = #{memberTel},</if>
-		<if test="memberAddress != null">MEMBER_ADDRESS = #{memberAddress},</if>
-		<if test="memberGender != null">MEMBER_GENDER = #{memberGender},</if>
-		<if test="memberEmail != null">MEMBER_EMAIL = #{memberEmail}</if>
-		</set> 
-
+			<set>
+				<if test="memberPassword != null">MEMBER_PASSWORD = #{memberPassword},</if>
+				<if test="memberName != null">MEMBER_NAME = #{memberName},</if>	
+				<if test="memberTel != null">MEMBER_TEL = #{memberTel},</if>
+				<if test="memberAddress != null">MEMBER_ADDRESS = #{memberAddress},</if>
+				<if test="memberGender != null">MEMBER_GENDER = #{memberGender},</if>
+				<if test="memberEmail != null">MEMBER_EMAIL = #{memberEmail}</if>
+			</set> 
 		WHERE MEMBER_ID = #{memberId}
 	</update>
 
 	<!-- 회원 탈퇴 -->
-	<delete id="memberDelete"
-		parameterType="co.mall.prj.member.service.MemberVO">
+	<delete id="memberDelete" parameterType="co.mall.prj.member.service.MemberVO">
 		DELETE FROM MEMBER WHERE MEMBER_ID = #{memberId}
 	</delete>
 
 	<!-- 아이디 중복 체크 -->
 	<select id="isMemberId" resultType="boolean">
-
-	SELECT CASE WHEN COUNT(MEMBER_ID) > 0 THEN 0 ELSE 1 end AS ID
-	FROM MEMBER
-	WHERE MEMBER_ID = #{id}
-
+		SELECT CASE WHEN COUNT(MEMBER_ID) > 0 THEN 0 ELSE 1 end AS ID
+		FROM MEMBER
+		WHERE MEMBER_ID = #{id}
+	</select>
+	
+<!-- 	멤버 포인트 가져오기 -->
+	<select id="memberPoint" parameterType="co.mall.prj.member.service.MemberVO">
+		SELECT MEMBER_POINT
+		FROM MEMBER
+		WHERE MEMBER_ID = #{memberId}
 	</select>
 
 </mapper>

@@ -32,6 +32,7 @@ public class MemberLogin implements Command {
 			session.setAttribute("address", vo.getMemberAddress()); //주소
 			session.setAttribute("tel", vo.getMemberTel()); //번호
 			session.setAttribute("email", vo.getMemberEmail()); //이메일
+			session.setAttribute("point", vo.getMemberPoint());//멤버 포인트
 			session.setAttribute("message", vo.getMemberName() + "님 환영합니다.");
 		} else {
 			//실패(아이디인지 비번인지 알려주는 기능 추가하면 좋을듯)

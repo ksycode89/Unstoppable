@@ -43,10 +43,16 @@ public class CartServiceImpl implements CartService {
 		return map.cartDelete(vo);
 	}
 
-//	장바구니 비우기
+	@Override
+	public int clearCart(CartVO vo) {
+		// TODO Auto-generated method stub
+		return map.clearCart(vo);
+	}
+
 	@Override
 	public void cartDeleteAll(String memberId) {
-
+		// TODO Auto-generated method stub
+		
 	}
 
 }
