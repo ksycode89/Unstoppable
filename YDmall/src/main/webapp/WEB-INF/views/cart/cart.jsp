@@ -25,32 +25,35 @@ input[type=number]::-webkit-inner-spin-button {
 						<table class="table table-responsive">
 							<thead>
 								<tr>
-									<th>상품</th>
-									<th>가격</th>
-									<th>개수</th>
-									<th>총 금액</th>
+									<th style='width:300px'>상품</th>
+									<th style='width:200px'>가격</th>
+									<th style='width:100px'>개수</th>
+									<th style='width:100px'>총 금액</th>
 <!-- 전체 선택 체크 박스		 -->
 									<th>
 										<input type="checkbox" id="checkAll" class="cartCheckbox" onclick="checkAllBtn(this)">
 									</th>
 <!--상품 전체 삭제 -->
 									<th>
-										<form action="clearCart.yd" method="post" class="update-checkout w-50 text-right">
-											<input type="hidden" id="memberId" name="memberId" value="${ca.memberId}">
-											<input type="hidden" id="productId" name="productId" value="${ca.productId}">
-											<input type="submit" value="전체 삭제">
-										</form>
+										<a type="button" href="clearCart.yd" style='width:100px'>전체삭제</a>
 									</th>
 								</tr>
 							</thead>
 							<tbody id="asdf">
+								<c:if test="${empty list}">
+									<tr>
+										<td style='text-align:center' colspan=6><h4>장바구니가 비어있습니다.</h4></td>
+									</tr>
+								</c:if>
+								<c:if test="${not empty list}">
+								
                         		<c:forEach items="${list}" var="ca">
                            			<tr>
 <!-- 상품 이미지                           			 -->
                             			<td class="cart_product_img d-flex align-items-center">
                                 			<a href="#">
                                 				<img src="img/product-img/product-9.jpg" alt="IMAGE">
-<%--이미지 경로                       				<img src="img/product-img/${ca.productAttach }" alt="IMAGE"> --%>
+<%--이미지 경로                       				<img src="img/product-img/${ca.productName }-1.jpg" alt="IMAGE"> --%>
                                 			</a>
 <!-- 상품명                                			 -->
                                  			<h6>${ca.productName}</h6>
@@ -87,6 +90,7 @@ input[type=number]::-webkit-inner-spin-button {
 										</td>
 									</tr>
 								</c:forEach>
+									</c:if>
 							</tbody>
 						</table>
 					</div>
@@ -109,11 +113,23 @@ input[type=number]::-webkit-inner-spin-button {
 					<div class="coupon-code-area mt-70">
 						<div class="cart-page-heading">
 							<h5>포인트</h5>
-							<p class="userPoint">사용 가능 포인트 :</p>
+								<p>사용 가능 포인트 : 
+									<span class="userPoint">
+										<fmt:formatNumber value="${point}" pattern="#,###" />
+									</span>
+								</p>
 						</div>
+<!-- 							<div class="cart-page-heading"> -->
+<!-- 							<H5>포인트</H5> -->
+<!-- 								<P>잔여 포인트 :  -->
+<!-- 									<SPAN CLASS="USERPOINT"> -->
+<%-- 										<FMT:FORMATNUMBER VALUE="${POINT}" PATTERN="#,###" /> --%>
+<!-- 									</SPAN> -->
+<!-- 								</P> -->
+<!-- 						</div> -->
 						<form action="#">
-							<input type="search" name="search" placeholder="1,000포인트 부터 사용 가능">
-							<button type="submit">확인</button>
+							<input type="search" id="search" name="search" placeholder="1,000점 부터 사용 가능"> <!-- .value innerText= ${point}-getEle("search").value  --> 
+							<button type="button" onclick="caculatePoint()">확인</button>
 						</form>
 					</div>
 				</div>
@@ -142,7 +158,7 @@ input[type=number]::-webkit-inner-spin-button {
 <!-- 포인트, 배송비 사용 및 선택 결과 -->
 						<ul class="cart-total-chart">
 							<li><span>상품 가격</span> <span id="productSum"></span></li>
-							<li><span>포인트</span> <span><input type="hidden" id="subTotal" name="subTotal">얼마 사용</span></li>
+							<li><span>포인트</span> <span><input type="hidden" id="userPoint" name="userPoint">0원</span></li>
 							<li><span>배송비</span> 
 								<span id="deli"></span>
 							</li>
@@ -167,6 +183,8 @@ input[type=number]::-webkit-inner-spin-button {
 			</div>
 		</div>
 	</div>
+	
+<%-- 	<input type="hidden" id="point" value="${point }"> --%>
 	<!-- ****** Cart Area End ****** -->
 
 
@@ -293,29 +311,43 @@ input[type=number]::-webkit-inner-spin-button {
 		}
 		
 //8.전체 상품 주문
-		function allTotal(){
-			let sum=0;
-			let all = document.getElementsByClassName('total_price');
+	function allTotal(){
+		let sum=0;
+		let all = document.getElementsByClassName('total_price');
 			for(let i=0; i<all.length; i++){
 //8-1.콤마 제거
-				sum += parseInt(all[i].innerText.replace(",","").replace("원",""));
+			sum += parseInt(all[i].innerText.replace(",","").replace("원",""));
 			}
-			document.getElementById("finalPrice").innerText=sum
+		document.getElementById("finalPrice").innerText=sum
 //8-2.계산 후 콤마 붙여줌
-			document.getElementById("productSum").innerText=comma(sum)+"원";
+		document.getElementById("productSum").innerText=comma(sum)+"원";
 //8-3.5만원 이상 무료 배송, 미만은 배송비 2,500원 추가
-				if(sum >= 50000){
-					document.getElementById('deli').innerText="무료";
-					document.getElementById('final_price').innerText=comma(sum)+"원";
-				}else if( sum < 50000){
-					document.getElementById('deli').innerText="+ 2,500원";
-					document.getElementById('final_price').innerText=comma(sum + 2500)+"원";
-				}	
-		}
-//9.장바구니 리스트 행별 삭제 버튼
-	function deleteCart(){
-	
-} 
+			if(sum >= 50000){
+				document.getElementById('deli').innerText="무료";
+				document.getElementById('final_price').innerText=comma(sum)+"원";
+			}else if( sum < 50000){
+				document.getElementById('deli').innerText="+ 2,500원";
+				document.getElementById('final_price').innerText=comma(sum + 2500)+"원";
+			}	
+	}
+//9.장바구니 리스트 전체 비우기 버튼
+	function clearCart(){
+		let all = getElementById('memberId');
+		all.remove();
+};
+//포인트 사용
+	$(function caculatePoint(){
+		let usePoint = document.getElementById("search")
+ 		if(usePoint < 1000){
+ 			alert("1000점 이상 사용 가능합니다.")
+ 		} else if(usePoint>${point}){
+ 			alert("사용 가능 포인트를 초과하였습니다.")
+ 		} else {
+ 		}
+		usePoint += parseInt(document.getElementsByClassName("userPoint").value.replace("," , ""));
+		console.log(usePoint);
+});
+
 	</script>
 </body>
 

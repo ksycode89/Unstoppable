@@ -39,4 +39,8 @@
 		WHERE MEMBER_ID = #{memberId}
 		AND PRODUCT_ID = #{productId}
 	</delete>
+	
+	<delete id="clearCart" parameterType="co.mall.prj.cart.service.CartVO">
+		DELETE FROM CART WHERE MEMBER_ID = #{memberId}
+	</delete>
 </mapper>

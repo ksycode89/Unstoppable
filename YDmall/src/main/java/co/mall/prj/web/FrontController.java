@@ -38,6 +38,8 @@ import co.mall.prj.board.review.command.ReviewWriteForm;
 import co.mall.prj.cart.command.Cart;
 import co.mall.prj.cart.command.CartInsert;
 import co.mall.prj.cart.command.CartListDelete;
+import co.mall.prj.cart.command.CartMemberPoint;
+import co.mall.prj.cart.command.ClearCart;
 import co.mall.prj.command.Best;
 import co.mall.prj.command.Checkout;
 import co.mall.prj.command.Main;
@@ -87,11 +89,13 @@ public class FrontController extends HttpServlet {
 		map.put("/main.yd", new Main());
 		map.put("/shop.yd", new Shop());
 		map.put("/cart.yd", new Cart()); //장바구니
-		map.put("/cartListDelete.yd", new CartListDelete()); //장바구니 담긴 상품 행별 삭제
 		map.put("/cartInsert.yd", new CartInsert()); // 카트에 물품 담기
+		map.put("/cartListDelete.yd", new CartListDelete()); //장바구니 담긴 상품 행별 삭제
+		map.put("/clearCart.yd", new ClearCart());
+		map.put("/CartMemberPoint", new CartMemberPoint());
 		map.put("/checkout.yd", new Checkout());
 		map.put("/productDetail.yd", new ProductDetail());
-
+		
 		map.put("/top.yd", new Top());
 		map.put("/bottom.yd", new Bottom());
 		map.put("/outer.yd", new Outer());
