@@ -85,14 +85,14 @@ position: sticky;
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">상품 기준</h6>
+                        <h6 class="collapse-header"></h6>
                         <a class="collapse-item" href="monthStatistics.yd">판매 내역</a>
                         <a class="collapse-item" href="delivery.yd">배송관리</a>
-                        <a class="collapse-item" href="forgot-password.html"> 넣죠</a>
+                        <a class="collapse-item" href=""> 넣죠</a>
                         <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">회원 기준</h6>
-                        <a class="collapse-item" href="404.html">나는</a>
-                        <a class="collapse-item" href="blank.html">빡빡이다</a>
+                        <h6 class="collapse-header"> 매출 통계</h6>
+                        <a class="collapse-item" href="adminChart.yd">매출 그래프</a>
+                        <a class="collapse-item" href="">빡빡이다</a>
                     </div>
                 </div>
             </li>
