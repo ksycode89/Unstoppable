@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <body>
 

@@ -102,6 +102,7 @@
 
 		</div>
 	</div>
-
+<!-- Active js -->
+<script src="js/active.js"></script>
 </body>
 </html>

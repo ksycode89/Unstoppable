@@ -276,7 +276,7 @@
 							</div>
 							<br> <input type="hidden" name="memberAuthor" value="회원">
 							<br> 
-							<input type="submit"  class="btn karl-checkout-btn" value="가입">
+							<input type="submit" class="btn karl-checkout-btn" value="가입">
 						</form>
 					</div>
 				</div>
