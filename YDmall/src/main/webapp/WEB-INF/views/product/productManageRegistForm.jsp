@@ -1,62 +1,90 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+th{
+	width: 150px;
+}
+#hiddenTest{
+	display: none;
+}
+</style>
 <body>
-	<div><h3>상품 등록</h3></div>
+	<div align="center"><h1>상품 등록</h1></div><br>
 	<form id="frm" action="productManageRegist.yd" method="post">
 		<div align="center">
 			<table>
-				<tr>
-					<th>상품 번호</th>
-					<td><input type="number" id="productId" name="productId"></td>
+				<tr id="hiddenTest">
+					<th>상품 고유 번호(자동 입력)</th>
+					<td><input type="number" id="productId" name="productId" value=1></td>
 				</tr>
 				<tr>
 					<th>대분류</th>
-					<td><input type="text" id="productMajor" name="productMajor" required="required"></td>
+					<td>
+						<select class="form-control" id="productMajor" name="productMajor" required="required">
+							<option disabled selected>--대분류--</option>
+							<option value="TOP">상의(TOP)</option>
+							<option value="BOTTOM">하의(BOTTOM)</option>
+							<option value="OUTER">외투(OUTER)</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<th>소분류</th>
-					<td><input type="text" id="productMinor" name="productMinor" required="required"></td>
+					<td><input type="text" class="form-control" id="productMinor" name="productMinor" required="required"></td>
 				</tr>
 				<tr>
 					<th>상품명</th>
-					<td><input type="text" id="productName" name="productName" required="required"></td>
+					<td><input type="text" class="form-control" id="productName" name="productName" required="required"></td>
 				</tr>
 				<tr>
 					<th>상품 사이즈</th>
-					<td><input type="text" id="productSize" name="productSize"></td>
+					<td><input type="text" class="form-control" id="productSize" name="productSize"></td>
 				</tr>
 				<tr>
 					<th>상품 가격</th>
-					<td><input type="number" id="productPrice" name="productPrice"></td>
+					<td><input type="number" class="form-control" id="productPrice" name="productPrice"></td>
 				</tr>
 				<tr>
 					<th>상품 재고</th>
-					<td><input type="number" id="productQuantity" name="productQuantity"></td>
+					<td><input type="number" class="form-control" id="productQuantity" name="productQuantity"></td>
 				</tr>
 				<tr>
-					<th>상품 이벤트 여부</th>
-					<td><input type="text" id="productEvent" name="productEvent"></td>
+					<th>상품 이벤트</th>
+					<td>
+						<select class="form-control" id="productEvent" name="productEvent">
+							<option value="-">----</option>
+							<option value="BEST">BEST</option>
+							<option value="SALE">SALE</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
-					<th>상품 노출 설정 여부(노출할거면 1)</th>
-					<td><input type="text" id="productDefault" name="productDefault"></td>
+					<th>상품 대표 노출값</th>
+					<td>
+						<select class="form-control" id="productDefault" name="productDefault">
+							<option value="0">설정하지 않음(0)</option>
+							<option value="1">대표로 설정(1)</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
-					<th>상품 설명(default값 1인것만 쓰면됨)</th>
-					<td><textarea rows="10" cols="80" id="productExplain" name="productExplain"></textarea></td>
+					<th>상품 설명</th>
+					<td><textarea rows="5" cols="60" class="form-control"id="productExplain" name="productExplain" placeholder="대표값으로 설정된 상품에만 적어도 됩니다."></textarea></td>
 				</tr>
 			</table>
 		</div><br>
-		<div>
-			<input type="submit" value="등록">&nbsp;&nbsp;&nbsp;
-			<input type="button" value="목록" onclick="location.href='productManageList.yd'">
-		</div>
+		<div align="center">
+			<input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit" value="등록">&nbsp;&nbsp;&nbsp;
+			<input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="button" value="목록" onclick="location.href='adminProductSelectList.yd'">
+		</div><br>
 	</form>
 </body>
 </html>

@@ -17,12 +17,10 @@
 				 ]]>
 	</select>
 
-	<insert id="cartInsert"
-		parameterType="co.mall.prj.cart.service.CartVO">
-		INSERT INTO CART (MEMBER_ID, PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE,
-		PRODUCT_ATTACH, CART_QUANTITY)
-		VALUES(#{memberId}, #{productId}, #{productName}, #{productPrice}, #{productAttach},
-		#{cartQuantity})
+	
+	<insert id="cartInsert" parameterType="co.mall.prj.cart.service.CartVO">
+		INSERT INTO CART (MEMBER_ID, PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_ATTACH, CART_QUANTITY)
+		VALUES(#{memberId}, #{productId}, #{productName}, #{productPrice}, #{productAttach}, #{cartQuantity})
 	</insert>
 	<!-- 카트 수량 수정 -->
 	<update id="cartUpdate"

@@ -7,11 +7,16 @@
 		ORDER BY PRODUCT_ID
 	</select>
 
+	<select id="productMajorList" resultType="co.mall.prj.product.service.ProductVO">
+		SELECT *
+		FROM PRODUCT
+		WHERE PRODUCT_MAJOR = #{productMajor} AND PRODUCT_DEFAULT = 1
+	</select>
+
 	<select id="productSelect" resultType="co.mall.prj.product.service.ProductVO">
 		SELECT *
 		FROM PRODUCT
 		WHERE PRODUCT_NAME = #{productName} AND PRODUCT_DEFAULT = 1
-		
 	</select>
 	
 	<select id="productSelect2" resultType="co.mall.prj.product.service.ProductVO">
@@ -35,19 +40,20 @@
 
 	<update id="productUpdate">
 		UPDATE PRODUCT
-		SET PRODUCT_SIZE = #{productSize},
-		PRODUCT_PRICE = #{productPrice},
-		PRODUCT_QUANTITY = #{productQuantity},
-		PRODUCT_EVENT = #{productEvent},
-		PRODUCT_ATTACH = #{productAttach},
-		PRODUCT_ATTACH_DIR = #{productAttachDir},
-		PRODUCT_EXPLAIN = #{productExplain}
+		<set>
+			<if test="productSize!=null">PRODUCT_SIZE = #{productSize},</if>
+			<if test="productPrice!=null">PRODUCT_PRICE = #{productPrice},</if>
+			<if test="productQuantity!=null">PRODUCT_QUANTITY = #{productQuantity},</if>
+			<if test="productDefault!=null">PRODUCT_DEFAULT = #{productDefault},</if>
+			<if test="productEvent!=null">PRODUCT_EVENT = #{productEvent},</if>
+			<if test="productExplain!=null">PRODUCT_EXPLAIN = #{productExplain},</if>
+		</set>
 		WHERE PRODUCT_ID = #{productId}
 	</update>
 
 	<delete id="productDelete">
-		DELETE FROM MEMBER
-		WHERE PRODUCT_NAME = #{productName}
+		DELETE FROM PRODUCT
+		WHERE PRODUCT_ID = #{productId}
 	</delete>
 
 </mapper>

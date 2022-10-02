@@ -10,7 +10,7 @@ public class ProductManageRegistForm implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse reponse) {
 		// 상품 정보 등록 폼 호출
-		return "product/productManageRegistForm";
+		return "admin/product/productManageRegistForm";
 	}
 
 }

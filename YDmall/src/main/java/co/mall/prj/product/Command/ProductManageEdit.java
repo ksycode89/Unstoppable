@@ -15,19 +15,19 @@ public class ProductManageEdit implements Command {
 		ProductService dao = new ProductServiceImpl();
 		ProductVO vo = new ProductVO();
 		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
+		vo.setProductName(request.getParameter("productName"));
 		vo.setProductSize(request.getParameter("productSize"));
 		vo.setProductPrice(Integer.valueOf(request.getParameter("productPrice")));
 		vo.setProductQuantity(Integer.valueOf(request.getParameter("productQuantity")));
 		vo.setProductEvent(request.getParameter("productEvent"));
 		vo.setProductDefault(request.getParameter("productDefault"));
-		vo.setProductAttach(request.getParameter("productAttach"));
-		vo.setProductAttachDir(request.getParameter("productAttachDir"));
 		vo.setProductExplain(request.getParameter("productExplain"));
-		
-		String viewPage = "product/productError";
+		String viewPage = "admin/product/productError";
 		int no = dao.productUpdate(vo);
 		if(no!=0) {
-			viewPage = "productManageList.yd";
+			vo = dao.productSelect2(vo);
+			request.setAttribute("vo", vo);
+			viewPage = "adminProductSelectList.yd";
 		} else {
 			request.setAttribute("message", "ERROR!! 상품 정보 수정에 실패했습니다.");
 		}

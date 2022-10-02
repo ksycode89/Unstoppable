@@ -43,6 +43,7 @@ import co.mall.prj.cart.command.ClearCart;
 import co.mall.prj.command.Best;
 import co.mall.prj.command.Checkout;
 import co.mall.prj.command.Main;
+import co.mall.prj.command.Sale;
 import co.mall.prj.command.Shop;
 import co.mall.prj.common.Command;
 import co.mall.prj.member.command.AjaxMemberIdCheck;
@@ -71,6 +72,7 @@ import co.mall.prj.product.Command.ProductManageList;
 import co.mall.prj.product.Command.ProductManageRegist;
 import co.mall.prj.product.Command.ProductManageRegistForm;
 import co.mall.prj.product.Command.ProductManageRemove;
+import co.mall.prj.product.Command.ProductManageSelect;
 import co.mall.prj.sales.command.Order;
 
 /**
@@ -99,7 +101,7 @@ public class FrontController extends HttpServlet {
 		map.put("/top.yd", new Top());
 		map.put("/bottom.yd", new Bottom());
 		map.put("/outer.yd", new Outer());
-
+		map.put("/sale.yd", new Sale());
 		map.put("/best.yd", new Best());
 
 		map.put("/notice.yd", new Notice());
@@ -114,6 +116,9 @@ public class FrontController extends HttpServlet {
 		map.put("/productManageEdit.yd", new ProductManageEdit()); // 관리자용 상품 정보 수정
 		map.put("/productManageEditForm.yd", new ProductManageEditForm()); // 상품 정보 수정 폼
 		map.put("/productManageRemove.yd", new ProductManageRemove()); // 관리자용 상품 정보 삭제
+		map.put("/productManageSelect.yd", new ProductManageSelect()); // 관리자용 상품 상세 페이지
+		map.put("/productDetail.yd", new ProductDetail()); // 상품 상세 페이지
+		
 
 		map.put("/admin.yd", new AdminPage());
 		map.put("/adminChart.yd", new AdminChart());

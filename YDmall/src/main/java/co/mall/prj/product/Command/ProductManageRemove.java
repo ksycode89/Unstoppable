@@ -14,11 +14,11 @@ public class ProductManageRemove implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse reponse) {
 		ProductService dao = new ProductServiceImpl();
 		ProductVO vo = new ProductVO();
-		vo.setProductName(request.getParameter("productName"));
+		vo.setProductId(Integer.valueOf(request.getParameter("pId")));
 		String viewPage = "product/productError";
 		int no = dao.productDelete(vo);
 		if(no!=0) {
-			viewPage = "productManageList.yd";
+			viewPage = "adminProductSelectList.yd";
 		} else {
 			request.setAttribute("message", "ERROR!! 상품 정보 삭제에 실패했습니다.");
 		}
