@@ -21,7 +21,7 @@ public class BoardDelete implements Command {
 		BoardVO vo = new BoardVO();
 		List<BoardVO> list = new ArrayList<BoardVO>();
 
-		vo.setBoardId(Integer.valueOf(request.getParameter("id")));
+		vo.setBoardId(Integer.valueOf(request.getParameter("bId")));
 		vo.setBoardRole(request.getParameter("role"));
 
 		if (vo.getBoardRole().equals("N")) {

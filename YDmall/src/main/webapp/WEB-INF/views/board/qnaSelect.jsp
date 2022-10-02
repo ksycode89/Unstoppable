@@ -49,9 +49,14 @@
 		<br>
 
 		<div>
-				<!-- <c:if test="${vo.memberId eq name }"></c:if> 로그인 추가하고 추가 --> 
+				<c:if test="${not empty id}">
+				<c:if test="${id eq vo.memberId }">
 				<button type="button" onclick="subCall('E')">수정</button>&nbsp;&nbsp;
-				<button type="button" onclick="subCall('D')">삭제</button>&nbsp;&nbsp;
+				</c:if>
+				<c:if test="${id eq vo.memberId || author eq '관리자'}">
+				<button type="button" onclick="realDelete('D')">삭제</button>&nbsp;&nbsp;
+				</c:if>
+				</c:if>
 	
 			<button type="button" onclick="location.href='qnaSelectList.yd'">목록</button>
 		</div>
@@ -64,6 +69,18 @@
 	</div>
 
 	<script type="text/javascript">
+	
+	function realDelete(str) {
+		
+		var result = confirm("정말 삭제하시겠습니까?");
+		if(result){ /* 예(true)를 누르면 */
+			subCall(str)
+		}else{ /* 아니오(false)를 누르면 */  
+		}
+		
+		
+	}
+	
 		function subCall(str) {
 			if (str == 'E') {
 				frm.action = "boardEditForm.yd"; //수정
