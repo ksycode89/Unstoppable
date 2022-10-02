@@ -8,6 +8,7 @@ import co.mall.prj.common.DataSource;
 import co.mall.prj.mapper.MemberMapper;
 
 public class MemberServiceImpl implements MemberService {
+
 	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	MemberMapper map = sqlSession.getMapper(MemberMapper.class);
 	
@@ -40,7 +41,12 @@ public class MemberServiceImpl implements MemberService {
 		// 회원탈퇴
 		return map.memberDelete(vo);
 	}
-
+	
+	@Override
+	public int memberPoint2(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return map.memberPoint2(vo);
+	}
 	@Override
 	public boolean isMemberId(String id) {
 		// 아이디 중복 체크

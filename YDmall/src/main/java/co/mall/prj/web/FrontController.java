@@ -48,6 +48,7 @@ import co.mall.prj.command.Sale;
 import co.mall.prj.command.Shop;
 import co.mall.prj.common.Command;
 import co.mall.prj.member.command.AjaxMemberIdCheck;
+import co.mall.prj.member.command.CartMemberPointUpdate;
 import co.mall.prj.member.command.Login;
 import co.mall.prj.member.command.Logout;
 import co.mall.prj.member.command.MemberDelete;
@@ -97,6 +98,7 @@ public class FrontController extends HttpServlet {
 		map.put("/cartListDelete.yd", new CartListDelete()); //장바구니 담긴 상품 행별 삭제
 		map.put("/clearCart.yd", new ClearCart());
 		map.put("/CartMemberPoint", new CartMemberPoint());
+		map.put("/cartMemberPointUpdate.yd", new CartMemberPointUpdate());
 		map.put("/checkout.yd", new Checkout());
 		map.put("/productDetail.yd", new ProductDetail());
 		

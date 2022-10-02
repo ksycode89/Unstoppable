@@ -119,6 +119,33 @@
 							<c:if test="${author eq '관리자'}">
 							</c:if>
 
+<a href="cart.yd">cart Page</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- ****** Header Area End ****** -->
+
+         <section class="top-discount-area d-md-flex align-items-center">
+            <!— Single Discount Area —>
+            <div class="single-discount-area">
+               <div class="sub_line"></div>
+            </div>
+            <!— Single Discount Area —>
+            <div class="single-discount-area">
+             <div class="sub_line"></div>
+            </div>
+            <!— Single Discount Area —>
+            <div class="single-discount-area">
+                <div class="sub_line"></div>
+            </div>
+        </section>
+
+        <!— ****** Welcome Slides Area Start ****** —>
+       
+
 
 					</div>
 				</div>

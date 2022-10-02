@@ -13,5 +13,6 @@ public interface MemberMapper {
 	int memberUpdate(MemberVO vo); // 데이터 갱신
 	int memberDelete(MemberVO vo); // 데이터 삭제
 	int memberPoint(MemberVO vo); //멤버 포인트 가져오기
+	int memberPoint2(MemberVO vo); // 멤버 포인트 차감
 	boolean isMemberId(String id); // 아이디 중복체크 존재하면 false,
 }

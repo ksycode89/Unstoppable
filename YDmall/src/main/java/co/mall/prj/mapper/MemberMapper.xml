@@ -62,5 +62,11 @@
 		FROM MEMBER
 		WHERE MEMBER_ID = #{memberId}
 	</select>
+	
+	<update id="memberPoint2" parameterType="co.mall.prj.member.service.MemberVO">
+		UPDATE MEMBER
+		SET MEMBER_POINT = #{memberPoint}
+		WHERE MEMBER_ID = #{memberId}
+	</update>
 
 </mapper>
