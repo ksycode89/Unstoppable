@@ -92,7 +92,7 @@
 
 								<div class="col-12 mb-3">
 									<label for="phone_number">Phone Number<span>*</span></label> <input
-										type="text" class="form-control" id="phone_number" min="0"
+										type="tel" class="form-control" id="phone_number" min="0"
 										name="memberTel" value="">
 								</div>
 								<div class="col-12 mb-4">

@@ -80,6 +80,7 @@
 												<a class="dropdown-item" href="noticeSelectList.yd">notice</a>
 												<a class="dropdown-item" href="reviewSelectList.yd">review</a>
 												<a class="dropdown-item" href="qnaSelectList.yd">q & a</a>
+												<a class="dropdown-item" href="test.yd">test</a>
 
 											</div></li>
 											<c:if test="${ not empty id }">

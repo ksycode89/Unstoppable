@@ -98,7 +98,9 @@
 								cellspacing="0">
 								<thead>
 									<tr>
+										<c:if test="${not empty id && author eq '관리자'}">
 										<th><input type="checkbox" name="selectAll" value='selectAll' onclick='selectAll(this)'></th>
+										</c:if>
 										<th>번호</th>
 										<th>제목</th>
 										<th>작성자</th>
@@ -120,7 +122,10 @@
 											<tr onMouseover="this.style.backgroundColor='yellow';"
 												onMouseout="this.style.backgroundColor='white';">
 												
+												<c:if test="${not empty id && author eq '관리자'}">
 												<td><input type="checkbox" name="chk" value="" onclick='checkSelectAll()'></td>
+												</c:if>
+												
 												<td align="center">${n.boardId }</td>
 												<td onclick="selectNotice('${n.boardId}','${n.boardRole}')" style="cursor:pointer">${n.boardTitle }</td>
 												<td align="center">${n.memberId }</td>
@@ -135,9 +140,9 @@
 			<form id="frm" action="noticeSelect.yd" method="post">
 				<input type="hidden" id="id" name="id">
 				<input type="hidden" id="role" name="role">
-			<%-- <c:if test="${not empty id}"> --%>
+			<c:if test="${not empty id && author eq '관리자'}">
 				<button type="button" onclick="location.href='noticeWriteForm.yd'" style="float: right">글쓰기</button>
-				<%-- </c:if>  --%>
+				</c:if> 
 			</form>
 		</div>
 							</table>
@@ -185,8 +190,10 @@
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancel</button>
 					<a class="btn btn-primary" href="login.html">Logout</a>
+
 				</div>
 			</div>
+		</div>
 		</div>
 		
 		<script type="text/javascript">

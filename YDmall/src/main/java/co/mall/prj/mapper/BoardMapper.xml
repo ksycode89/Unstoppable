@@ -10,46 +10,67 @@
 		BOARD_ID,MEMBER_ID,TO_CHAR(BOARD_DATE,'YY-MM-DD') AS BOARD_DATE,BOARD_TITLE,BOARD_CONTENT,BOARD_HIT,BOARD_ATTACH,
 		BOARD_ATTACH_DIR,BOARD_ROLE
 		FROM BOARD
-		WHERE BOARD_ROLE='N' <!-- 이런식으로 그냥 N으로 분류했음. -->
+		WHERE BOARD_ROLE='N' <!-- Notice - N으로 분류했음. -->
+		AND BOARD_ID IS NOT NULL
 		ORDER BY BOARD_ID 
 		
 	</select>
 
 
-	<select id="reviewSelectList"
-		resultType="co.mall.prj.board.service.BoardVO">
+	<select id="reviewSelectList" resultType="co.mall.prj.board.service.BoardVO">
 		
 	  	SELECT
 		BOARD_ID,MEMBER_ID,TO_CHAR(BOARD_DATE,'YY-MM-DD') AS BOARD_DATE,BOARD_TITLE,BOARD_CONTENT,BOARD_HIT,BOARD_ATTACH,
 		BOARD_ATTACH_DIR,BOARD_ROLE
 		FROM BOARD
-		WHERE BOARD_ROLE='R' <!-- 이런식으로 그냥 R으로 분류했음. -->
+		WHERE BOARD_ROLE='R' <!-- Review - R으로 분류했음. -->
+		AND BOARD_ID IS NOT NULL
 		ORDER BY BOARD_ID
 		
 	</select>
 	
-		<select id="qnaSelectList"
-		resultType="co.mall.prj.board.service.BoardVO">
+		<select id="qnaSelectList" resultType="co.mall.prj.board.service.BoardVO">
 		
 	  	SELECT
 		BOARD_ID,MEMBER_ID,TO_CHAR(BOARD_DATE,'YY-MM-DD') AS BOARD_DATE,BOARD_TITLE,BOARD_CONTENT,BOARD_HIT,BOARD_ATTACH,
 		BOARD_ATTACH_DIR,BOARD_ROLE
 		FROM BOARD
-		WHERE BOARD_ROLE='Q' <!-- 이런식으로 그냥 R으로 분류했음. -->
+		WHERE BOARD_ROLE='Q' <!-- Q&A - Q로 분류했음. -->
+		AND BOARD_ID IS NOT NULL
 		ORDER BY BOARD_ID
 		
 	</select>
 
-	<select id="boardSelect"
-		resultType="co.mall.prj.board.service.BoardVO">
+	<select id="boardSelect" resultType="co.mall.prj.board.service.BoardVO">
 		
-		SELECT BOARD_ID,MEMBER_ID,TO_CHAR(BOARD_DATE,'YY-MM-DD') AS BOARD_DATE,BOARD_TITLE,BOARD_CONTENT,BOARD_HIT,BOARD_ATTACH,
+		SELECT BOARD_ID,MEMBER_ID,TO_CHAR(BOARD_DATE,'YY-MM-DD HH:MM:SS') AS BOARD_DATE,BOARD_TITLE,BOARD_CONTENT,BOARD_HIT,BOARD_ATTACH,
 		BOARD_ATTACH_DIR,BOARD_ROLE
 		FROM BOARD 
 		WHERE BOARD_ID =#{boardId}
 		AND BOARD_ROLE= #{boardRole}
 		
 	</select>
+	
+	<select id="replySelect" resultType="co.mall.prj.board.service.BoardVO">
+		
+		SELECT MEMBER_ID,TO_CHAR(BOARD_DATE,'YY-MM-DD HH:MM:SS') AS BOARD_DATE,BOARD_TITLE,BOARD_CONTENT,BOARD_HIT,BOARD_ATTACH,
+		BOARD_ATTACH_DIR,BOARD_ROLE,BOARD_REPLY_TO
+		FROM BOARD 
+		WHERE BOARD_REPLY_TO =#{boardReplyTo}
+		AND BOARD_ROLE= #{boardRole}
+
+	</select>
+	
+		
+	<select id="replySelectList" resultType="co.mall.prj.board.service.BoardVO">  <!-- 해당 글의 덧글 목록 가져오기 -->
+	
+		SELECT *
+ 		FROM BOARD
+ 		WHERE BOARD_REPLY_TO = #{boardReplyTo}
+ 		and BOARD_ROLE = #{boardRole}
+ 	
+	</select>
+
 
 	<insert id="boardInsert"  parameterType="co.mall.prj.board.service.BoardVO">
 		<selectKey keyProperty="boardId" resultType="int"
@@ -58,12 +79,20 @@
 			CASE WHEN MAX(BOARD_ID) IS NULL THEN 1 
 			ELSE MAX(BOARD_ID) + 1 END AS ID
 			FROM BOARD
-			WHERE BOARD_ROLE=#{boardRole}
+			WHERE BOARD_ROLE = #{boardRole}
 		</selectKey>
 		
 		INSERT INTO BOARD 
 		VALUES
-		(#{boardId},#{memberId},SYSDATE,#{boardTitle},#{boardContent},0,#{boardAttach},#{boardAttachDir},#{boardRole},null) <!-- boardRole = 'N' -->
+		(#{boardId},#{memberId},SYSDATE,#{boardTitle},#{boardContent},0,#{boardAttach},#{boardAttachDir},#{boardRole},'')
+		
+	</insert>
+	
+	<insert id="replyInsert"  parameterType="co.mall.prj.board.service.BoardVO">
+		
+		INSERT INTO BOARD 
+		VALUES
+		('',#{memberId},SYSDATE,'',#{boardContent},0,'','',#{boardRole},#{boardReplyTo}) 
 		
 	</insert>
 
@@ -85,11 +114,9 @@
 		AND BOARD_ID = #{boardId}
 		
 		
-		
-		
 	</delete>
 
-	<update id="boardIdMinus"> <!-- 게시글 삭제되면서 그 글 번호보다 크면 번호 1 감소 -->
+	<update id="boardIdMinus"> <!-- 게시글 삭제되면 그 글 번호보다 크면 번호 1 감소 -->
 		UPDATE BOARD
 		SET BOARD_ID= BOARD_ID-1
 		WHERE BOARD_ROLE = #{boardRole}

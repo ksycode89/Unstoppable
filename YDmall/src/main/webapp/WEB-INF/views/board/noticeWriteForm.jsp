@@ -27,7 +27,7 @@
 						<tr>
 							<th width="150">작성자</th>
 							<td width="150"><input  style="width:330px" type="text" id="memberId"
-								name="memberId" value="관리자" readonly="readonly"></td>
+								name="memberId" value="${id }" readonly="readonly"></td>
 							<!-- ★★★★ value 로그인 가능하게되면 {$memberId} 로 할 예정 -->
 
 						<tr>

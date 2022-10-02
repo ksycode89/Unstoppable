@@ -90,7 +90,7 @@
 				<!-- DataTales Example -->
 				<div class="card shadow mb-4">
 					<div class="card-header py-3">
-						<h6 class="m-0 font-weight-bold text-primary">질문을 남겨보세요</h6>
+						<h6 class="m-0 font-weight-bold text-primary">질문을 남겨보세요<br>본인 글만 조회가능합니다</h6>
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
@@ -98,7 +98,9 @@
 								cellspacing="0">
 								<thead>
 									<tr>
+									<c:if test="${not empty id && author eq '관리자'}">
 										<th><input type="checkbox" name="selectAll" value='selectAll' onclick='selectAll(this)'></th>
+										</c:if>
 										<th>번호</th>
 										<th>제목</th>
 										<th>작성자</th>
@@ -119,10 +121,11 @@
 										<c:forEach items="${list }" var="n">
 											<tr onMouseover="this.style.backgroundColor='yellow';"
 												onMouseout="this.style.backgroundColor='white';">
-												
+												<c:if test="${not empty id && author eq '관리자'}">					
 												<td><input type="checkbox" name="chk" value="" onclick='checkSelectAll()'></td>
+												</c:if>
 												<td align="center">${n.boardId }</td>
-												<td onclick="selectQna('${n.boardId}','${n.boardRole}')" style="cursor:pointer">${n.boardTitle }</td>
+												<td onclick="selectQna('${n.memberId }','${n.boardId}','${n.boardRole}')" style="cursor:pointer">${n.boardTitle }</td>
 												<td align="center">${n.memberId }</td>
 												<td align="center">${n.boardDate }</td>
 												<td align="center">${n.boardHit }</td>
@@ -135,9 +138,9 @@
 			<form id="frm" action="qnaSelect.yd" method="post">
 				<input type="hidden" id="id" name="id">
 				<input type="hidden" id="role" name="role">
-			<%-- <c:if test="${not empty id}"> --%>
+			<c:if test="${not empty id && author eq '회원'}">	
 				<button type="button" onclick="location.href='qnaWriteForm.yd'" style="float: right">글쓰기</button>
-				<%-- </c:if>  --%>
+				</c:if> 
 			</form>
 		</div>
 							</table>
@@ -191,10 +194,18 @@
 		
 		<script type="text/javascript">
 	
-	function selectQna(id,role) {
-		document.getElementById("id").value=id;
-		document.getElementById("role").value=role;
-		frm.submit();
+	function selectQna(mId,bId,role) { /* 변수 값으로 작성자id,글번호,글분류 를 받는다. */
+		
+		 var auth = '<%=(String)session.getAttribute("author")%>'; /* 로그인유저의 권한 */
+		 var lId = '<%=(String)session.getAttribute("id")%>';  /* 로그인유저의 아이디 */
+		 
+		if(auth=="관리자" || lId==mId){ 
+			 document.getElementById("id").value=bId;
+			 document.getElementById("role").value=role;		
+			frm.submit();} 
+		else {
+			alert("본인 글만 조회가능합니다!");
+		}
 	}
 	
 	function checkSelectAll()  {

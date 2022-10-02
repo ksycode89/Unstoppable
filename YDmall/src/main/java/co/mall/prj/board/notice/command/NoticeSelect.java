@@ -18,10 +18,11 @@ public class NoticeSelect implements Command {
 		BoardVO vo = new BoardVO();
 		vo.setBoardId(Integer.valueOf(request.getParameter("id")));
 		vo.setBoardRole(request.getParameter("role"));
+		
+		dao.boardHitUpdate(vo); // 글 조회 시 조회수 증가
 		vo= dao.boardSelect(vo);
 		
 		if(vo != null) {
-			dao.boardHitUpdate(vo); // 조회수 증가
 			request.setAttribute("vo", vo);
 		}
 		

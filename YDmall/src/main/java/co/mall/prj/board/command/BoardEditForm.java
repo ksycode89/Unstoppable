@@ -17,7 +17,7 @@ public class BoardEditForm implements Command {
 		BoardVO vo = new BoardVO();
 		
 		
-		vo.setBoardId(Integer.valueOf(request.getParameter("id")));
+		vo.setBoardId(Integer.valueOf(request.getParameter("bId")));
 		vo.setBoardRole(request.getParameter("role"));
 		vo = dao.boardSelect(vo); // vo 객체에 select 쿼리로 조회한 값들 담기.
 		
