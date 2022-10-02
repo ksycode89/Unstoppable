@@ -9,6 +9,22 @@
 input[type=number]::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 }
+
+.deleteButton {
+    width: 80px;
+    height: 60px;
+    background-color: #ff084e;
+    border-radius: 10%;
+    color: #fff;
+    text-align:center;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 60px;
+    padding: 0;
+    border:0;
+    outline:0;
+    
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
@@ -18,24 +34,24 @@ input[type=number]::-webkit-inner-spin-button {
 <body>
 	<!-- ****** Cart Area Start ****** --> 
 	<div class="cart_area section_padding_100 clearfix">
-		<div class="container">
+		<div class="container" style="margin-bottom:40px;">
 			<div class="row" style="margin: -50px -15px 100px -15px">
 				<div class="col-12">
 					<div class="cart-table clearfix">
 						<table class="table table-responsive">
 							<thead>
 								<tr>
-									<th style='width:300px'>상품</th>
-									<th style='width:200px'>가격</th>
-									<th style='width:100px'>개수</th>
-									<th style='width:100px'>총 금액</th>
+									<th style='width:250px'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;상품</th>
+									<th style='width:250px'>&nbsp;&nbsp;&nbsp;&nbsp;가격</th>
+									<th style='width:200px'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;개수</th>
+									<th style='width:200px'>총 금액</th>
 <!-- 전체 선택 체크 박스		 -->
-									<th>
+									<th style='width:20px'>
 										<input type="checkbox" id="checkAll" class="cartCheckbox" onclick="checkAllBtn(this)">
 									</th>
 <!--상품 전체 삭제 -->
 									<th>
-										<a type="button" href="clearCart.yd" style='width:100px'>전체삭제</a>
+										<a type="button" href="clearCart.yd" style='width:100px;' class="update-checkout w-100">전체삭제</a>
 									</th>
 								</tr>
 							</thead>
@@ -46,51 +62,51 @@ input[type=number]::-webkit-inner-spin-button {
 									</tr>
 								</c:if>
 								<c:if test="${not empty list}">
-								
+									
                         		<c:forEach items="${list}" var="ca">
-                           			<tr>
+                           				<tr>
 <!-- 상품 이미지                           			 -->
-                            			<td class="cart_product_img d-flex align-items-center">
-                                			<a href="#">
-                                				<img src="img/product-img/product-9.jpg" alt="IMAGE">
+                            				<td class="cart_product_img d-flex align-items-center">
+                                				<a href="#">
+                                					<img src="img/product-img/product-9.jpg" alt="IMAGE">
 <%--이미지 경로                       				<img src="img/product-img/${ca.productName }-1.jpg" alt="IMAGE"> --%>
-                                			</a>
+                                				</a>
 <!-- 상품명                                			 -->
-                                 			<h6>${ca.productName}</h6>
-                             			</td>
+	                                 			<h6>${ca.productName}</h6>
+                             				</td>
 <!-- 상품 가격                             			 -->
-                              			<td class="price">
-                                			<fmt:formatNumber value="${ca.productPrice}" pattern="#,###" />원
-                            			</td>
-                           				<td class="qty">
-                                			<div class="quantity">
-                                			   	<span class="qty-minus" onclick="callNumberMin(this)">
-													<i class="fa fa-minus" aria-hidden="true"></i>
-                                			   	</span>
+                              				<td class="price">
+	                                			<fmt:formatNumber value="${ca.productPrice}" pattern="#,###" />원
+                            				</td>
+                           					<td class="qty">
+                                				<div class="quantity">
+                                			   		<span class="qty-minus" onclick="callNumberMin(this)">
+														<i class="fa fa-minus" aria-hidden="true"></i>
+                                			   		</span>
 <!-- 상품 수량 설정                                			   	 -->
-                                 			   	<input type="number" class="qty-text" step="1" min="1" max="999" name="quantity" value=${ca.cartQuantity }>
-												<span class="qty-plus" onclick="callNumberAdd(this)">
-                                       				<i class="fa fa-plus" aria-hidden="true"></i>
-                                    			</span>
-                                 			</div>
-                             			</td>
-                           				<td class="total_price">
-                               				<fmt:formatNumber value="${ca.productPrice * ca.cartQuantity}" pattern="#,###" />원
-                             			</td>
+                                 			   		<input type="number" class="qty-text" step="1" min="1" max="999" name="quantity" value=${ca.cartQuantity }>
+													<span class="qty-plus" onclick="callNumberAdd(this)">
+	                                       				<i class="fa fa-plus" aria-hidden="true"></i>
+                                    				</span>
+	                                 			</div>
+                             				</td>
+	                           				<td class="total_price">
+                               					<fmt:formatNumber value="${ca.productPrice * ca.cartQuantity}" pattern="#,###" />원
+	                             			</td>
 <!-- 개별 선택 체크 박스 -->
-										<td class="d-flex align-items-center"><input type="checkbox" name="check" id="check" class="cartCheckbox" onclick="checkBtn(this)">
-										</td>
+											<td class="d-flex align-items-center"><input type="checkbox" name="check" id="check" class="cartCheckbox" onclick="checkBtn(this)">
+											</td>
 <!--상품 행별 삭제 -->
-										<td>
-											<form action="cartListDelete.yd" method="post" class="update-checkout w-50 text-right">
-												<input type="hidden" id="memberId" name="memberId" value="${ca.memberId}">
-												<input type="hidden" id="productId" name="productId" value="${ca.productId}">
-												<input type="submit" value="삭제">
-											</form>
-										</td>
-									</tr>
-								</c:forEach>
-									</c:if>
+											<td >	
+												<form action="cartListDelete.yd" method="post">
+													<input type="hidden" id="memberId" name="memberId" value="${ca.memberId}">
+													<input type="hidden" id="productId" name="productId" value="${ca.productId}">
+													<button type="submit" value="삭제" class="update-checkout w-50 deleteButton">삭제</button>
+												</form>
+											</td>
+										</tr>
+									</c:forEach>
+								</c:if>
 							</tbody>
 						</table>
 					</div>
@@ -107,8 +123,39 @@ input[type=number]::-webkit-inner-spin-button {
 					</div>
 				</div>
 			</div>
-<!-- 멤버 포인트 사용 -->
-			<div class="row">
+				<div class="cart-page-heading" style="margin-top:20px;">
+                                <h5>주문 정보 입력</h5>
+                            </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="first_name">이름<span>*</span></label>
+                                        <input type="text" class="form-control" id="memberName" name="memberName" value="" required>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="state">연락처<span>*</span></label>
+                                        <input type="text" class="form-control" id="state" value="">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="street_address">배송 주소 입력<span>*</span></label>
+                                        <input type="text" class="form-control mb-3" id="street_address" value="">
+                                        <input type="text" class="form-control" id="street_address2" value="">
+                                    </div>
+                                    <div class="col-12 mb-4">
+                                        <label for="email_address">이메일 주소 입력(선택)<span>*</span></label>
+                                        <input type="email" class="form-control" id="email_address" value="">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="offer">배송시 요청 사항<span></span></label>
+                                        <select class="custom-select d-block w-100" id="offer">
+                                        <option value="choice">선택</option>
+                                        <option value="aus">요청 사항 없음</option>
+                                        <option value="uk">배송 전 연락 바랍니다.</option>
+                                        <option value="ger">부재 시 경비실에 맡겨 주세요.</option>
+                                        <option value="fra">본인 수령 원합니다.</option>
+                                    </select>
+                                    </div>
+                        </div>
+                        <div class="row" style="margin-top:100px;">
 				<div class="col-12 col-md-6 col-lg-4">
 					<div class="coupon-code-area mt-70">
 						<div class="cart-page-heading">
@@ -119,16 +166,8 @@ input[type=number]::-webkit-inner-spin-button {
 									</span>
 								</p>
 						</div>
-<!-- 							<div class="cart-page-heading"> -->
-<!-- 							<H5>포인트</H5> -->
-<!-- 								<P>잔여 포인트 :  -->
-<!-- 									<SPAN CLASS="USERPOINT"> -->
-<%-- 										<FMT:FORMATNUMBER VALUE="${POINT}" PATTERN="#,###" /> --%>
-<!-- 									</SPAN> -->
-<!-- 								</P> -->
-<!-- 						</div> -->
 						<form action="#">
-							<input type="search" id="search" name="search" placeholder="1,000점 부터 사용 가능"> <!-- .value innerText= ${point}-getEle("search").value  --> 
+							<input type="search" id="search" name="search" placeholder="1,000점 부터 사용 가능"> 
 							<button type="button" onclick="caculatePoint()">확인</button>
 						</form>
 					</div>
@@ -150,7 +189,7 @@ input[type=number]::-webkit-inner-spin-button {
 				</div>
 				
 <!-- 구매 상품 최종 계산 탭 -->
-				<div class="col-12 col-lg-4">
+				<div class="col-12 col-lg-4" >
 					<div class="cart-total-area mt-70">
 						<div class="cart-page-heading">
 							<h5>결제 예정 금액</h5>
@@ -158,7 +197,7 @@ input[type=number]::-webkit-inner-spin-button {
 <!-- 포인트, 배송비 사용 및 선택 결과 -->
 						<ul class="cart-total-chart">
 							<li><span>상품 가격</span> <span id="productSum"></span></li>
-							<li><span>포인트</span> <span><input type="hidden" id="userPoint" name="userPoint">0원</span></li>
+							<li><span>포인트</span> <span><input type="hidden" id="userPoint2" name="userPoint2" value=0></span></li>
 							<li><span>배송비</span> 
 								<span id="deli"></span>
 							</li>
@@ -181,10 +220,8 @@ input[type=number]::-webkit-inner-spin-button {
 					</div>
 				</div>
 			</div>
+                    </div>
 		</div>
-	</div>
-	
-<%-- 	<input type="hidden" id="point" value="${point }"> --%>
 	<!-- ****** Cart Area End ****** -->
 
 
@@ -288,6 +325,8 @@ input[type=number]::-webkit-inner-spin-button {
 		
 //7.선택 상품 주문
 		function subTotal() {
+			if(document.getElementById('final_price').innerText!=""){
+			}
 			let sum = 0;
 			let a = document.getElementsByClassName('total_price');
 			for (let i = 0; i < a.length; i++) {
@@ -335,20 +374,27 @@ input[type=number]::-webkit-inner-spin-button {
 		let all = getElementById('memberId');
 		all.remove();
 };
-//포인트 사용
-	$(function caculatePoint(){
-		let usePoint = document.getElementById("search")
+//10.포인트 사용
+	function caculatePoint(){
+		let usePoint = document.getElementById("search").value
  		if(usePoint < 1000){
- 			alert("1000점 이상 사용 가능합니다.")
+ 			alert("1000점 이상 사용 가능합니다.");
  		} else if(usePoint>${point}){
  			alert("사용 가능 포인트를 초과하였습니다.")
  		} else {
+ 			document.getElementById("userPoint2").innerText=usePoint;
+ 			let sum=0;
+ 			sum = parseInt(document.getElementById('final_price').innerText.replace(",","").replace("원",""));
+ 			if(sum<usePoint){
+ 				alert("사용 가능 포인트를 초과했습니다.")
+ 				document.getElementById("search").value="";
+ 				document.getElementById("search").focus();
+ 			} else{
+ 	 			document.getElementById("userPoint2").parentElement.innerText="-" + comma(usePoint)+"원";
+ 	 			document.getElementById('final_price').innerText=comma(sum - usePoint) + "원";
+ 			}
  		}
-		usePoint += parseInt(document.getElementsByClassName("userPoint").value.replace("," , ""));
-		console.log(usePoint);
-});
-
+	};
 	</script>
 </body>
-
 </html>

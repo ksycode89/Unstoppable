@@ -106,7 +106,7 @@
 								<a href="admin.yd">Admin Page</a>
 							<c:if test="${author eq '관리자'}">
 							</c:if>
-
+<a href="cart.yd">cart Page</a>
                             </div>
                         </div>
                     </div>
