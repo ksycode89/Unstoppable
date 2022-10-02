@@ -2,7 +2,6 @@ package co.mall.prj.board.command;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -51,11 +50,7 @@ public class BoardInsert implements Command {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		// 파일 업로드 된 것 저장 end
-		
-		
-		// 파일이 없으면 null값
-		
+
 		int n = dao.boardInsert(vo);
 		if(n!=0) {
 			if(vo.getBoardRole().equals("N")) {

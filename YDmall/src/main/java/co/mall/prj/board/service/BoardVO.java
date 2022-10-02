@@ -2,9 +2,11 @@ package co.mall.prj.board.service;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class BoardVO {
 	
 	private int boardId; // 게시글 번호

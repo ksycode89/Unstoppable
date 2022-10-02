@@ -19,10 +19,11 @@ public class Cart implements Command {
 		CartService dao = new CartServiceImpl();
 		CartVO vo = new CartVO();
 		List<CartVO> list = new ArrayList<>();
-//		HttpSession session = request.getSession();
-//		session.getAttribute("id");
+	HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
 //		System.out.println("456456456"+session.getAttribute("id"));
-		vo.setMemberId("kkk");
+		
+		vo.setMemberId(id);
 		list = dao.cartSelect(vo);
 		
 		request.setAttribute("list", list);

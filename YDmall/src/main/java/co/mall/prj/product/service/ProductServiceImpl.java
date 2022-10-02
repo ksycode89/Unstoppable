@@ -18,6 +18,12 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	public List<ProductVO> productMajorList(ProductVO vo) {
+		// 상품 대분류 리스트
+		return map.productMajorList(vo);
+	}
+
+	@Override
 	public ProductVO productSelect(ProductVO vo) {
 		// 상품 단일(상품 이름 기준)
 		return map.productSelect(vo);

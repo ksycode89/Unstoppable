@@ -98,7 +98,9 @@
 								cellspacing="0">
 								<thead>
 									<tr>
+										<c:if test="${not empty id && author eq '관리자'}">
 										<th><input type="checkbox" name="selectAll" value='selectAll' onclick='selectAll(this)'></th>
+										</c:if>
 										<th>번호</th>
 										<th>상품명</th>
 										<th>제목</th>
@@ -121,10 +123,12 @@
 											<tr onMouseover="this.style.backgroundColor='yellow';"
 												onMouseout="this.style.backgroundColor='white';">
 												
+												<c:if test="${not empty id && author eq '관리자'}">
 												<td><input type="checkbox" name="chk" value="" onclick='checkSelectAll()'></td>
+												</c:if>
 												<td align="center">${n.boardId }</td>
 												<td>야호</td>
-												<td onclick="selectReview('${n.boardId}','${n.boardRole}')" style="cursor:pointer">${n.boardTitle }</td>
+												<td onclick="selectReview('${n.boardId}','${n.boardRole}','${id}')" style="cursor:pointer">${n.boardTitle }</td>
 												<td align="center">${n.memberId }</td>
 												<td align="center">${n.boardDate }</td>
 												<td align="center">${n.boardHit }</td>
@@ -135,11 +139,12 @@
 								</tbody>
 			<div>
 			<form id="frm" action="reviewSelect.yd" method="post">
-				<input type="hidden" id="id" name="id">
+				<input type="hidden" id="bId" name="bId">
 				<input type="hidden" id="role" name="role">
-			<%-- <c:if test="${not empty id}"> --%>
+				<input type="hidden" id="id" name="id">
+				<c:if test="${not empty id && author eq '회원'}">
 				<button type="button" onclick="location.href='reviewWriteForm.yd'" style="float: right">글쓰기</button>
-				<%-- </c:if>  --%>
+			 	</c:if> 
 			</form>
 		</div>
 							</table>
@@ -189,13 +194,15 @@
 					<a class="btn btn-primary" href="login.html">Logout</a>
 				</div>
 			</div>
-		</div>
+		</div></div>
 		
 		<script type="text/javascript">
 	
-	function selectReview(id,role) {
-		document.getElementById("id").value=id;
+	function selectReview(bId,role,mId) {
+		document.getElementById("bId").value=bId;
 		document.getElementById("role").value=role;
+		document.getElementById("id").value=mId;
+		
 		frm.submit();
 	}
 	

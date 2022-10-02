@@ -7,106 +7,113 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-h1 {
-	background-color: pink;
-	width: 100%;
-	height: 500px
+<style>
+del{
+	color: silver;
 }
 </style>
-
-<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-
 </head>
+
 <body>
-	<ul>
-		<li onclick="kakaoLogin();"><a href="javascript:void(0)"> <img
-				alt="" src="img/kakao_login_medium_narrow.png">
-		</a></li>
-		<li onclick="out() "><a href="javascript:void(0)"> <span>카카오
-					로그아웃</span>
-		</a></li>
-	</ul>
+	<h1>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;BEST</h1>
 
+	<section class="shop_grid_area section_padding_100">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-md-4 col-lg-3">
+					<div class="shop_sidebar_area">
+						<div class="widget catagory mb-50">
 
-	
+							<!--  Side Menu  -->
+							<div class="nav-side-menu">
+								<h6 class="mb-0">Categories</h6>
+								<div class="menu-list">
+									<ul id="menu-content2" class="menu-content collapse out">
+										<!-- BEST -->
+										<li data-toggle="collapse" data-target="#best"
+											class="collapsed"><a href="best.yd">BEST</a></li>
+										<!-- SALE -->
+										<li data-toggle="collapse" data-target="#sale"
+											class="collapsed"><a href="sale.yd">SALE</a></li>
+										<!-- TOP -->
+										<li data-toggle="collapse" data-target="#top"
+											class="collapsed"><a href="#">TOP</a>
+											<ul class="sub-menu collapse" id="top">
+												<li><input type="hidden" id="productMinor"
+													name="productMinor" value="SHIRT"> <a href="top.yd">SHIRT</a>
+												</li>
+												<li><input type="hidden" id="productMinor"
+													name="productMinor" value="HOOD"> <a href="top.yd">HOOD</a>
+												</li>
+												<li><input type="hidden" id="productMinor"
+													name="productMinor" value="MTM"> <a href="top.yd">MTM</a>
+												</li>
+											</ul>
+										</li>
+										<!-- BOTTOM -->
+										<li data-toggle="collapse" data-target="#bottom"
+											class="collapsed"><a href="#">BOTTOM</a>
+											<ul class="sub-menu collapse" id="bottom">
+												<li><a href="bottom.yd">Pants</a></li>
+												<li><a href="bottom.yd">Skirt</a></li>
+											</ul>
+										</li>
+										<!-- OUTER -->
+										<li data-toggle="collapse" data-target="#outer"
+											class="collapsed"><a href="#">OUTER</a>
+											<ul class="sub-menu collapse" id="outer">
+												<li><a href="outer.yd">JACKET</a></li>
+												<li><a href="outer.yd">COAT</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-12 col-md-8 col-lg-9">
+					<div class="shop_grid_product_area">
+						<div class="row">
+							<!-- Single gallery Item -->
+							<c:forEach items="${list }" var="p">
+								<c:if test="${p.productDefault eq '1' && p.productEvent eq 'BEST'}">
+									<div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.2s">
+										<!-- Product Image -->
+										<div class="product-img">
+											<img src="./img/product-img/${p.productName }-1.jpg"
+												alt="${p.productName }">
+											<div class="product-quicview">
+												<a href="javascript:selectProduct('${p.productName }');"><i
+													class="ti-plus"></i></a>
+											</div>
+										</div>
+										<!-- Product Description -->
+										<div class="product-description">
+											<h4 class="product-price">￦${p.productPrice }</h4>
+											<p>${p.productName }</p>
+										</div>
+									</div>
+								</c:if>
+							</c:forEach>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<form id="frm" action=productDetail.yd method="post">
+				<input type="hidden" id="pName" name="pName">
+			</form>
+		</div>
+	</section>
 	<script type="text/javascript">
 		function selectProduct(name) {
 			document.getElementById("pName").value = name;
 			frm.submit();
 		}
-
-
-Kakao.init('71076bc0611826d1a0be3f93cf243ec4');
-
-console.log(Kakao.isInitialized()); // sdk초기화여부판단
-
-
-function kakaoLogin() {
-    Kakao.Auth.login({
-      success: function (response) {
-        Kakao.API.request({
-          url: '/v2/user/me',
-          success: function (response) {
-        	  console.log(response)
-        	  alert('카카오 로그인 완료');
-          },
-          fail: function (error) {
-            console.log(error)
-          },
-        })
-      },
-      fail: function (error) {
-        console.log(error)
-      },
-    })
-  }
-	
-/* function kakaoOut(){
-	Kakao.Auth.logout()
-	  .then(function(response) {
-	    console.log(Kakao.Auth.getAccessToken()); // null
-	  })
-	  .catch(function(error) {
-	    console.log('Not logged in.');
-	  });
-	
-	
-}	 */
-
-function out (){
-	
- Kakao.Auth.logout()
-.then(function(response) {
-  console.log(Kakao.Auth.getAccessToken()); // null
-})
-.catch(function(error) {
-  console.log('Not logged in.');
-});
-}
-	
-	
-function kakaoLogout() {
-    if (Kakao.Auth.getAccessToken()) {
-      Kakao.API.request({
-        url: '/v1/user/unlink',
-        success: function (response) {
-        	console.log(response)
-        },
-        fail: function (error) {
-          console.log(error)
-        },
-      })
-      Kakao.Auth.setAccessToken(undefined)
-    }
-
-}
-
-
-
-
-
-
-</script>
+	</script>
 </body>
 </html>
