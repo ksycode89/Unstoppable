@@ -53,5 +53,9 @@ public class BoardDelete implements Command {
 		}
 		return viewPage;
 	}
+	
+	public int a() {
+		return 1;
+	}
 
 }

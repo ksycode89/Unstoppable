@@ -18,6 +18,7 @@
 					<input type="submit" id="memberId" class="btn karl-checkout-btn"
 						style="width: 150px" height="50px" value="탈퇴하기">&nbsp;&nbsp;&nbsp;
 					<input type="hidden" name="id" value="${id}">
+					<input type="hidden" name="name" value="${name}">
 					<input type="reset" class="btn karl-checkout-btn"
 						style="width: 150px" height="50px" value="취소" onclick="location.href='main.yd'">
 				</div>
