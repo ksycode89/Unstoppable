@@ -147,6 +147,15 @@
 		
 	</update>
 
+	<select id="mainViews" resultType="co.mall.prj.board.service.BoardVO">
+	
+	SELECT * 
+	from (SELECT *
+        FROM board
+        ORDER BY board_hit DESC )
+     where rownum &lt; 4
+	
+	</select>
 
 
 </mapper>

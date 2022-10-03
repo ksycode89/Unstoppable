@@ -89,6 +89,8 @@
 	<script src="admin/js/demo/chart-area-demo.js"></script>
 	<script src="admin/js/demo/chart-pie-demo.js"></script>
 	 <script src="admin/js/demo/chart-bar-demo.js"></script>
+	 <script src="admin/js/demo/chart-area-demo2.js"></script>
+	<script src="admin/js/demo/chart-pie-demo2.js"></script>
 	
 	
 	 <!-- Page level plugins -->

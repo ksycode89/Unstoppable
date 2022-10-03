@@ -7,6 +7,11 @@
 		resultType="co.mall.prj.member.service.MemberVO">
 		SELECT * FROM MEMBER
 	</select>
+	
+	<select id="memberSelectArr"
+		resultType="co.mall.prj.member.service.MemberVO">
+		SELECT * FROM MEMBER 	WHERE MEMBER_ID = #{memberId} 
+	</select>
 
 	<!-- 한명조회 -->
 	<select id="memberSelect" resultType="co.mall.prj.member.service.MemberVO">

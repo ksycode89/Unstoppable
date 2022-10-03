@@ -10,6 +10,8 @@ public interface BoardService {
 	List<BoardVO> qnaSelectList();	
 	List<BoardVO> replySelectList(BoardVO re);
 	
+	List<BoardVO> mainViews(); 
+	
 	BoardVO boardSelect(BoardVO vo);
 	
 	int boardInsert(BoardVO vo);
@@ -22,5 +24,6 @@ public interface BoardService {
 	void boardIdMinus(BoardVO vo); // 글삭제 시, 다른 글 번호 감소
 	void boardHitUpdate(BoardVO vo);
 
+	
 	
 }

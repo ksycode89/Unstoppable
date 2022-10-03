@@ -51,7 +51,7 @@ flex: right;
 					<div style="display: inline; margin-left: 15px "> 
 							<label for="member_stat">고객통계 - </label>
 							<input type="text" id="member_stat" name="memberId">
-							<input type="submit" value="검색"  >
+							<input  class = "d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit" value="검색"  >
 					</div>
 							</form>
 							
@@ -59,7 +59,7 @@ flex: right;
 				     <div  style=" margin-left: 10px">
 							<label for="member_stat">상품 통계 - </label>
 							<input type="text" id="product_stat" name="productName">
-							<input type="submit" value="검색"   >
+							<input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit" value="검색"   >
 							
 					</div>
 							</form>
@@ -67,8 +67,8 @@ flex: right;
 							<div  style=" margin-left: 10px">
 							<label for="member_stat">총액 통계 - </label>
 							<input type="text" id = "total_spending" readonly="readonly">
-							<input type="button" value="총액"  onclick="memberSpendingSum()" >
-							</div>
+							<input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="button" value="총액"  onclick="memberSpendingSum()" >
+					</div>
 				</p>
 
 				<!-- DataTales Example -->
@@ -98,7 +98,10 @@ flex: right;
 								<tbody class="tbody-test">
 								<c:set var="price_sum" value="0" />
 									<c:forEach items="${ list }" var="vo">
-									<tr>
+									<tr
+									onMouseover="this.style.backgroundColor='gainsboro';"
+												onMouseout="this.style.backgroundColor='white';"
+									>
 									<td> ${vo.salesId}	</td>
 									<td> ${vo.memberId}	</td>
 									<td> ${vo.productName}	</td>

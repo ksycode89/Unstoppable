@@ -12,6 +12,7 @@ public interface salesService {
 	 List<SalesVO> salesSelectList ();
 	List<SalesVO> salesSelect(SalesVO vo);
 	
+	
 	public List<SalesVO> ajaxMemberStat (SalesVO vo);
 	public List<SalesVO> ajaxProductStat (SalesVO vo);
 	
@@ -19,8 +20,8 @@ public interface salesService {
 	
 	int ajaxDelvCheck(SalesVO vo);
 	
-	
-	
+	int mainSpend();
+	int salesSum();
 	
 	
 

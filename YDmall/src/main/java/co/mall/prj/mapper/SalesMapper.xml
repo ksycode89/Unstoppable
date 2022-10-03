@@ -52,6 +52,18 @@
 </update>
 
 
+<select id="mainSpend"  resultType="int">
+select sum
+(sales_total_price) from sales
 
+
+</select>
+
+<select id="salesSum" resultType="int">
+		select count(board_id)
+from board
+where board_role = 'N'
+	
+</select>
 
 </mapper>
