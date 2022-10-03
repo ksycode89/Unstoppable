@@ -124,7 +124,7 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxMemberSpend.yd", new AjaxMemberSpend());
 		map.put("/delivery.yd", new Delivery());
 		map.put("/ajaxDelvCheck.yd", new AjaxDelvCheck());
-		
+		//map.put("/adminSelectToDay.yd", new AdminSelectToDay()); //당일 매출조회
 
 		
 		// member 명령집단 저장
@@ -178,7 +178,7 @@ public class FrontController extends HttpServlet {
 
 		System.out.println("page : " + page);
 
-		Command command = map.get(page);
+	Command command = map.get(page);
 
 		String viewPage = command.exec(request, response);
 
