@@ -77,6 +77,7 @@ import co.mall.prj.product.Command.ProductManageRegistForm;
 import co.mall.prj.product.Command.ProductManageRemove;
 import co.mall.prj.product.Command.ProductManageSelect;
 import co.mall.prj.sales.command.Order;
+import co.mall.prj.sales.command.Payment;
 
 /**
  * Servlet implementation class FrontController
@@ -94,12 +95,13 @@ public class FrontController extends HttpServlet {
 		map.put("/main.yd", new Main());
 		map.put("/shop.yd", new Shop());
 		map.put("/cart.yd", new Cart()); //장바구니
-		map.put("/cartInsert.yd", new CartInsert()); // 카트에 물품 담기
+		map.put("/cartInsert.yd", new CartInsert()); // 장바구니에 물품 담기
 		map.put("/cartListDelete.yd", new CartListDelete()); //장바구니 담긴 상품 행별 삭제
-		map.put("/clearCart.yd", new ClearCart());
-		map.put("/CartMemberPoint", new CartMemberPoint());
+		map.put("/clearCart.yd", new ClearCart()); //장바구니 전체 비우기
+		map.put("/CartMemberPoint", new CartMemberPoint()); //장바구니에서 멤버 포인트 사용
 		map.put("/cartMemberPointUpdate.yd", new CartMemberPointUpdate());
-		map.put("/checkout.yd", new Checkout());
+		map.put("/checkout.yd", new Checkout()); //미사용 페이지 payment.yd로 대체예정
+		map.put("/payment.yd", new Payment());
 		map.put("/productDetail.yd", new ProductDetail());
 		
 		map.put("/top.yd", new Top());

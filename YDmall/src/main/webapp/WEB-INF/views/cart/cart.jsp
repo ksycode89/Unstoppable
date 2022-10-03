@@ -227,7 +227,7 @@ input[type=number]::-webkit-inner-spin-button {
 								</span>
 							</li>
 						</ul>
-						<form action="checkout.yd" method="post" >
+						<form action="payment.yd" method="post" >
 							<input type="submit"class="btn karl-checkout-btn" value="상품 주문">
 							<input type="hidden" name="" id="">
 						</form>
