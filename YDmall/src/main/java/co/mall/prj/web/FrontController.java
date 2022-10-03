@@ -26,7 +26,8 @@ import co.mall.prj.board.command.BoardDelete;
 import co.mall.prj.board.command.BoardEdit;
 import co.mall.prj.board.command.BoardEditForm;
 import co.mall.prj.board.command.BoardInsert;
-import co.mall.prj.board.command.BoardReplyInsert;
+import co.mall.prj.board.command.ReplyDelete;
+import co.mall.prj.board.command.ReplyInsert;
 import co.mall.prj.board.notice.command.Notice;
 import co.mall.prj.board.notice.command.NoticeSelect;
 import co.mall.prj.board.notice.command.NoticeSelectList;
@@ -59,7 +60,6 @@ import co.mall.prj.member.command.MemberEditAction;
 import co.mall.prj.member.command.MemberInsert;
 import co.mall.prj.member.command.MemberLogin;
 import co.mall.prj.member.command.MemberLoginForm;
-import co.mall.prj.member.command.MemberLogout;
 import co.mall.prj.member.command.MemberMyPage;
 import co.mall.prj.member.command.MemberOrder;
 import co.mall.prj.member.command.MemberOrderHistory;
@@ -172,9 +172,9 @@ public class FrontController extends HttpServlet {
 		map.put("/boardEdit.yd", new BoardEdit());
 		map.put("/boardDelete.yd", new BoardDelete());
 
-		map.put("/boardReplyInsert.yd", new BoardReplyInsert());
-
-		map.put("/test.yd", new Test());
+		map.put("/boardReplyInsert.yd", new ReplyInsert());
+		map.put("/replyDelete.yd", new ReplyDelete());
+		
 
 	}
 

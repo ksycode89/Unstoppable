@@ -22,6 +22,7 @@ public interface BoardMapper {
 	int boardDelete(BoardVO vo);
 	
 	int replyInsert(BoardVO vo); // 덧글 등록
+	int replyDelete(BoardVO vo); // 덧글 삭제
 	
 	void boardIdMinus(BoardVO vo); // 글삭제 시, 다른 글 번호 감소
 	void boardHitUpdate(BoardVO vo); // 조회수 업데이트

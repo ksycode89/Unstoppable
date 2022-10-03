@@ -11,36 +11,37 @@
 <body>
 	<div align="center">
 
-		<div><h3>공지사항</h3></div>
+		<div><h3>NOTICE</h3></div>
+		<br>
 		<div>
 			<table border="1">
-				<tr>
+				<tr align="center">
 					<th width="100">작성자</th>
-					<td width="100" align="center">${vo.memberId }</td>
+					<td width="100" >${vo.memberId }</td>
 					<th width="100">작성일</th>
-					<td width="100" align="center">${vo.boardDate }</td>
+					<td width="100" >${vo.boardDate }</td>
 					<th width="100">조회수</th>
-					<td width="100" align="center">${vo.boardHit }</td>
+					<td width="100">${vo.boardHit }</td>
 				</tr>
 
 				<tr>
-					<th>제목</th>
-					<td colspan="6">${vo.boardTitle }</td>
+					<th style="text-align: center;">제목</th>
+					<td colspan="6">&nbsp;${vo.boardTitle }</td>
 				</tr>
 
 				<tr>
-					<th>내용</th>
+					<th style="text-align: center;">내용</th>
 		
 					<td colspan="6" height="150">
 					<c:if test="${not empty vo.boardAttach}"> <!-- 첨부파일이 있으면 보이도록 -->
 					<p><img src="./img/resources/${vo.boardAttach}"/></p>
 					</c:if>
-					${vo.boardContent }</td>
+					&nbsp;${vo.boardContent }</td>
 				</tr>
 				
 					<c:if test="${not empty vo.boardAttach}"> <!-- 첨부파일이 있으면 보이도록 -->
 				<tr>
-					<th>첨부파일</th>
+					<th style="text-align: center;">첨부파일</th>
 					<td colspan="6">${vo.boardAttach}</td>
 				</tr>
 				</c:if>
@@ -50,12 +51,13 @@
 
 		<div>
 				<c:if test="${not empty id && author eq '관리자' }">
-				<button type="button" onclick="subCall('E')">수정</button>&nbsp;&nbsp;
-				<button type="button" onclick="realDelete('D')">삭제</button>&nbsp;&nbsp;
+				<button type="button" onclick="subCall('E')">글 수정</button>&nbsp;&nbsp;
+				<button type="button" onclick="realDelete('D')">글 삭제</button>&nbsp;&nbsp;
 				</c:if>
-	
-			<button type="button" onclick="location.href='noticeSelectList.yd'">목록</button>
+			
+			<button type="button" onclick="location.href='noticeSelectList.yd'">뒤로 가기</button>
 		</div>
+<br>
 	</div>
 	<div>
 		<form id="frm" method="post">
