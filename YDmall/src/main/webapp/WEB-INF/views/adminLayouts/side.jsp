@@ -62,11 +62,6 @@ position: sticky;
                 
             </li>
 
-      
-
-
-
-
            
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -90,9 +85,15 @@ position: sticky;
                         <a class="collapse-item" href="delivery.yd">배송관리</a>
                      
                         <div class="collapse-divider"></div>
+
                         <h6 class="collapse-header"> 통계 그래프</h6>
                         <a class="collapse-item" href="adminChart.yd">매출 그래프(월)</a>
                         <a class="collapse-item" href="adminChart2.yd">매출 그래프(년)</a>
+
+                        <h6 class="collapse-header"> 매출 통계</h6>
+                        <a class="collapse-item" href="adminChart.yd">매출 그래프</a>
+                        <a class="collapse-item" href="adminSelectToDay.yd">당일 매출조회</a>
+
                     </div>
                 </div>
             </li>

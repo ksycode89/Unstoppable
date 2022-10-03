@@ -38,7 +38,7 @@ public class MemberLogin implements Command {
 			//실패(아이디인지 비번인지 알려주는 기능 추가하면 좋을듯)
 			request.setAttribute("message", "아이디 또는 패스워드가 틀렸습니다.");
 		}
-		return "member/memberMessage";
+		return "main/main";
 	}
 
 }

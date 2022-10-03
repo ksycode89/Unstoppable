@@ -17,7 +17,9 @@ public interface BoardService {
 	int boardInsert(BoardVO vo);
 	int boardUpdate(BoardVO vo);
 	int boardDelete(BoardVO vo);
+	
 	int replyInsert(BoardVO vo);
+	int replyDelete(BoardVO vo);
 	
 	void boardIdMinus(BoardVO vo); // 글삭제 시, 다른 글 번호 감소
 	void boardHitUpdate(BoardVO vo);

@@ -30,7 +30,6 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	
-	
 	@Override
 	public BoardVO boardSelect(BoardVO vo) {
 	//	BoardHitUpdate(vo.getBoardId()); // 조회수 증가 중복 방지
@@ -78,9 +77,14 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
+
 	public List<BoardVO> mainViews() {
 		
 		return map.mainViews();
+
+	public int replyDelete(BoardVO vo) {
+		return map.replyDelete(vo);
+
 	}
 
 

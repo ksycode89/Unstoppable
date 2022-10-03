@@ -11,7 +11,7 @@ import co.mall.prj.board.service.BoardServiceImpl;
 import co.mall.prj.board.service.BoardVO;
 import co.mall.prj.common.Command;
 
-public class BoardDelete implements Command {
+public class ReplyDelete implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
@@ -19,43 +19,41 @@ public class BoardDelete implements Command {
 
 		BoardService dao = new BoardServiceImpl();
 		BoardVO vo = new BoardVO();
-		List<BoardVO> list = new ArrayList<BoardVO>();
+		BoardVO re = new BoardVO();
+		List <BoardVO> replyList = new  ArrayList<BoardVO>();
 
 		vo.setBoardId(Integer.valueOf(request.getParameter("bId")));
 		vo.setBoardRole(request.getParameter("role"));
+		
+		vo = dao.boardSelect(vo); // 게시글 불러오기
+		
+		re.setBoardReplyTo(Integer.valueOf(request.getParameter("bId")));
+		re.setBoardRole(request.getParameter("role"));
+		re.setMemberId((request.getParameter("rmId")));
+		re.setBoardDate(request.getParameter("date"));
 
-		if (vo.getBoardRole().equals("N")) {
-			list = dao.noticeSelectList();
-		} else if (vo.getBoardRole().equals("R")) {
-			list = dao.reviewSelectList();
-		} else if (vo.getBoardRole().equals("Q")) {
-			list = dao.qnaSelectList();
-		}
+		
+		int n = dao.replyDelete(re); //삭제 실행.
 
-		int n = dao.boardDelete(vo);
+		replyList = dao.replySelectList(re);
 
 		String viewPage = "board/boardError";
 
 		if (n != 0) {
+		
+			request.setAttribute("vo", vo);
+			request.setAttribute("replyList",replyList);
 			
-			dao.boardIdMinus(vo);
-			
-			if (vo.getBoardRole().equals("N")) {
-				viewPage = "noticeSelectList.yd";
-			} else if (vo.getBoardRole().equals("R")) {
-				viewPage = "reviewSelectList.yd";
+			if (vo.getBoardRole().equals("R")) {
+				viewPage = "board/reviewSelect";
 			} else if (vo.getBoardRole().equals("Q")) {
-				viewPage = "qnaSelectList.yd";
+				viewPage = "board/qnaSelect";
 			}
 			
 		} else {
 			request.setAttribute("message", "삭제 실패!");
 		}
 		return viewPage;
-	}
-	
-	public int a() {
-		return 1;
 	}
 
 }
