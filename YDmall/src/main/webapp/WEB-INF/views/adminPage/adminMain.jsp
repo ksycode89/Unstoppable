@@ -28,9 +28,9 @@
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">관리 요약</h1>
-						<a href="#"
+						<a href="adminNoticeWriteForm.yd"
 							class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-							class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+							class="fas fa-download fa-sm text-white-50"></i> 공지 사항 등록</a>
 					</div>
 
 					<!-- Content Row -->
@@ -378,7 +378,7 @@
 				</div>
 				<!-- /.container-fluid -->
 
-	
+	</div>
 		<!-- End of Content Wrapper -->
 
 

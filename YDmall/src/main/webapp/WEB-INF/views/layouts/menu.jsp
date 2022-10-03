@@ -36,6 +36,13 @@
 	float: right;
 	margin-left: 30px;
 }
+
+#nav li a:hover{
+
+font-size: 1.5em;
+
+}
+
 </style>
 </head>
 <body>
@@ -66,8 +73,8 @@
 
 							<div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
 								<ul class="navbar-nav animated" id="nav">
-                                            <li class="nav-item active"><a class="nav-link" href="best.yd">BEST</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="sale.yd">SALE</a></li>
+                                            <li class="nav-item active"><a class=" nav-link " href="best.yd" >BEST</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="notice.yd">SALE</a></li>
                                             <li class="nav-item"><a class="nav-link" href="top.yd"><span class="karl-level">hot</span> TOP</a></li>
                                             <li class="nav-item"><a class="nav-link" href="bottom.yd">BOTTOM</a></li>
                                             <li class="nav-item"><a class="nav-link" href="outer.yd">OUTER</a></li>
@@ -80,7 +87,6 @@
 												<a class="dropdown-item" href="noticeSelectList.yd">notice</a>
 												<a class="dropdown-item" href="reviewSelectList.yd">review</a>
 												<a class="dropdown-item" href="qnaSelectList.yd">q & a</a>
-												<a class="dropdown-item" href="test.yd">test</a>
 
 											</div></li>
 											<c:if test="${ not empty id }">
@@ -115,37 +121,11 @@
 								<a href="#">${id}등장</a>
 								<a href="logout.yd">Logout</a>
 							</c:if>
-<a href="admin.yd">Admin</a>
+
+		<a href="admin.yd">Admin</a>
 							<c:if test="${author eq '관리자'}">
 							</c:if>
-
-<a href="cart.yd">cart Page</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- ****** Header Area End ****** -->
-
-         <section class="top-discount-area d-md-flex align-items-center">
-            <!— Single Discount Area —>
-            <div class="single-discount-area">
-               <div class="sub_line"></div>
-            </div>
-            <!— Single Discount Area —>
-            <div class="single-discount-area">
-             <div class="sub_line"></div>
-            </div>
-            <!— Single Discount Area —>
-            <div class="single-discount-area">
-                <div class="sub_line"></div>
-            </div>
-        </section>
-
-        <!— ****** Welcome Slides Area Start ****** —>
-       
-
+<a href="cart.yd">임시 카트</a>
 
 					</div>
 				</div>
