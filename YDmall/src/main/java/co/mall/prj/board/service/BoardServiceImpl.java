@@ -81,7 +81,7 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> mainViews() {
 		
 		return map.mainViews();
-
+	}
 	public int replyDelete(BoardVO vo) {
 		return map.replyDelete(vo);
 
