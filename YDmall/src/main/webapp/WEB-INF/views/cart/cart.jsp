@@ -11,19 +11,27 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .deleteButton {
-    width: 80px;
-    height: 60px;
+    width: 60px;
+    height: 30px;
     background-color: #ff084e;
     border-radius: 10%;
     color: #fff;
     text-align:center;
-    text-transform: uppercase;
     font-weight: 700;
-    line-height: 60px;
-    padding: 0;
     border:0;
     outline:0;
-    
+	margin-left: 20px;    
+}
+.deleteAllBtn{
+	width:80px;
+	height:23px;
+	background-color: #ff084e;
+    border-radius: 10%;
+    color: #fff;
+    text-align:center;
+    font-weight: 700;
+    border:0;
+    outline:0;
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -45,13 +53,13 @@ input[type=number]::-webkit-inner-spin-button {
 									<th style='width:250px'>&nbsp;&nbsp;&nbsp;&nbsp;가격</th>
 									<th style='width:200px'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;개수</th>
 									<th style='width:200px'>총 금액</th>
-<!-- 전체 선택 체크 박스		 -->
+<!-- 전체 선택 체크 박스 -->
 									<th style='width:20px'>
 										<input type="checkbox" id="checkAll" class="cartCheckbox" onclick="checkAllBtn(this)">
 									</th>
 <!--상품 전체 삭제 -->
 									<th>
-										<a type="button" href="clearCart.yd" style='width:100px;' class="update-checkout w-100">전체삭제</a>
+										<a type="button" href="clearCart.yd" style='width:100px;' class="deleteAllBtn">전체삭제</a>
 									</th>
 								</tr>
 							</thead>
@@ -65,31 +73,34 @@ input[type=number]::-webkit-inner-spin-button {
 									
                         		<c:forEach items="${list}" var="ca">
                            				<tr>
-<!-- 상품 이미지                           			 -->
+<!-- 상품 이미지 -->
+<!-- 장바구니에서 상품 이미지와 이름 td를 클릭 시 해당 상품 페이지로 이동-->
                             				<td class="cart_product_img d-flex align-items-center">
-                                				<a href="#">
-                                					<img src="img/product-img/product-9.jpg" alt="IMAGE">
-<%--이미지 경로                       				<img src="img/product-img/${ca.productName }-1.jpg" alt="IMAGE"> --%>
+                                				<a href="javascript:selectProduct('${ca.productName }');">
+<%--이미지 경로 불러올 루트, 밑줄은 하드코딩된 이미지 지워야함			<img src="img/product-img/${ca.productName }-1.jpg" alt="IMAGE"> --%>
+                                					<img src="img/product-img/product-9.jpg" alt="IMAGE" >
                                 				</a>
-<!-- 상품명                                			 -->
-	                                 			<h6>${ca.productName}</h6>
+<!-- 상품명 출력 -->
+	                                 			<h6><a href="javascript:selectProduct('${ca.productName }');">${ca.productName}</a></h6>
                              				</td>
-<!-- 상품 가격                             			 -->
+<!-- 상품 가격 출력 및 콤마와 쉼표처리-->
                               				<td class="price">
 	                                			<fmt:formatNumber value="${ca.productPrice}" pattern="#,###" />원
                             				</td>
+<!-- 상품 수 줄이기, 금액계산도 포함 -->
                            					<td class="qty">
                                 				<div class="quantity">
                                 			   		<span class="qty-minus" onclick="callNumberMin(this)">
 														<i class="fa fa-minus" aria-hidden="true"></i>
                                 			   		</span>
-<!-- 상품 수량 설정                                			   	 -->
+<!-- 상품 수 늘리기, 금액계산 포함 -->
                                  			   		<input type="number" class="qty-text" step="1" min="1" max="999" name="quantity" value=${ca.cartQuantity }>
 													<span class="qty-plus" onclick="callNumberAdd(this)">
 	                                       				<i class="fa fa-plus" aria-hidden="true"></i>
                                     				</span>
 	                                 			</div>
                              				</td>
+<!-- 총 가격 표기 -->
 	                           				<td class="total_price">
                                					<fmt:formatNumber value="${ca.productPrice * ca.cartQuantity}" pattern="#,###" />원
 	                             			</td>
@@ -110,7 +121,7 @@ input[type=number]::-webkit-inner-spin-button {
 							</tbody>
 						</table>
 					</div>
-
+<!-- 메인 페이지로 돌아가는 버튼 -->
 					<div class="cart-footer d-flex mt-30">
 						<div class="back-to-shop w-50">
 							<a href="main.yd">쇼핑 계속하기</a>
@@ -123,56 +134,60 @@ input[type=number]::-webkit-inner-spin-button {
 					</div>
 				</div>
 			</div>
-				<div class="cart-page-heading" style="margin-top:20px;">
-                                <h5>주문 정보 입력</h5>
+<!-- 주문 정보 입력 탭-->
+			<div class="cart-page-heading" style="margin-top:20px;">
+            	<h5>주문 정보 입력</h5>
+                	</div>
+                    	<div class="row">
+                        	<div class="col-md-6 mb-3">
+                            	<label for="memberName">이름<span>*</span></label>
+                                <input type="text" class="form-control" id="memberName" name="memberName" value="" required>
                             </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="first_name">이름<span>*</span></label>
-                                        <input type="text" class="form-control" id="memberName" name="memberName" value="" required>
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                        <label for="state">연락처<span>*</span></label>
-                                        <input type="text" class="form-control" id="state" value="">
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                        <label for="street_address">배송 주소 입력<span>*</span></label>
-                                        <input type="text" class="form-control mb-3" id="street_address" value="">
-                                        <input type="text" class="form-control" id="street_address2" value="">
-                                    </div>
-                                    <div class="col-12 mb-4">
-                                        <label for="email_address">이메일 주소 입력(선택)<span>*</span></label>
-                                        <input type="email" class="form-control" id="email_address" value="">
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                        <label for="offer">배송시 요청 사항<span></span></label>
-                                        <select class="custom-select d-block w-100" id="offer">
-                                        <option value="choice">선택</option>
-                                        <option value="aus">요청 사항 없음</option>
-                                        <option value="uk">배송 전 연락 바랍니다.</option>
-                                        <option value="ger">부재 시 경비실에 맡겨 주세요.</option>
-                                        <option value="fra">본인 수령 원합니다.</option>
-                                    </select>
-                                    </div>
+                            <div class="col-12 mb-3">
+                            	<label for="state">연락처<span>*</span></label>
+                                <input type="tell" class="form-control" id="tell" name="tell" placeholder="ex)010-1234-5678">
+                            </div>
+                            <div class="col-12 mb-3">
+                            	<label for="street_address">배송 주소 입력<span>*</span></label>
+                            	<input type="text" class="form-control mb-3" id="street_address" placeholder="ex)대구 중구 중앙대로 403">
+                            	<input type="text" class="form-control" id="street_address2" placeholder="ex)5층">
+                            </div>
+                            <div class="col-12 mb-4">
+                            	<label for="email_address">이메일 주소 입력(선택)<span>*</span></label>
+                            	<input type="email" class="form-control" id="email_address" placeholder="abcd@naver.com">
+                            </div>
+                            <div class="col-12 mb-3">
+                            	<label for="offer">배송시 요청 사항
+                            		<span></span>
+                            	</label>
+                                <select class="custom-select d-block w-100" id="offer">
+                                	<option value="choice">선택</option>
+                                	<option value="choice1">요청 사항 없음</option>
+                                	<option value="choice2">배송 전 연락 바랍니다.</option>
+                                    <option value="choice2">부재 시 경비실에 맡겨 주세요.</option>
+                                    <option value="choice4">본인 수령 원합니다.</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="row" style="margin-top:100px;">
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="coupon-code-area mt-70">
-						<div class="cart-page-heading">
-							<h5>포인트</h5>
+                <div class="row" style="margin-top:100px;">
+					<div class="col-12 col-md-6 col-lg-4">
+						<div class="coupon-code-area mt-70">
+							<div class="cart-page-heading">
+<!-- 결제 전 사용 가능 포인트 표기 및 사용 -->
+								<h5>포인트</h5>
 								<p>사용 가능 포인트 : 
 									<span class="userPoint">
 										<fmt:formatNumber value="${point}" pattern="#,###" />
 									</span>
 								</p>
+							</div>
+							<form action="#">
+								<input type="search" id="search" name="search" placeholder="1,000점 부터 사용 가능"> 
+								<button type="button" onclick="caculatePoint()">확인</button>
+							</form>
 						</div>
-						<form action="#">
-							<input type="search" id="search" name="search" placeholder="1,000점 부터 사용 가능"> 
-							<button type="button" onclick="caculatePoint()">확인</button>
-						</form>
 					</div>
-				</div>
-<!-- 배송 -->
+<!-- 배송탭 -->
 				<div class="col-12 col-md-6 col-lg-4">
 					<div class="shipping-method-area mt-70">
 						<div class="cart-page-heading">
@@ -187,8 +202,7 @@ input[type=number]::-webkit-inner-spin-button {
 						</div>
 					</div>
 				</div>
-				
-<!-- 구매 상품 최종 계산 탭 -->
+<!-- 구매 상품 최종 계산 -->
 				<div class="col-12 col-lg-4" >
 					<div class="cart-total-area mt-70">
 						<div class="cart-page-heading">
@@ -222,11 +236,12 @@ input[type=number]::-webkit-inner-spin-button {
 			</div>
                     </div>
 		</div>
+		<div>
+        	<form id="frm2" action=productDetail.yd method="post">
+            	<input type="hidden" id="pName" name="pName">
+        	</form>
+      	</div>
 	<!-- ****** Cart Area End ****** -->
-
-
-
-	<!-- /.wrapper end -->
 	<script type="text/javascript">
 //1.원화 콤마 표시
 		function number_format(num){
@@ -395,6 +410,11 @@ input[type=number]::-webkit-inner-spin-button {
  			}
  		}
 	};
+//11.그림, 이미지 눌렀을 때 상품 페이지로 이동
+	function selectProduct(name) {
+	      document.getElementById("pName").value = name;
+	      frm2.submit();
+	   }
 	</script>
 </body>
 </html>
