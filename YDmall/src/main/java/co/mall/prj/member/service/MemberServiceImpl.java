@@ -53,4 +53,10 @@ public class MemberServiceImpl implements MemberService {
 		return map.isMemberId(id);
 	}
 
+	@Override
+	public List<MemberVO> memberSelectArr(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return map.memberSelectArr(vo);
+	}
+
 }

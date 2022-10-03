@@ -13,6 +13,8 @@ public interface BoardMapper {
 	List<BoardVO> reviewSelectList();
 	List<BoardVO> qnaSelectList();
 	List<BoardVO> replySelectList(BoardVO re);
+	List<BoardVO> mainViews(); //main  viewer
+	
 	
 	BoardVO boardSelect(BoardVO vo);
 	BoardVO replySelect(BoardVO re);

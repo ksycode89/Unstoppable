@@ -28,11 +28,11 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 
 // Area Chart Example
-var ctx = document.getElementById("myAreaChart");
+var ctx = document.getElementById("myAreaChart2");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["1일~5일", "6일~10일", "11일~15일", "16일~20일", "21일~25일", "26일~30일/31일"],
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     datasets: [{
       label: "Earnings",
       lineTension: 0.3,
@@ -46,7 +46,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [12000,32000,130000,80000,150000,110000],
+      data: [0, 0, 0, 0, 120000, 320000, 220000, 190000, 410000, 46000, 0, 0],
     }],
   },
   options: {

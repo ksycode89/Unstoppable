@@ -16,4 +16,6 @@ public interface SalesMapper {
 	int AjaxMemberSpend(SalesVO vo);//구매금액 도출 맴버
 	
 	int ajaxDelvCheck(SalesVO vo);//배송수정
+	int mainSpend();
+	int salesSum();
 }

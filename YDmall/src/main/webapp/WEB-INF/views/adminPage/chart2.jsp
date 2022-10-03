@@ -19,9 +19,9 @@
 	<div class="container-fluid" style="margin-bottom: 150px">
 
 		<!-- Page Heading -->
-		<h1 class="h3 mb-2 text-gray-800">통계 차트(월)</h1>
+		<h1 class="h3 mb-2 text-gray-800">통계 차트(년)</h1>
 		<p class="mb-4">
-			얼마나팔았나요 <a target="_blank"
+			얼마나팔았나요 <a 
 				href="monthStatistics.yd">판매내역 (새창)</a>
 			<!-- Content Row -->
 		<div class="row">
@@ -35,10 +35,10 @@
 					</div>
 					<div class="card-body">
 						<div class="chart-area">
-							<canvas id="myAreaChart"></canvas>
+							<canvas id="myAreaChart2"></canvas>
 						</div>
 						<hr>
-						여긴 월 매출 입니다.
+						여긴 년 매출 입니다.
 						
 					</div>
 				</div>
@@ -56,15 +56,15 @@
 					<!-- Card Body -->
 					<div class="card-body">
 						<div class="chart-pie pt-4">
-							<canvas id="myPieChart"></canvas>
+							<canvas id="myPieChart2"></canvas>
 						</div>
 						<hr>
-					여긴 상품별 판매 퍼센테이지
+					년 간 판매상품 퍼센트
 					</div>
 				</div>
 			</div>
 		</div>
-	<button onclick="checkbtn()">aa</button>
+	
 	</div>
 	<!-- /.container-fluid -->
 	<script type="text/javascript">
