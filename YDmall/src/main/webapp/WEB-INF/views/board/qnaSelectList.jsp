@@ -90,7 +90,7 @@
 				<!-- DataTales Example -->
 				<div class="card shadow mb-4">
 					<div class="card-header py-3">
-						<h6 class="m-0 font-weight-bold text-primary">질문을 남겨보세요<br>본인 글만 조회가능합니다</h6>
+						<h6 class="m-0 font-weight-bold text-primary">질문을 남겨주시면 빠른 시일 내에 답변드리겠습니다.<br>(본인 글만 조회가능합니다.)</h6>
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
