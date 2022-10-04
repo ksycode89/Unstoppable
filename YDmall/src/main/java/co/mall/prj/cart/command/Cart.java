@@ -21,7 +21,6 @@ public class Cart implements Command {
 		List<CartVO> list = new ArrayList<>();
 	HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
-//		System.out.println("456456456"+session.getAttribute("id"));
 		
 		vo.setMemberId(id);
 		list = dao.cartSelect(vo);
