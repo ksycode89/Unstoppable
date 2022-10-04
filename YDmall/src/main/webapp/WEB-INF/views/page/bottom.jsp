@@ -72,7 +72,7 @@
 					<div class="shop_grid_product_area">
 						<div class="row">
 							<!-- Single gallery Item -->
-							<c:forEach items="${list }" var="p">
+							<c:forEach items="${plist }" var="p">
 								<c:if test="${p.productDefault eq '1' && p.productMajor eq 'BOTTOM'}">
 									<div
 										class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig"

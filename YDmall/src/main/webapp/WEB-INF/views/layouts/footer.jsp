@@ -55,7 +55,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                            		</c:if>
                
                             	
-                                <li><a href="cart.yd">Cart</a></li>
+                                <li><a href="qnaSelectList.yd">Q&A</a></li>
                                 <li><a href="noticeSelectList.yd">Notice</a></li>
                                 <li><a href="reviewSelectList.yd">Review</a></li>
                             </ul>

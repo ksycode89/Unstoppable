@@ -9,6 +9,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+#productId{
+	display: none;
+}
+</style>
 <body>
 	<!-- <<<<<<<<<<<<<<<<<<<< Breadcumb Area Start <<<<<<<<<<<<<<<<<<<< -->
 	<div class="breadcumb_area">
@@ -95,22 +100,21 @@
 								</c:otherwise>
 							</c:choose>
 						</p>
-
+						<form id="frm" action="cartInsert.yd" method="post">
 						<div class="widget size mb-50">
 							<h6 class="widget-title">Size</h6>
 							<div class="widget-desc">
 								<ul>
 									<c:choose>
 										<c:when test="${detail.productSize eq 'F'}">
-											<li>
-												<a href="#">F
-												</a>
-											</li>
+											<li><a href="javascript:;"><label>F<input type="hidden" id="productId" name="productId" value="${detail.productId }">
+											<input type="hidden" id="productSize" name="productSize" value="F"></label></a></li>
 										</c:when>
 										<c:otherwise>
-											<li id="sizeS" value="${detail.productId }"><a href="#">S</a></li>
-											<li id="sizeM" value="${detail.productId +1}"><a href="#">M</a></li>
-											<li id="sizeL" value="${detail.productId +2}"><a href="#">L</a></li>
+											<input type="hidden" id="productSize" name="productSize" value="">
+											<li><a href="javascript:;"><label>S<input type="radio" id="productId" name="productId" value="${detail.productId }" onclick="productSize.value='S'"></label></a></li>
+											<li><a href="javascript:;"><label>M<input type="radio" id="productId" name="productId" value="${detail.productId+1 }" onclick="productSize.value='M'"></label></a></li>
+											<li><a href="javascript:;"><label>L<input type="radio" id="productId" name="productId" value="${detail.productId+2 }" onclick="productSize.value='L'"></label></a></li>
 										</c:otherwise>
 									</c:choose>
 															
@@ -119,12 +123,12 @@
 						</div>
 
 						<!-- Add to Cart Form -->
-						<form class="cart clearfix mb-50 d-flex" id="frm" action="cartInsert.yd" method="post">
+						<c:if test="${detail.productQuantity > 0 }">
+						<div class="cart clearfix mb-50 d-flex" >
 							<input type="hidden" id="productName" name="productName" value="${detail.productName }">
 							<input type="hidden" id="productPrice" name="productPrice" value="${detail.productPrice }">
-							<input type="hidden" id="productAttach" name="productAttach" value="${detail.productAttach }">
-							<input type="hidden" id="productId" name="productId" value="${detail.productId }">
-						
+							
+							
 							<div class="quantity">
 								<span 
 									class="qty-plus"
@@ -138,7 +142,11 @@
 									<i class="fa fa-minus" aria-hidden="true"></i>
 								</span>
 							</div>
+							
 							<button type="submit" id="addToCart" name="addToCart" class="btn cart-submit d-block">Add to cart</button>
+							
+						</div>
+						</c:if>
 						</form>
 
 						<div id="accordion" role="tablist">
@@ -183,21 +191,53 @@
 			</div>
 		</div>
 	</section>
-	<form id="frm" action="cartInsert.yd" post="method">
-		
-	</form>
+	
+	<section class="you_may_like_area clearfix">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="section_heading text-center">
+						<h2>다른 상품은 어떠신가요?</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<div class="you_make_like_slider owl-carousel">
+
+						<!-- Single gallery Item -->
+						<c:forEach items="${relist }" var="re">
+							<div class="single_gallery_item">
+							<!-- Product Image -->
+							<div class="product-img">
+								<img src="img/product-img/${re.productName }-1.jpg" alt="">
+								<div class="product-quicview">
+									<a href="javascript:selectProduct('${re.productName }');"><i class="ti-plus"></i></a>
+								</div>
+							</div>
+							<!-- Product Description -->
+							<div class="product-description">
+								<h4 class="product-price">￦<fmt:formatNumber value="${re.productPrice }" pattern="#,###" /></h4>
+								<p>${re.productName }</p>
+								<!-- Add to Cart -->
+							</div>
+						</div>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div>
+		<form id="frm2" action=productDetail.yd method="post">
+			<input type="hidden" id="pName" name="pName">
+		</form>
+	</div>
 	<!-- <<<<<<<<<<<<<<<<<<<< Single Product Details Area End >>>>>>>>>>>>>>>>>>>>>>>>> -->
 <script>
-	function selectSize(size){
-		let proId = 0;
-		if(size=='S'){
-			proId = ${detail.productId}
-		} else if(size=='M'){
-			proId = ${detail.productId+1}
-		} else if(size=='L'){
-			proId = ${detail.productId+2}
-		}
-		return proId;
+	function selectProduct(name) {
+		document.getElementById("pName").value = name;
+		frm2.submit();
 	}
 </script>
 </body>

@@ -16,18 +16,16 @@ public class Cart implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse reponse) {
+		HttpSession session = request.getSession();
+		String mId = (String) session.getAttribute("id");
 		CartService dao = new CartServiceImpl();
 		CartVO vo = new CartVO();
-		List<CartVO> list = new ArrayList<>();
-	HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("id");
-//		System.out.println("456456456"+session.getAttribute("id"));
+		List<CartVO> clist = new ArrayList<>();
 		
-		vo.setMemberId(id);
-		list = dao.cartSelect(vo);
+		vo.setMemberId(mId);
+		clist = dao.cartSelect(vo);
+		request.setAttribute("clist", clist);
 		
-		request.setAttribute("list", list);
-
 		return "cart/cart";
 	}
 

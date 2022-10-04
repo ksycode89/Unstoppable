@@ -22,6 +22,12 @@ public class ProductServiceImpl implements ProductService {
 		// 상품 대분류 리스트
 		return map.productMajorList(vo);
 	}
+	
+	@Override
+	public List<ProductVO> productRecommend(ProductVO vo) {
+		// 상품 추천 목록
+		return map.productRecommend(vo);
+	}
 
 	@Override
 	public ProductVO productSelect(ProductVO vo) {

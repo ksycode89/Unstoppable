@@ -64,42 +64,33 @@ input[type=number]::-webkit-inner-spin-button {
 								</tr>
 							</thead>
 							<tbody id="asdf">
-								<c:if test="${empty list}">
+								<c:if test="${empty clist }">
 									<tr>
-										<td style='text-align:center' colspan=6><h4>장바구니가 비어있습니다.</h4></td>
+										<td style='text-align:center' colspan=6><h3>카트에 상품이 없어요!</h3></td>
 									</tr>
 								</c:if>
-								<c:if test="${not empty list}">
-									
-                        		<c:forEach items="${list}" var="ca">
-                           				<tr>
-<!-- 상품 이미지 -->
-<!-- 장바구니에서 상품 이미지와 이름 td를 클릭 시 해당 상품 페이지로 이동-->
-                            				<td class="cart_product_img d-flex align-items-center">
-                                				<a href="javascript:selectProduct('${ca.productName }');">
-<%--이미지 경로 불러올 루트, 밑줄은 하드코딩된 이미지 지워야함			<img src="img/product-img/${ca.productName }-1.jpg" alt="IMAGE"> --%>
-                                					<img src="img/product-img/product-9.jpg" alt="IMAGE" >
-                                				</a>
-<!-- 상품명 출력 -->
-	                                 			<h6><a href="javascript:selectProduct('${ca.productName }');">${ca.productName}</a></h6>
-                             				</td>
-<!-- 상품 가격 출력 및 콤마와 쉼표처리-->
-                              				<td class="price">
-	                                			<fmt:formatNumber value="${ca.productPrice}" pattern="#,###" />원
-                            				</td>
-<!-- 상품 수 줄이기, 금액계산도 포함 -->
-                           					<td class="qty">
-                                				<div class="quantity">
-                                			   		<span class="qty-minus" onclick="callNumberMin(this)">
-														<i class="fa fa-minus" aria-hidden="true"></i>
-                                			   		</span>
-<!-- 상품 수 늘리기, 금액계산 포함 -->
-                                 			   		<input type="number" class="qty-text" step="1" min="1" max="999" name="quantity" value=${ca.cartQuantity }>
-													<span class="qty-plus" onclick="callNumberAdd(this)">
-	                                       				<i class="fa fa-plus" aria-hidden="true"></i>
-                                    				</span>
-	                                 			</div>
-                             				</td>
+								<c:if test="${not empty clist }">
+									<c:forEach items="${clist }" var="ca">
+									<tr>
+										<td class="cart_product_img d-flex align-items-center">
+											<a href="javascript:selectProduct('${ca.productName }');"><img src="img/product-img/${ca.productName }-1.jpg" alt="IMAGE"></a>
+											<h6><a href="javascript:selectProduct('${ca.productName }');">${ca.productName}${ca.productSize }</a></h6>
+										</td>
+										<td class="price">
+										<%-- <c:out value="${ca.productPrice}"/>원 --%>
+											<fmt:formatNumber value="${ca.productPrice}" pattern="#,###" />원
+										</td>
+										<td class="qty">
+											<div class="quantity">
+												<span class="qty-minus" onclick="callNumberMin(this)">
+													<i class="fa fa-minus" aria-hidden="true"></i>
+												</span>
+												<input type="number" class="qty-text" step="1" min="1" max="999" name="quantity" value=${ca.cartQuantity }>
+												<span class="qty-plus" onclick="callNumberAdd(this)">
+													<i class="fa fa-plus" aria-hidden="true"></i>
+												</span>
+											</div>
+										</td>
 <!-- 총 가격 표기 -->
 	                           				<td class="total_price">
                                					<fmt:formatNumber value="${ca.productPrice * ca.cartQuantity}" pattern="#,###" />원

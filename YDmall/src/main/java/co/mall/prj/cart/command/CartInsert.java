@@ -8,6 +8,7 @@ import co.mall.prj.cart.service.CartService;
 import co.mall.prj.cart.service.CartServiceImpl;
 import co.mall.prj.cart.service.CartVO;
 import co.mall.prj.common.Command;
+import co.mall.prj.member.service.MemberService;
 
 public class CartInsert implements Command {
 
@@ -22,7 +23,7 @@ public class CartInsert implements Command {
 		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
 		vo.setProductName(request.getParameter("productName"));
 		vo.setProductPrice(Integer.valueOf(request.getParameter("productPrice")));
-		vo.setProductAttach(request.getParameter("productAttach"));
+		vo.setProductSize(request.getParameter("productSize"));
 		vo.setCartQuantity(Integer.valueOf(request.getParameter("cartQuantity")));
 		
 		String viewPage = "";
@@ -31,7 +32,7 @@ public class CartInsert implements Command {
 		if(no!=0) {
 			viewPage = "cart.yd";
 		}
-
+		
 		return viewPage;
 	}
 

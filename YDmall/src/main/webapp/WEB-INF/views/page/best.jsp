@@ -77,7 +77,7 @@ del{
 					<div class="shop_grid_product_area">
 						<div class="row">
 							<!-- Single gallery Item -->
-							<c:forEach items="${list }" var="p">
+							<c:forEach items="${plist }" var="p">
 								<c:if test="${p.productDefault eq '1' && p.productEvent eq 'BEST'}">
 									<div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.2s">
 										<!-- Product Image -->
