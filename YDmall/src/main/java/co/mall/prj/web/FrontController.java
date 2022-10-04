@@ -25,8 +25,10 @@ import co.mall.prj.admin.command.Delivery;
 import co.mall.prj.admin.command.DeliverySelect;
 import co.mall.prj.admin.command.MemberManageRemove;
 import co.mall.prj.admin.command.MemberStat;
+import co.mall.prj.admin.command.MemberStat2;
 import co.mall.prj.admin.command.MonthStatistics;
 import co.mall.prj.admin.command.ProductStat;
+import co.mall.prj.admin.command.ProductStat2;
 import co.mall.prj.admin.command.memberManageSelect;
 import co.mall.prj.board.command.BoardDelete;
 import co.mall.prj.board.command.BoardEdit;
@@ -149,6 +151,8 @@ public class FrontController extends HttpServlet {
 		map.put("/productStat.yd", new ProductStat());
 		map.put("/adminMemberSearch.yd", new AdminMemberSearch());
 		map.put("/deliverySelect.yd", new DeliverySelect());
+		map.put("/memberStat2.yd", new MemberStat2());
+		map.put("/productStat2.yd", new ProductStat2());
 
 		map.put("/adminSelectToDay.yd", new AdminSelectToDay()); // 당일 매출조회
 
