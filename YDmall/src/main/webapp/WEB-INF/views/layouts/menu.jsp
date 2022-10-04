@@ -8,6 +8,80 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+.button {
+
+	display: inline-block;
+	zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+	*display: inline;
+	vertical-align: baseline;
+	margin: 0 2px;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em;
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	
+}
+.button:hover {
+	text-decoration: none;
+}
+.button:active {
+	position: relative;
+	top: 1px;
+}
+
+.bigrounded {
+	-webkit-border-radius: 2em;
+	-moz-border-radius: 2em;
+	border-radius: 2em;
+	font-weight:bold;
+}
+.medium {
+	font-size: 13px;
+	font-weight:bold;
+	padding: .4em 1.2em .42em;
+}
+.small {
+	font-size: 11px;
+	padding: .275em .2em .275em;
+	margin-right: -15px;
+	margin-bottom: 4px;
+	font-weight: bold;
+}
+
+/* color styles
+---------------------------------------------- */
+
+/* black */
+.black {
+	color: #d7d7d7;
+	border: solid 1px #333;
+	background: #333;
+	background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#000));
+	background: -moz-linear-gradient(top,  #666,  #000);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#666666', endColorstr='#000000');
+}
+.black:hover {
+	background: #b61318;
+	background: -webkit-gradient(linear, left top, left bottom, from(#c9151b), to(#a11115));
+	background: -moz-linear-gradient(top,  #c9151b,  #a11115);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', endColorstr='#a11115');
+}
+.black:active {
+	color: #de898c;
+	background: -webkit-gradient(linear, left top, left bottom, from(#aa1317), to(#ed1c24));
+	background: -moz-linear-gradient(top,  #aa1317,  #ed1c24);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#aa1317', endColorstr='#ed1c24');
+}
+
 .cont{
     max-width: 2000px;
 	width: 100%;
@@ -114,16 +188,14 @@ font-size: 1.5em;
 				<div class="col-xs-2" id="headerMypage">
 					  <div class="help-line">
 				<c:if test="${ empty id }">
-								<a href="login.yd">Login</a>
-								<a href="signUp.yd">회원가입</a>
-
+								<button class="button black" style="font-weight:bold; margin-top: 10px;" onclick="location.href='login.yd'" >LOGIN</button>
+								<button class="button black" style="font-weight:bold;" onclick="location.href='signUp.yd'" >SIGN UP</button>
 							</c:if>
 							<c:if test="${not empty id }">
-								<a href="#">${id}등장</a>
-								<a href="logout.yd">Logout</a>
+							<button class="button black" style="font-weight:bold; margin-top: 10px;" onclick="location.href='logout.yd'">LOGOUT</button>
 							</c:if>
 
-		<a href="admin.yd">Admin</a>
+	<button class="button black" style="font-weight:bold;" onclick="location.href='admin.yd'">ADMIN</button>
 							<c:if test="${author eq '관리자'}">
 							</c:if>
 
