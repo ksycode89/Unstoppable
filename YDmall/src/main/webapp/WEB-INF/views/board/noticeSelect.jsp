@@ -165,7 +165,7 @@ h4 {
 		
 					<td colspan="6" height="150">
 					<c:if test="${not empty vo.boardAttach}"> <!-- 첨부파일이 있으면 보이도록 -->
-					<p>&nbsp;<img src="./img/resources/${vo.boardAttach}"/></p>
+					<p>&nbsp;<img src="img/product-img/${vo.boardAttach}"/></p>
 					</c:if>
 					&nbsp;${vo.boardContent }</td>
 				</tr>
@@ -192,7 +192,7 @@ h4 {
 	</div>
 	<div>
 		<form id="frm" method="post">
-			<input type="hidden" id="id" name="id" value="${vo.boardId }">
+			<input type="hidden" id="bId" name="bId" value="${vo.boardId }">
 			<input type="hidden" id="role" name="role" value="${vo.boardRole}">
 		</form>
 	</div>

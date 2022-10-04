@@ -169,7 +169,7 @@ h4 {
 		
 					<td colspan="6" height="150">
 					<c:if test="${not empty vo.boardAttach}"> <!-- 첨부파일이 있으면 보이도록 -->
-					<p>&nbsp;<img src="./img/resources/${vo.boardAttach}"/></p>
+					<p>&nbsp;<img src="img/product-img/${vo.boardAttach}"/></p>
 					</c:if>
 					&nbsp;${vo.boardContent }</td>
 				</tr>

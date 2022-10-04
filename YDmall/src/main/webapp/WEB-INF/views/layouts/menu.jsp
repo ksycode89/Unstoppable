@@ -145,7 +145,7 @@ font-size: 1.5em;
 								<ul class="navbar-nav animated" id="nav">
 
 	                                 <li class="nav-item active"><a class=" nav-link " href="best.yd" >BEST</a></li>
-	                                 <li class="nav-item"><a class="nav-link" href="notice.yd">SALE</a></li>
+	                                 <li class="nav-item"><a class="nav-link" href="sale.yd">SALE</a></li>
 	                                 <li class="nav-item"><a class="nav-link" href="top.yd"><span class="karl-level">hot</span> TOP</a></li>
 	                                 <li class="nav-item"><a class="nav-link" href="bottom.yd">BOTTOM</a></li>
 	                                 <li class="nav-item"><a class="nav-link" href="outer.yd">OUTER</a></li>
@@ -185,8 +185,8 @@ font-size: 1.5em;
 							<button class="button black" style="font-weight:bold; margin-top: 10px;" onclick="location.href='logout.yd'">LOGOUT</button>
 							</c:if>
 
-	<button class="button black" style="font-weight:bold;" onclick="location.href='admin.yd'">ADMIN</button>
 							<c:if test="${author eq '관리자'}">
+	<button class="button black" style="font-weight:bold;" onclick="location.href='admin.yd'">ADMIN</button>
 							</c:if>
 
 
@@ -197,7 +197,7 @@ font-size: 1.5em;
 <!-- Cart Area -->
 						<div class="cart">
 
-							<a href="cart.yd" id="header-cart-btn" target="_blank">
+							<a href="cart.yd" id="header-cart-btn" >
 								<span class="cart_quantity">!</span><i class="ti-bag"></i>
 							</a>
 							<!-- Cart List Area Start -->
