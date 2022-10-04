@@ -59,7 +59,15 @@
 							<canvas id="myPieChart2"></canvas>
 						</div>
 						<hr>
-					년 간 판매상품 퍼센트
+					<div class="mt-4 text-center small">
+										<span class="mr-2"> <i
+											class="fas fa-circle text-primary"></i> outer
+										</span> <span class="mr-2"> <i
+											class="fas fa-circle text-success"></i> bottom
+										</span> <span class="mr-2"> <i class="fas fa-circle text-info"></i>
+											top
+										</span>
+									</div>
 					</div>
 				</div>
 			</div>

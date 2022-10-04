@@ -59,7 +59,15 @@
 							<canvas id="myPieChart"></canvas>
 						</div>
 						<hr>
-					여긴 상품별 판매 퍼센테이지
+						<div class="mt-4 text-center small">
+										<span class="mr-2"> <i
+											class="fas fa-circle text-primary"></i> outer
+										</span> <span class="mr-2"> <i
+											class="fas fa-circle text-success"></i> bottom
+										</span> <span class="mr-2"> <i class="fas fa-circle text-info"></i>
+											top
+										</span>
+									</div>
 					</div>
 				</div>
 			</div>

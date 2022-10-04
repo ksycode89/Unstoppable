@@ -21,7 +21,7 @@
 
 	<!-- Content Wrapper -->
 	<div id="content-wrapper" class="d-flex flex-column"
-		style="width: 1200px">
+		style="width: 1200px; margin-left: auto; margin-right: auto;" >
 
 		<!-- Main Content -->
 		<div id="content">
@@ -69,9 +69,11 @@
 								<!--  db에서 가져오기 -->
 								<tbody>
 									<c:forEach items="${ list }" var="vo">
-									<tr 
+										<tr onclick="selectMember('${vo.memberId}')"
 									onMouseover="this.style.backgroundColor='gainsboro';"
 												onMouseout="this.style.backgroundColor='white';"
+												
+												
 									>
 									<td> ${vo.memberId}	</td>
 									<td> ${vo.memberName}	</td>
@@ -134,6 +136,10 @@
 			</div>
 		</div>
 	</div>
+	
+	<form id="frmmm" action="memberManageSelect.yd" method="post">
+			<input type="hidden" id="mId" name="mId">
+		</form>
 <script type="text/javascript">
 function chekcNull() {
 	let a = document.getElementById('member_stat').value;
@@ -144,6 +150,12 @@ function chekcNull() {
 		return "";
 	}
 	return "adminMemberSearch.yd";
+}
+
+
+function selectMember(mid) {
+	document.getElementById("mId").value = mid;
+	frmmm.submit();
 }
 </script>
 </body>

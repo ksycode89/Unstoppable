@@ -11,6 +11,8 @@ public interface SalesMapper {
 	List<SalesVO> salesSelect(SalesVO vo);
 	int insertOrder(SalesVO vo);
 	
+	SalesVO salesSelectId(SalesVO vo);//세일즈아이디 단건조회
+	
 	public List<SalesVO> ajaxMemberStat(SalesVO vo) ;
 	public List<SalesVO> ajaxProductStat(SalesVO vo) ;
 	int AjaxMemberSpend(SalesVO vo);//구매금액 도출 맴버

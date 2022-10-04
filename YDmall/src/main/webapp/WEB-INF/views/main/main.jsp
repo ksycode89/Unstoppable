@@ -105,7 +105,7 @@
                                     </div>
                                     <div class="col-12 col-lg-7">
                                         <div class="quickview_pro_des">
-                                            <h4 class="title">Boutique Silk Dress</h4>
+                                            <h4 class="title">ttt Silk Dress</h4>
                                             <div class="top_seller_product_rating mb-15">
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                                 <i class="fa fa-star" aria-hidden="true"></i>

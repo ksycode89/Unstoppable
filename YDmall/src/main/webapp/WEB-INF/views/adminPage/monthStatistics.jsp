@@ -30,7 +30,7 @@ flex: right;
 
 	<!-- Content Wrapper -->
 	<div id="content-wrapper" class="d-flex flex-column"
-		style="width: 1200px; " >
+		style="width: 1200px; margin-left: auto; margin-right: auto;">
 
 		<!-- Main Content -->
 		<div id="content">

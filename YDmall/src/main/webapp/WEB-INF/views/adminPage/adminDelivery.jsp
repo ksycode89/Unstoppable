@@ -38,7 +38,7 @@
 				<h1 class="h3 mb-2 text-gray-800">배송 관리</h1>
 				<p class="mb-4">
 					공지공지 <a target="_blank" href="https://google.com"> [누르면 링크]</a>
-				<form name=form1 action="memberStat.yd"
+				<form name=form1 action="memberStat2.yd"
 					onsubmit="return chekcNull()" method="post">
 					<div style="display: inline; margin-left: 15px">
 						<label for="member_stat">고객검색 - </label> <input  type="text"
@@ -47,7 +47,7 @@
 					</div>
 				</form>
 
-				<form name=form2 action="productStat.yd"
+				<form name=form2 action="productStat2.yd"
 					onsubmit="return chekcNull2()" method="post">
 					<div style="margin-left: 10px">
 						<label for="member_stat">상품 검색 - </label> <input  type="text"
@@ -96,7 +96,7 @@
 									onMouseover="this.style.backgroundColor='gainsboro';"
 												onMouseout="this.style.backgroundColor='white';"	
 										>
-											<td>${vo.salesId}</td>
+											<td onclick="selectMember('${vo.salesId}')">${vo.salesId}</td>
 											<td>${vo.memberId}</td>
 											<td>${vo.productName}</td>
 											<td>${vo.productSize}</td>
@@ -186,7 +186,18 @@
 		</div>
 	</div>
 
+<form id="frmDelivery" action="deliverySelect.yd" method="post">
+			<input type="hidden" id="deliId" name="deliId">
+		</form>
+
 	<script type="text/javascript">
+	
+	function selectMember(Id) {
+		document.getElementById("deliId").value = Id;
+		frmDelivery.submit();
+	}
+	
+	
 	function  searchMem() {
 		let id = document.getElementById("member_stat").value
 
