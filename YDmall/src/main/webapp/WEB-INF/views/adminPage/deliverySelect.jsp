@@ -63,7 +63,7 @@ th{
 		</div><br>
 		<div align="center">
 			<button id="confirmStart2" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="button">삭제</button>&nbsp;&nbsp;&nbsp;
-			<button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="button" onclick="location.href='adminMemberSelectList.yd'">목록</button>
+			<button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="button" onclick="location.href='delivery.yd'">목록</button>
 		</div><br>
 	<form id="frmDel" method="post">
 				<input type="hidden" id="mId2" name="mId2" value="${vo.memberId }">

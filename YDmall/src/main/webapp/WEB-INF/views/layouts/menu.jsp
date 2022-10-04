@@ -31,6 +31,7 @@
 }
 #headerMypage{
 	float: right;
+	margin-left: 500px;
 }
 #headerCart{
 	float: right;
@@ -109,7 +110,7 @@ font-size: 1.5em;
 					</div>
 					
 				</div>
-				
+	
 				<div class="col-xs-2" id="headerMypage">
 					  <div class="help-line">
 				<c:if test="${ empty id }">
@@ -125,7 +126,7 @@ font-size: 1.5em;
 		<a href="admin.yd">Admin</a>
 							<c:if test="${author eq '관리자'}">
 							</c:if>
-<a href="cart.yd">임시 카트</a>
+
 
 					</div>
 				</div>
@@ -151,6 +152,7 @@ font-size: 1.5em;
 						</div>
 					</div>
 				</div>
+			
 			</div>
 		</div>
 	</div>
