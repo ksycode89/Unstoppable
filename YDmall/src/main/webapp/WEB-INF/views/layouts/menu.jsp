@@ -65,7 +65,6 @@ font-size: 1.5em;
 									<i class="ti-menu"></i>
 								</span>
 							</button>
-							
 							<div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
 								<ul class="navbar-nav animated" id="nav">
 	                                 <li class="nav-item active"><a class=" nav-link " href="best.yd" >BEST</a></li>
