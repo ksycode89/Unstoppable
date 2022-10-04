@@ -53,8 +53,8 @@
 
 
 <select id="mainSpend"  resultType="int">
-select sum
-(sales_total_price) from sales
+select sum(sales_total_price) 
+from sales
 
 
 </select>

@@ -16,9 +16,9 @@ public class Best implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse reponse) {
 		ProductService dao = new ProductServiceImpl();
-		List<ProductVO> list = new ArrayList<ProductVO>();
+		List<ProductVO> list = new ArrayList<>();
 		list = dao.productSelectList();
-		request.setAttribute("list", list);
+		request.setAttribute("plist", list);
 		
 		return "page/best";
 	}

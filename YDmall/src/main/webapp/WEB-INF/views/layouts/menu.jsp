@@ -105,7 +105,7 @@
 }
 #headerMypage{
 	float: right;
-	margin-left: 500px;
+	margin-left: 450px;
 }
 #headerCart{
 	float: right;
@@ -128,7 +128,7 @@ font-size: 1.5em;
 <!-- Logo Area -->
 				<div class="col-xs-2" id="headerLogo">
 					<div class="top_logo">
-						<a href="main.yd"><img src="img/core-img/logo.png" alt="Logo"></a>
+						<a href="main.yd"><img src="img/core-img/main-03.png" alt="Logo" style="margin-top: -20px"></a>
 					</div>
 				</div>
 				<div class="col-xs-6" id="headerMenu">
@@ -143,6 +143,7 @@ font-size: 1.5em;
 							
 							<div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
 								<ul class="navbar-nav animated" id="nav">
+
 	                                 <li class="nav-item active"><a class=" nav-link " href="best.yd" >BEST</a></li>
 	                                 <li class="nav-item"><a class="nav-link" href="notice.yd">SALE</a></li>
 	                                 <li class="nav-item"><a class="nav-link" href="top.yd"><span class="karl-level">hot</span> TOP</a></li>
@@ -158,6 +159,7 @@ font-size: 1.5em;
 									<c:if test="${ not empty id }">
 										<li class="nav-item dropdown">
 												<a class="nav-link dropdown-toggle" href="memberMyPage.yd" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MyPage</a>
+
 											<div class="dropdown-menu" aria-labelledby="karlDropdown">
 												<a class="dropdown-item" href="memberMyPage.yd">정보조회</a> 
 												<a class="dropdown-item" href="memberOrder.yd">주문조회</a>
@@ -194,25 +196,16 @@ font-size: 1.5em;
 					<div class="header-cart-menu d-flex align-items-center ml-auto">
 <!-- Cart Area -->
 						<div class="cart">
-							<a href="#" id="header-cart-btn" target="_blank">
-								<i class="ti-bag"></i>
+
+							<a href="cart.yd" id="header-cart-btn" target="_blank">
+								<span class="cart_quantity">!</span><i class="ti-bag"></i>
 							</a>
-<!-- Cart List Area Start -->
-							<ul class="cart-list">
-								<li class="total">
-									<a href="cart.yd" class="btn btn-sm btn-cart">Cart</a>
-									<a href="chekout.yd" class="btn btn-sm btn-checkout">Checkout</a>
-								</li>
-							</ul>
-						</div>
-						<div class="header-right-side-menu ml-15">
-							<a href="#" id="sideMenuBtn">
-								<i class="ti-menu" aria-hidden="true"></i>
-							</a>
+							<!-- Cart List Area Start -->
+
+						
 						</div>
 					</div>
 				</div>
-			
 			</div>
 		</div>
 	</div>

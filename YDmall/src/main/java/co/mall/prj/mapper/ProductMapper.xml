@@ -10,8 +10,15 @@
 	<select id="productMajorList" resultType="co.mall.prj.product.service.ProductVO">
 		SELECT *
 		FROM PRODUCT
-		WHERE PRODUCT_MAJOR = #{productMajor} AND PRODUCT_DEFAULT = 1
+		WHERE PRODUCT_EVENT = #{productMajor} AND PRODUCT_DEFAULT = 1
 	</select>
+	
+	<select id="productRecommend" resultType="co.mall.prj.product.service.ProductVO">
+		SELECT *
+		FROM PRODUCT
+		WHERE PRODUCT_EVENT = #{productEvent} AND PRODUCT_DEFAULT = 1
+	</select>
+	
 
 	<select id="productSelect" resultType="co.mall.prj.product.service.ProductVO">
 		SELECT *
@@ -34,7 +41,7 @@
 		</selectKey>
 
 		INSERT INTO PRODUCT
-		VALUES(#{productId},#{productMajor},#{productMinor},#{productName},#{productSize},#{productPrice},#{productQuantity},#{productEvent},#{productDefault},#{productAttach},#{productAttachDir},#{productExplain})
+		VALUES(#{productId},#{productMajor},#{productMinor},#{productName},#{productSize},#{productPrice},#{productQuantity},#{productEvent},#{productDefault},#{productExplain})
 
 	</insert>
 

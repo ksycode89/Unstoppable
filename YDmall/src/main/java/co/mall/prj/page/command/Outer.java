@@ -18,7 +18,7 @@ public class Outer implements Command{
 		ProductService dao = new ProductServiceImpl();
 		List<ProductVO> list = new ArrayList<ProductVO>();
 		list = dao.productSelectList();
-		request.setAttribute("list", list);
+		request.setAttribute("plist", list);
 		
 		return "page/outer";
 	}

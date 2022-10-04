@@ -85,6 +85,7 @@ import co.mall.prj.product.Command.ProductManageRegist;
 import co.mall.prj.product.Command.ProductManageRegistForm;
 import co.mall.prj.product.Command.ProductManageRemove;
 import co.mall.prj.product.Command.ProductManageSelect;
+import co.mall.prj.product.Command.ProductRecommend;
 import co.mall.prj.sales.command.Order;
 import co.mall.prj.sales.command.Payment;
 
@@ -135,6 +136,7 @@ public class FrontController extends HttpServlet {
 		map.put("/productManageRemove.yd", new ProductManageRemove()); // 관리자용 상품 정보 삭제
 		map.put("/productManageSelect.yd", new ProductManageSelect()); // 관리자용 상품 상세 페이지
 		map.put("/productDetail.yd", new ProductDetail()); // 상품 상세 페이지
+		map.put("/productrecommend.yd", new ProductRecommend());
 
 		map.put("/admin.yd", new AdminPage());
 		map.put("/adminChart.yd", new AdminChart());
