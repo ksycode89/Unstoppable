@@ -22,7 +22,7 @@
 
 	<!-- Content Wrapper -->
 	<div id="content-wrapper" class="d-flex flex-column"
-		style="width: 1200px;">
+		style="width: 1200px; margin-left: auto; margin-right: auto;">
 
 		<!-- Main Content -->
 		<div id="content">
@@ -32,7 +32,7 @@
 			<!-- End of Topbar -->
 
 			<!-- Begin Page Content -->
-			<div class="container-fluid">
+			<div class="container-fluid" >
 
 				<!-- Page Heading -->
 				<h1 class="h3 mb-2 text-gray-800">배송 관리</h1>
@@ -41,8 +41,8 @@
 				<form name=form1 action="memberStat.yd"
 					onsubmit="return chekcNull()" method="post">
 					<div style="display: inline; margin-left: 15px">
-						<label for="member_stat">고객검색 - </label> <input type="text"
-							id="member_stat" name="memberId"> <input type="submit"
+						<label for="member_stat">고객검색 - </label> <input  type="text"
+							id="member_stat" name="memberId"> <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
 							value="검색">
 					</div>
 				</form>
@@ -50,8 +50,8 @@
 				<form name=form2 action="productStat.yd"
 					onsubmit="return chekcNull2()" method="post">
 					<div style="margin-left: 10px">
-						<label for="member_stat">상품 검색 - </label> <input type="text"
-							id="product_stat" name="productName"> <input
+						<label for="member_stat">상품 검색 - </label> <input  type="text"
+							id="product_stat" name="productName"> <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
 							type="submit" value="검색">
 
 					</div>
@@ -92,7 +92,10 @@
 								<tbody class="tbody-test">
 									<c:set var="price_sum" value="0" />
 									<c:forEach items="${ list }" var="vo">
-										<tr >
+										<tr 
+									onMouseover="this.style.backgroundColor='gainsboro';"
+												onMouseout="this.style.backgroundColor='white';"	
+										>
 											<td>${vo.salesId}</td>
 											<td>${vo.memberId}</td>
 											<td>${vo.productName}</td>
@@ -115,7 +118,7 @@
 													
 											</select>
 											&nbsp; &nbsp;
-											<input  type="button" value="적용" onclick="delvCheck('${vo.salesId}')">
+											<input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="button" value="적용" onclick="delvCheck(this)">
 											</form>
 											</td>
 										</tr>
@@ -259,16 +262,17 @@
 		
 	}
 	
-	function delvCheck(salesId) {
-		let deliva=document.getElementById("deliveryStatus").value
-		let salesIdIn=salesId
-		console.log(salesIdIn)
+	function delvCheck(checkpp) {
+		console.log(checkpp.parentElement.parentElement.parentElement.children[0].innerText)
+		let deliva=checkpp.parentElement.children[0].value
+		
+		let salesIdIn=checkpp.parentElement.parentElement.parentElement.children[0].innerText
 		
 			
 			fetch('ajaxDelvCheck.yd',{
 				    method: 'POST',
 				    headers: {'Content-Type':'application/x-www-form-urlencoded'}, 
-				    body: 'salesId='+salesId+'&delv='+deliva
+				    body: 'salesId='+salesIdIn+'&delv='+deliva
 				})
 			.then(response => response.text())
 			.then(data=> {

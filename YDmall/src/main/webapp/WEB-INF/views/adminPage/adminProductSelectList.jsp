@@ -55,21 +55,15 @@
 									</tr>
 								</thead>
 								<tfoot>
-									<tr>
-										<th>NO</th>
-										<th>대분류</th>
-										<th>소분류</th>
-										<th>상품명</th>
-										<th>사이즈</th>
-										<th>가격</th>
-										<th>재고량</th>
-										<th>이벤트</th>
-									</tr>
+									
 								</tfoot>
 								<!--  db에서 가져오기 -->
 								<tbody>
 									<c:forEach items="${list }" var="p">
-										<tr onclick="selectProduct('${p.productId}')">
+										<tr onclick="selectProduct('${p.productId}')"
+										onMouseover="this.style.backgroundColor='gainsboro';"
+												onMouseout="this.style.backgroundColor='white';"
+										>
 											<!-- ==========요기 값넣기 ================== -->
 											<td>${p.productId }</td>
 											<td>${p.productMajor }</td>

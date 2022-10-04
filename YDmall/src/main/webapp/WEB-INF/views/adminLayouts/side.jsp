@@ -62,11 +62,6 @@ position: sticky;
                 
             </li>
 
-      
-
-
-
-
            
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -85,32 +80,29 @@ position: sticky;
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header"></h6>
+                        <h6 class="collapse-header">매출/배송 관리</h6>
                         <a class="collapse-item" href="monthStatistics.yd">판매 내역</a>
                         <a class="collapse-item" href="delivery.yd">배송관리</a>
-                        <a class="collapse-item" href=""> 넣죠</a>
+                     
                         <div class="collapse-divider"></div>
+
+                        <h6 class="collapse-header"> 통계 그래프</h6>
+                        <a class="collapse-item" href="adminChart.yd">매출 그래프(월)</a>
+                        <a class="collapse-item" href="adminChart2.yd">매출 그래프(년)</a>
+
                         <h6 class="collapse-header"> 매출 통계</h6>
                         <a class="collapse-item" href="adminChart.yd">매출 그래프</a>
-                        <a class="collapse-item" href="">빡빡이다</a>
+                        <a class="collapse-item" href="adminSelectToDay.yd">당일 매출조회</a>
+
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="adminChart.yd">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>통계 차트</span></a>
-            </li>
+           
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
-
+            
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

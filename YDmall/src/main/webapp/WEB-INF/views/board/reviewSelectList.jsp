@@ -18,7 +18,8 @@
 #content-wrapper {
 	margin-left: auto;
 	margin-right: auto;
-}
+
+
 </style>
 
 </head>
@@ -83,14 +84,14 @@
 			<div class="container-fluid">
 
 				<!-- Page Heading -->
-				<h1 class="h3 mb-2 text-gray-800">리뷰</h1>
+				<h1 class="h3 mb-2 text-gray-800">REVIEW</h1>
 				<p class="mb-4">
 			
 
 				<!-- DataTales Example -->
 				<div class="card shadow mb-4">
 					<div class="card-header py-3">
-						<h6 class="m-0 font-weight-bold text-primary">리뷰를 남겨보세요</h6>
+						<h6 class="m-0 font-weight-bold text-primary">리뷰를 남기면 추첨을 통해 포인트 지급!</h6>
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
@@ -121,13 +122,18 @@
 									<c:if test="${not empty list }">
 										<c:forEach items="${list }" var="n">
 											<tr onMouseover="this.style.backgroundColor='yellow';"
-												onMouseout="this.style.backgroundColor='white';">
+												onMouseout="this.style.backgroundColor='white';"
+												>
 												
 												<c:if test="${not empty id && author eq '관리자'}">
 												<td><input type="checkbox" name="chk" value="" onclick='checkSelectAll()'></td>
 												</c:if>
 												<td align="center">${n.boardId }</td>
-												<td>야호</td>
+												<td width="100px;" 
+												onMouseover="this.style.width='200px';"
+												onMouseout="this.style.width='100px';"
+												
+												><img src="img/product-img/product-1.jpg" > </td>
 												<td onclick="selectReview('${n.boardId}','${n.boardRole}','${id}')" style="cursor:pointer">${n.boardTitle }</td>
 												<td align="center">${n.memberId }</td>
 												<td align="center">${n.boardDate }</td>

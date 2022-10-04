@@ -19,7 +19,7 @@
 					<div class="checkout_details_area mt-50 clearfix">
 
 						<div class="cart-page-heading">
-							<h5>${name }님정보조회</h5>
+							<h5>${name }님 정보조회</h5>
 						</div>
 
 						<div class="row">

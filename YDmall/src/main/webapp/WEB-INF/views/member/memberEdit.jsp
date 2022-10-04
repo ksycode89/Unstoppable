@@ -26,8 +26,8 @@
 							<h5>내 정보 수정</h5>
 						</div>
 
-						<form action="memberEditAction.yd" method="post">
-							<div class="row">
+						<div class="row">
+							<form action="memberEditAction.yd" method="post">
 								<div class="col-12 mb-3">
 									<label for="memberId">ID</label> <input type="text"
 										class="form-control" id="company" name="memberId"
@@ -48,10 +48,10 @@
 								<div class="col-md-6 mb-3">
 									<label for="first_name">Name <span>*</span></label> <input
 										type="text" class="form-control" id="first_name"
-										name="memberName" value="${name}" readonly="readonly">
+										name="memberName" value="${name}">
 								</div>
-								
-								
+
+
 								<div class="col-12 mb-3">
 									<label for="street_address">Gender <span>*</span></label> <input
 										type="text" class="form-control mb-3" id="street_address"
@@ -91,18 +91,18 @@
 										name="memberEmail" value="${email }">
 								</div>
 								<br> <input type="hidden" name="memberAuthor" value="회원">
-							<br> <input type="submit" class="btn karl-checkout-btn"
-								value="수정하기">
-						</form>
-					
+								<br> <input type="submit" class="btn karl-checkout-btn"
+									value="수정하기">
+							</form>
+
+						</div>
 					</div>
 				</div>
+
 			</div>
-
-
 		</div>
 	</div>
-<!-- Active js -->
-<script src="js/active.js"></script>
+	<!-- Active js -->
+	<script src="js/active.js"></script>
 </body>
 </html>

@@ -43,7 +43,7 @@
 
 	<select id="boardSelect" resultType="co.mall.prj.board.service.BoardVO">
 		
-		SELECT BOARD_ID,MEMBER_ID,TO_CHAR(BOARD_DATE,'YY-MM-DD HH:MM:SS') AS BOARD_DATE,BOARD_TITLE,BOARD_CONTENT,BOARD_HIT,BOARD_ATTACH,
+		SELECT BOARD_ID,MEMBER_ID,TO_CHAR(BOARD_DATE,'YY-MM-DD HH:MI:SS') AS BOARD_DATE,BOARD_TITLE,BOARD_CONTENT,BOARD_HIT,BOARD_ATTACH,
 		BOARD_ATTACH_DIR,BOARD_ROLE
 		FROM BOARD 
 		WHERE BOARD_ID =#{boardId}
@@ -53,7 +53,7 @@
 	
 	<select id="replySelect" resultType="co.mall.prj.board.service.BoardVO">
 		
-		SELECT MEMBER_ID,TO_CHAR(BOARD_DATE,'YY-MM-DD HH:MM:SS') AS BOARD_DATE,BOARD_TITLE,BOARD_CONTENT,BOARD_HIT,BOARD_ATTACH,
+		SELECT MEMBER_ID,TO_CHAR(BOARD_DATE,'YY-MM-DD HH:MI:SS') AS BOARD_DATE,BOARD_TITLE,BOARD_CONTENT,BOARD_HIT,BOARD_ATTACH,
 		BOARD_ATTACH_DIR,BOARD_ROLE,BOARD_REPLY_TO
 		FROM BOARD 
 		WHERE BOARD_REPLY_TO =#{boardReplyTo}
@@ -64,10 +64,12 @@
 		
 	<select id="replySelectList" resultType="co.mall.prj.board.service.BoardVO">  <!-- 해당 글의 덧글 목록 가져오기 -->
 	
-		SELECT *
+		SELECT MEMBER_ID,TO_CHAR(BOARD_DATE,'YY-MM-DD HH:MI:SS') AS BOARD_DATE,BOARD_TITLE,BOARD_CONTENT,BOARD_HIT,BOARD_ATTACH,
+		BOARD_ATTACH_DIR,BOARD_ROLE,BOARD_REPLY_TO
  		FROM BOARD
  		WHERE BOARD_REPLY_TO = #{boardReplyTo}
  		and BOARD_ROLE = #{boardRole}
+ 		ORDER BY BOARD_DATE
  	
 	</select>
 
@@ -115,6 +117,18 @@
 		
 		
 	</delete>
+	
+	<delete id="replyDelete">
+	
+		DELETE 
+		FROM BOARD
+		WHERE BOARD_ROLE= #{boardRole}
+		AND BOARD_REPLY_TO = #{boardReplyTo}
+		AND MEMBER_ID = #{memberId}
+		AND TO_CHAR(BOARD_DATE,'YY-MM-DD HH:MI:SS') = #{boardDate}
+		
+		
+	</delete>
 
 	<update id="boardIdMinus"> <!-- 게시글 삭제되면 그 글 번호보다 크면 번호 1 감소 -->
 		UPDATE BOARD
@@ -133,6 +147,15 @@
 		
 	</update>
 
+	<select id="mainViews" resultType="co.mall.prj.board.service.BoardVO">
+	
+	SELECT * 
+	from (SELECT *
+        FROM board
+        ORDER BY board_hit DESC )
+     where rownum &lt; 4
+	
+	</select>
 
 
 </mapper>

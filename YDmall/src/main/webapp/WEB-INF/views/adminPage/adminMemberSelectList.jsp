@@ -38,11 +38,18 @@
 				<p class="mb-4">
 					공지공지 <a target="_blank" href="https://google.com"> [누르면 링크]</a>
 				</p>
+				<form  name=form1 action="adminMemberSearch.yd"  onsubmit="return chekcNull()" method="post">
+					<div style="display: inline; margin-left: 15px "> 
+							<label for="member_stat">고객 ID 검색 </label>
+							<input type="text" id="member_stat" name="memberId">
+							<input  class = "d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit" value="검색"  >
+					</div>
+							</form>
 
 				<!-- DataTales Example -->
 				<div class="card shadow mb-4">
 					<div class="card-header py-3">
-						<h6 class="m-0 font-weight-bold text-primary">공지일지도</h6>
+						<h6 class="m-0 font-weight-bold text-primary">고객 리스트</h6>
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
@@ -58,20 +65,14 @@
 										<th>spending</th>
 									</tr>
 								</thead>
-								<tfoot>
-									<tr>
-										<th>Id</th>
-										<th>Name</th>
-										<th>Tel</th>
-										<th>addr</th>
-										<th>email</th>
-										<th>spending</th>
-									</tr>
-								</tfoot>
+								
 								<!--  db에서 가져오기 -->
 								<tbody>
 									<c:forEach items="${ list }" var="vo">
-									<tr>
+									<tr 
+									onMouseover="this.style.backgroundColor='gainsboro';"
+												onMouseout="this.style.backgroundColor='white';"
+									>
 									<td> ${vo.memberId}	</td>
 									<td> ${vo.memberName}	</td>
 									<td> ${vo.memberTel}	</td>
@@ -133,5 +134,17 @@
 			</div>
 		</div>
 	</div>
+<script type="text/javascript">
+function chekcNull() {
+	let a = document.getElementById('member_stat').value;
+	
+	if(a == ""){
+	
+		
+		return "";
+	}
+	return "adminMemberSearch.yd";
+}
+</script>
 </body>
 </html>

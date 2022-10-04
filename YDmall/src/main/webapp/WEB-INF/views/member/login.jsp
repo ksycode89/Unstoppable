@@ -48,8 +48,10 @@
 							</div>
 						</div>
 						<input type="submit" id="join_btn" class="btn karl-checkout-btn"
-							value="Log In" style="border-radius: 5px; margin-bottom: 10px;">&nbsp;&nbsp;&nbsp;
+							value="Log In" style="border-radius: 5px; margin-bottom: 10px;"
+							onclick="loginAlert()">&nbsp;&nbsp;&nbsp;
 						<!-- 로그인 기본end -->
+
 						<!-- Checkbox -->
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" value=""
@@ -113,8 +115,14 @@
 
 	<!-- 카카오 로그인 -->
 	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-	<!-- 카카오 로그인 -->
+
+	<!-- 로그인 -->
 	<script type="text/javascript">
+		function loginAlert() {
+			let welcome = document.getElementById("memberId").value;
+			alert(welcome+"님 환영합니다~");
+		}
+
 		function selectProduct(name) {
 			document.getElementById("pName").value = name;
 			frm.submit();

@@ -64,4 +64,17 @@ public class salesServiceImpl implements salesService{
 	}
 
 
+	@Override
+	public int mainSpend() {
+		// TODO Auto-generated method stub
+		return map.mainSpend();
+	}
+
+
+	@Override
+	public int salesSum() {
+		return map.salesSum();
+	}
+
+
 }
