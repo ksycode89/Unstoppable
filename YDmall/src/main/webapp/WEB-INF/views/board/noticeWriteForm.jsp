@@ -8,6 +8,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
+
 
 <style type="text/css">
 #content-wrapper {
@@ -112,6 +116,15 @@ div table{
   border-style: hidden;
   
 }
+
+body{
+font-family: 'Noto Serif KR', serif;
+}
+
+h4 {
+ font-family: 'Noto Serif KR', serif;"
+}
+
 </style>
 </head>
 <body>

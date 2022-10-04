@@ -7,6 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
+
+
 </head>
 <style>
 .button {
@@ -106,11 +111,38 @@ div table{
   border-style: hidden;
   
 }
+
+tr {
+
+  border-radius: 16px;
+  box-shadow: inset 0 0 5px #dca4ab;
+  border-style: hidden;
+  border-collapse: collapse;
+  border-radius: 5px;
+  width: 600px;
+  
+}
+
+tr td {
+
+  box-shadow: outset 0 0 5px #dca4ab;
+
+  
+}
+
+body{
+font-family: 'Noto Serif KR', serif;
+}
+
+h4 {
+ font-family: 'Noto Serif KR', serif;"
+}
+
 </style>
 <body>
 	<div align="center">
 
-		<div><h4>NOTICE</h4></div>
+		<div><h4>═════════•°• NOTICE •°•═════════</h4></div>
 	<br>
 		<div>
 			<table border="1">
@@ -133,7 +165,7 @@ div table{
 		
 					<td colspan="6" height="150">
 					<c:if test="${not empty vo.boardAttach}"> <!-- 첨부파일이 있으면 보이도록 -->
-					<p><img src="./img/resources/${vo.boardAttach}"/></p>
+					<p>&nbsp;<img src="./img/resources/${vo.boardAttach}"/></p>
 					</c:if>
 					&nbsp;${vo.boardContent }</td>
 				</tr>
@@ -141,7 +173,7 @@ div table{
 					<c:if test="${not empty vo.boardAttach}"> <!-- 첨부파일이 있으면 보이도록 -->
 				<tr>
 					<th style="text-align: center;">첨부파일</th>
-					<td colspan="6">${vo.boardAttach}</td>
+					<td colspan="6">&nbsp;${vo.boardAttach}</td>
 				</tr>
 				</c:if>
 			</table>

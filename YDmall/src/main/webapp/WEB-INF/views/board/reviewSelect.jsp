@@ -2,11 +2,19 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
 
 <style>
 .button {
@@ -103,27 +111,52 @@
 }
 
 div table{ 
-  border: 3px solid #dca4ab; 
+  border: 3px solid #dca4ab;
   border-radius: 16px;
   box-shadow: inset 0 0 8px #dca4ab;
   border-style: hidden;
-  
-   border-collapse: collapse;
+  border-collapse: collapse;
   border-radius: 5px;
   width: 600px;
   
 }
+
+tr {
+
+  border-radius: 16px;
+  box-shadow: inset 0 0 5px #dca4ab;
+  border-style: hidden;
+  border-collapse: collapse;
+  border-radius: 5px;
+  width: 600px;
+  
+}
+
+tr td {
+
+  box-shadow: outset 0 0 5px #dca4ab;
+  
+}
+
+body{
+font-family: 'Noto Serif KR', serif;
+}
+
+h4 {
+ font-family: 'Noto Serif KR', serif;"
+}
+
 </style>
 </head>
 <body>
 	<div align="center">
 
 		<div>
-			<h4 style="margin-bottom: 20px;">REVIEW</h4>
+			<h4 style="margin-bottom: 20px;" >═════════•°• REVIEW •°•═════════</h4>
 		</div>
 
 		<div>
-			<table border="10">
+			<table border="10px;">
 				<tr align="center">
 					<th width="100">작성자</th>
 					<td width="100" >${vo.memberId }</td>
@@ -142,11 +175,11 @@ div table{
 				<tr>
 					<th style="text-align: center;">내용</th>
 
-					<td colspan="6" height="150"><c:if
+					<td colspan="6" height="150" ><c:if
 							test="${not empty vo.boardAttach}">
 							<!-- 첨부파일이 있으면 보이도록 -->
 							<p>
-								<img src="./img/resources/${vo.boardAttach}" />
+								&nbsp;<img src="./img/resources/${vo.boardAttach}" />
 							</p>
 						</c:if>&nbsp;${vo.boardContent }</td>
 				</tr>
@@ -155,7 +188,7 @@ div table{
 					<!-- 첨부파일이 있으면 보이도록 -->
 					<tr>
 						<th style="text-align: center;">첨부파일</th>
-						<td colspan="6" style="text-align: left;">${vo.boardAttach}</td>
+						<td colspan="6" style="text-align: left;">&nbsp;${vo.boardAttach}</td>
 					</tr>
 				</c:if>
 			</table>
@@ -165,8 +198,8 @@ div table{
 
 		<div>
 			<!-- 덧글 리스트 출력 -->
-			<table>		
-			<thead>
+			<table  border="10px;">		
+			<thead >
 					<tr>
 						<th width="100"></th>
 						<th></th>
@@ -180,11 +213,11 @@ div table{
 						</tr>
 					</c:if>
 					<c:if test="${not empty replyList }">
-						<c:forEach items="${replyList }" var="r">
-							<tr>
+						<c:forEach items="${replyList }"   var="r">
+							<tr border="1px solid #dca4ab;">
 								<td align="center" <c:if test="${r.memberId eq 'admin'}">style="color:blue; font-weight:bold;"</c:if>
 								>${r.memberId }</td>
-								<td style="text-align:left;">${r.boardContent }</td>
+								<td style="text-align:left;">&nbsp;&nbsp;${r.boardContent }</td>
 								<td style="text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${r.boardDate }
 								<c:if test="${id eq r.memberId || author eq '관리자'}">
 								<button type="button" class="button rosy small" onclick="replyDelete('${r.memberId}','${r.boardDate}')">DEL</button>
@@ -212,7 +245,7 @@ div table{
 		<br>
 			<div>
 				<!-- 덧글 남기기 창 시작 -->
-				<table border="1">
+				<table>
 
 					<tr>
 						<td colspan="3"><input style="width: 600px" type="text"
