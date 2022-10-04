@@ -132,7 +132,8 @@ h4 {
 	<div align="center">
 		<br><br>
 		<div>
-		<h4 margin-bottom: 20px;">공지 등록</h4>
+		<h4 margin-bottom: 20px;">══════•°• 공지 등록 •°•══════</h4>
+		<br>
 		</div>
 		<div>
 			<!-- 파일 업로드 하니까 어떤 라이브러리를 쓰든 무조건 enctype="multipart/form-data" 써야합니다. -->
@@ -145,13 +146,13 @@ h4 {
 					<table border="1">
 						<tr>
 							<th width="150" style="text-align: center;">작성자</th>
-							<td width="150" style="font-weight:bold;"><input  style="width:330px" type="text" id="memberId"
+							<td width="150" style="font-weight:bold;"><input  style="width:300px" type="text" id="memberId"
 								name="memberId" value="${id }"  readonly="readonly"></td>
 							<!-- ★★★★ value 로그인 가능하게되면 {$memberId} 로 할 예정 -->
 
 						<tr>
 							<th style="text-align: center;">제목</th>
-							<td colspan="3"><input  style="width:330px" type="text" id="boardTitle"
+							<td colspan="3"><input  style="width:300px" type="text" id="boardTitle"
 								name="boardTitle" required="required"></td>
 						</tr>
 
