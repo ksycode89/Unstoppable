@@ -92,7 +92,7 @@
 								<tbody class="tbody-test">
 									<c:set var="price_sum" value="0" />
 									<c:forEach items="${ list }" var="vo">
-										<tr 
+										<tr onclick="selectMember('${vo.salesId}')"
 									onMouseover="this.style.backgroundColor='gainsboro';"
 												onMouseout="this.style.backgroundColor='white';"	
 										>
@@ -186,7 +186,18 @@
 		</div>
 	</div>
 
+<form id="frmDelivery" action="deliverySelect.yd" method="post">
+			<input type="hidden" id="deliId" name="deliId">
+		</form>
+
 	<script type="text/javascript">
+	
+	function selectMember(Id) {
+		document.getElementById("deliId").value = Id;
+		frmDelivery.submit();
+	}
+	
+	
 	function  searchMem() {
 		let id = document.getElementById("member_stat").value
 

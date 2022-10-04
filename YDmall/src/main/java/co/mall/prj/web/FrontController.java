@@ -22,9 +22,12 @@ import co.mall.prj.admin.command.AjaxDelvCheck;
 import co.mall.prj.admin.command.AjaxMemberSpend;
 import co.mall.prj.admin.command.AjaxMemberStat;
 import co.mall.prj.admin.command.Delivery;
+import co.mall.prj.admin.command.DeliverySelect;
+import co.mall.prj.admin.command.MemberManageRemove;
 import co.mall.prj.admin.command.MemberStat;
 import co.mall.prj.admin.command.MonthStatistics;
 import co.mall.prj.admin.command.ProductStat;
+import co.mall.prj.admin.command.memberManageSelect;
 import co.mall.prj.board.command.BoardDelete;
 import co.mall.prj.board.command.BoardEdit;
 import co.mall.prj.board.command.BoardEditForm;
@@ -137,10 +140,11 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxMemberSpend.yd", new AjaxMemberSpend());
 		map.put("/delivery.yd", new Delivery());
 		map.put("/ajaxDelvCheck.yd", new AjaxDelvCheck());
-
+		map.put("/memberManageSelect.yd", new memberManageSelect());
+		map.put("/memberManageRemove.yd", new MemberManageRemove());
 		map.put("/productStat.yd", new ProductStat());
 		map.put("/adminMemberSearch.yd", new AdminMemberSearch());
-		
+		map.put("/deliverySelect.yd", new DeliverySelect());
 
 		map.put("/adminSelectToDay.yd", new AdminSelectToDay()); // 당일 매출조회
 

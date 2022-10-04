@@ -76,12 +76,11 @@ public class BoardServiceImpl implements BoardService {
 		return map.replySelectList(re);
 	}
 
-	@Override
 
 	public List<BoardVO> mainViews() {
 		
 		return map.mainViews();
-
+	}
 	public int replyDelete(BoardVO vo) {
 		return map.replyDelete(vo);
 

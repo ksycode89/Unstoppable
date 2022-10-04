@@ -77,4 +77,12 @@ public class salesServiceImpl implements salesService{
 	}
 
 
+	@Override
+	public SalesVO salesSelectId(SalesVO vo) {
+		
+		return map.salesSelectId(vo);//세일즈아이디 단건조회;
+	}
+
+
+	
 }
