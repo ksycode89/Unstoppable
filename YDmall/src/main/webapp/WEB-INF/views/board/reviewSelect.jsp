@@ -7,18 +7,123 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
+
 <style>
+.button {
+	display: inline-block;
+	zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+	*display: inline;
+	vertical-align: baseline;
+	margin: 0 2px;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em;
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.button:hover {
+	text-decoration: none;
+}
+.button:active {
+	position: relative;
+	top: 1px;
+}
+
+.bigrounded {
+	-webkit-border-radius: 2em;
+	-moz-border-radius: 2em;
+	border-radius: 2em;
+	font-weight:bold;
+}
+.medium {
+	font-size: 13px;
+	font-weight:bold;
+	padding: .4em 1.2em .42em;
+}
+.small {
+	font-size: 11px;
+	padding: .275em .2em .275em;
+	margin-right: -15px;
+	margin-bottom: 4px;
+	font-weight: bold;
+}
+
+/* color styles
+---------------------------------------------- */
+
+/* black */
+.black {
+	color: #d7d7d7;
+	border: solid 1px #333;
+	background: #333;
+	background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#000));
+	background: -moz-linear-gradient(top,  #666,  #000);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#666666', endColorstr='#000000');
+}
+.black:hover {
+	background: #000;
+	background: -webkit-gradient(linear, left top, left bottom, from(#444), to(#000));
+	background: -moz-linear-gradient(top,  #444,  #000);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#444444', endColorstr='#000000');
+}
+.black:active {
+	color: #666;
+	background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#444));
+	background: -moz-linear-gradient(top,  #000,  #444);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#666666');
+}
+/* rosy */
+.rosy {
+	color: #fae7e9;
+	border: solid 1px #b73948;
+	background: #da5867;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f16c7c), to(#bf404f));
+	background: -moz-linear-gradient(top,  #f16c7c,  #bf404f);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f16c7c', endColorstr='#bf404f');
+}
+.rosy:hover {
+	background: #ba4b58;
+	background: -webkit-gradient(linear, left top, left bottom, from(#cf5d6a), to(#a53845));
+	background: -moz-linear-gradient(top,  #cf5d6a,  #a53845);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#cf5d6a', endColorstr='#a53845');
+}
+.rosy:active {
+	color: #dca4ab;
+	background: -webkit-gradient(linear, left top, left bottom, from(#bf404f), to(#f16c7c));
+	background: -moz-linear-gradient(top,  #bf404f,  #f16c7c);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#bf404f', endColorstr='#f16c7c');
+}
+
+div table{ 
+  border: 3px solid #dca4ab; 
+  border-radius: 16px;
+  box-shadow: inset 0 0 8px #dca4ab;
+  border-style: hidden;
+  
+   border-collapse: collapse;
+  border-radius: 5px;
+  width: 600px;
+  
+}
 </style>
+</head>
 <body>
 	<div align="center">
 
 		<div>
-			<h3>Review</h3>
+			<h4 style="margin-bottom: 20px;">REVIEW</h4>
 		</div>
-		<br>
+
 		<div>
-			<table border="1">
+			<table border="10">
 				<tr align="center">
 					<th width="100">작성자</th>
 					<td width="100" >${vo.memberId }</td>
@@ -50,22 +155,22 @@
 					<!-- 첨부파일이 있으면 보이도록 -->
 					<tr>
 						<th style="text-align: center;">첨부파일</th>
-						<td colspan="6">${vo.boardAttach}</td>
+						<td colspan="6" style="text-align: left;">${vo.boardAttach}</td>
 					</tr>
 				</c:if>
 			</table>
 		</div>
-		<hr>
+		<br>
 		<!-- 구분선 -->
 
 		<div>
 			<!-- 덧글 리스트 출력 -->
-			<table border="1" width="600px">		
+			<table>		
 			<thead>
 					<tr>
 						<th width="100"></th>
 						<th></th>
-						<th  width="200"></th>
+						<th  width="195"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -76,14 +181,13 @@
 					</c:if>
 					<c:if test="${not empty replyList }">
 						<c:forEach items="${replyList }" var="r">
-							<tr onMouseover="this.style.backgroundColor='yellow';"
-								onMouseout="this.style.backgroundColor='white';">
+							<tr>
 								<td align="center" <c:if test="${r.memberId eq 'admin'}">style="color:blue; font-weight:bold;"</c:if>
 								>${r.memberId }</td>
-								<td align="center">${r.boardContent }</td>
-								<td align="center">${r.boardDate }
+								<td style="text-align:left;">${r.boardContent }</td>
+								<td style="text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${r.boardDate }
 								<c:if test="${id eq r.memberId || author eq '관리자'}">
-								<button type="button" onclick="replyDelete('${r.memberId}','${r.boardDate}')" style="cursor:pointer">삭제</button>
+								<button type="button" class="button rosy small" onclick="replyDelete('${r.memberId}','${r.boardDate}')">DEL</button>
 								</c:if>
 								</td>
 							</tr>
@@ -95,9 +199,9 @@
 		
 		<c:if test="${empty id}">
 		<div>
-			<table border="1">
+			<table>
 				<tr>
-					<th width="600"><span>덧글 등록을 원하시면 로그인 해주세요.</span></th>
+					<th width="600"><span> ▶ 덧글 등록을 원하시면 로그인 해주세요.</span></th>
 				</tr>
 				<br>
 			</table></div>
@@ -111,10 +215,6 @@
 				<table border="1">
 
 					<tr>
-						<th width="300"><span>&nbsp;&nbsp;</span>${id}</th>
-					</tr>
-
-					<tr>
 						<td colspan="3"><input style="width: 600px" type="text"
 							id="replyContent" name="replyContent"></td>
 					</tr>
@@ -123,23 +223,34 @@
 			</div>
 		</c:if>
 
-		<hr>
+		<br>
 		<!-- 구분선 -->
+		<div style="margin-left: 515px; margin-top: -15px;">
+			<c:if test="${not empty id}">
+				<button type="button" class="button rosy medium"
+					onclick="insertReply(replyContent.value)" style="cursor: pointer">덧글
+					등록</button>
+			</c:if>
+		</div>
+		<br>
 		<div>
 			<!-- 수정 | 삭제 | 목록 | 덧글 입력 |버튼 나열 시작 -->
 			<c:if test="${not empty id}">
 				<c:if test="${id eq vo.memberId }">
-					<button type="button" onclick="subCall('E')" style="cursor:pointer">글 수정</button>&nbsp;&nbsp;
+					<button type="button" class="button black bigrounded"
+						onclick="subCall('E')" style="cursor: pointer">글 수정</button>&nbsp;&nbsp;
 				</c:if>
 				<c:if test="${id eq vo.memberId}">
-					<button type="button" onclick="realDelete('D')" style="cursor:pointer">글 삭제</button>&nbsp;&nbsp;
+					<button type="button" class="button black bigrounded"
+						onclick="realDelete('D')" style="cursor: pointer">글 삭제</button>&nbsp;&nbsp;
 				</c:if>
 			</c:if>
-
-			<button type="button" onclick="location.href='reviewSelectList.yd'" style="cursor:pointer">뒤로 가기</button>&nbsp;&nbsp;
-			<span> </span><button type="button" onclick="insertReply(replyContent.value)" style="cursor:pointer">덧글 등록</button>
+			<button type="button" class="button black bigrounded"
+				onclick="location.href='reviewSelectList.yd'"
+				style="cursor: pointer">뒤로 가기</button>
+			&nbsp;&nbsp;
 		</div>
-		<br>
+		<br> <br>
 
 		<div>
 			<form id="frm" method="post">
