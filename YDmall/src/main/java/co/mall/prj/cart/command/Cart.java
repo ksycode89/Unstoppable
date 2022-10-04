@@ -20,7 +20,9 @@ public class Cart implements Command {
 		String mId = (String) session.getAttribute("id");
 		CartService dao = new CartServiceImpl();
 		CartVO vo = new CartVO();
+
 		List<CartVO> clist = new ArrayList<>();
+
 		
 		vo.setMemberId(mId);
 		clist = dao.cartSelect(vo);

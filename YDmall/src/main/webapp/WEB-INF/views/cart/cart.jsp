@@ -69,6 +69,7 @@ input[type=number]::-webkit-inner-spin-button {
 										<td style='text-align:center' colspan=6><h3>카트에 상품이 없어요!</h3></td>
 									</tr>
 								</c:if>
+
 								<c:if test="${not empty clist }">
 									<c:forEach items="${clist }" var="ca">
 									<tr>
@@ -91,6 +92,8 @@ input[type=number]::-webkit-inner-spin-button {
 												</span>
 											</div>
 										</td>
+
+
 <!-- 총 가격 표기 -->
 	                           				<td class="total_price">
                                					<fmt:formatNumber value="${ca.productPrice * ca.cartQuantity}" pattern="#,###" />원
@@ -132,7 +135,7 @@ input[type=number]::-webkit-inner-spin-button {
                     	<div class="row">
                         	<div class="col-md-6 mb-3">
                             	<label for="memberName">이름<span>*</span></label>
-                                <input type="text" class="form-control" id="memberName" name="memberName" value="" required>
+                                <input type="text" class="form-control" id="memberName" name="memberName" placeholder="홍길동" required="required">
                             </div>
                             <div class="col-12 mb-3">
                             	<label for="state">연락처<span>*</span></label>
@@ -140,11 +143,11 @@ input[type=number]::-webkit-inner-spin-button {
                             </div>
                             <div class="col-12 mb-3">
                             	<label for="street_address">배송 주소 입력<span>*</span></label>
-                            	<input type="text" class="form-control mb-3" id="street_address" placeholder="ex)대구 중구 중앙대로 403">
-                            	<input type="text" class="form-control" id="street_address2" placeholder="ex)5층">
+                            	<input type="text" class="form-control mb-3" id="street_address" placeholder="ex)대구 중구 중앙대로 403 5층">
+                            	<input type="text" class="form-control" id="street_address2" placeholder="작성 공간이 부족할 때 사용해 주세요.">
                             </div>
                             <div class="col-12 mb-4">
-                            	<label for="email_address">이메일 주소 입력(선택)<span>*</span></label>
+                            	<label for="email_address">이메일 주소 입력<span>(선택)</span></label>
                             	<input type="email" class="form-control" id="email_address" placeholder="abcd@naver.com">
                             </div>
                             <div class="col-12 mb-3">
@@ -156,7 +159,7 @@ input[type=number]::-webkit-inner-spin-button {
                                 	<option value="choice1">요청 사항 없음</option>
                                 	<option value="choice2">배송 전 연락 바랍니다.</option>
                                     <option value="choice2">부재 시 경비실에 맡겨 주세요.</option>
-                                    <option value="choice4">본인 수령 원합니다.</option>
+                                    <option value="choice4">직접 수령 원합니다.</option>
                                 </select>
                             </div>
                         </div>
@@ -203,9 +206,7 @@ input[type=number]::-webkit-inner-spin-button {
 						<ul class="cart-total-chart">
 							<li><span>상품 가격</span> <span id="productSum"></span></li>
 							<li><span>포인트</span> <span><input type="hidden" id="userPoint2" name="userPoint2" value=0></span></li>
-							<li><span>배송비</span> 
-								<span id="deli"></span>
-							</li>
+							<li><span>배송비</span><span id="deli"></span></li>
 <!-- 최종 결제 금액 -->
 							<li>
 								<span>
@@ -225,15 +226,16 @@ input[type=number]::-webkit-inner-spin-button {
 					</div>
 				</div>
 			</div>
-                    </div>
 		</div>
-		<div>
-        	<form id="frm2" action=productDetail.yd method="post">
-            	<input type="hidden" id="pName" name="pName">
-        	</form>
-      	</div>
-	<!-- ****** Cart Area End ****** -->
-	<script type="text/javascript">
+	</div>
+	<div>
+       	<form id="frm2" action=productDetail.yd method="post">
+           	<input type="hidden" id="pName" name="pName">
+       	</form>
+    </div>
+
+<!-- ****** Cart Area End ****** -->
+<script type="text/javascript">
 //1.원화 콤마 표시
 		function number_format(num){
 	   		 num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');

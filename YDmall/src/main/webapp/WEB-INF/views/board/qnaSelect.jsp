@@ -7,6 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
+
+
 </head>
 <style>
 .button {
@@ -53,6 +58,7 @@
 	padding: .275em .2em .275em;
 	margin-bottom: 5px;
 	font-weight: bold;
+	margin-right: -15px;
 }
 
 /* color styles
@@ -101,17 +107,46 @@
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#bf404f', endColorstr='#f16c7c');
 }
 div table{ 
-  border: 3px solid #dca4ab; 
+ border: 3px solid #dca4ab;
   border-radius: 16px;
   box-shadow: inset 0 0 8px #dca4ab;
   border-style: hidden;
+  border-collapse: collapse;
+  border-radius: 5px;
+  width: 600px;
+}
+
+tr {
+
+  border-radius: 16px;
+  box-shadow: inset 0 0 5px #dca4ab;
+  border-style: hidden;
+  border-collapse: collapse;
+  border-radius: 5px;
+  width: 600px;
   
 }
+
+tr td {
+
+  box-shadow: outset 0 0 5px #dca4ab;
+  
+}
+
+
+body{
+font-family: 'Noto Serif KR', serif;
+}
+
+h4 {
+ font-family: 'Noto Serif KR', serif;"
+}
+
 </style>
 <body>
 	<div align="center">
 
-		<div><h4>Q & A</h4></div>
+		<div><h4>═════════•°• Q & A •°•═════════</h4></div>
 	<br>
 		<div>
 			<table border="1">
@@ -134,7 +169,7 @@ div table{
 		
 					<td colspan="6" height="150">
 					<c:if test="${not empty vo.boardAttach}"> <!-- 첨부파일이 있으면 보이도록 -->
-					<p><img src="./img/resources/${vo.boardAttach}"/></p>
+					<p>&nbsp;<img src="./img/resources/${vo.boardAttach}"/></p>
 					</c:if>
 					&nbsp;${vo.boardContent }</td>
 				</tr>
@@ -142,7 +177,7 @@ div table{
 					<c:if test="${not empty vo.boardAttach}"> <!-- 첨부파일이 있으면 보이도록 -->
 				<tr align="center">
 					<th style="text-align: center;">첨부파일</th>
-					<td colspan="6" style="text-align: left;">${vo.boardAttach}</td>
+					<td colspan="6" style="text-align: left;">&nbsp;${vo.boardAttach}</td>
 				</tr>
 				</c:if>
 			</table>
@@ -171,8 +206,8 @@ div table{
 							<tr>
 								<td align="center" <c:if test="${r.memberId eq 'admin'}">style="color:blue; font-weight:bold;"</c:if>
 								>${r.memberId }</td>
-								<td style="text-align:left;">${r.boardContent }</td>
-								<td align="center">${r.boardDate } 
+								<td style="text-align:left;">&nbsp;&nbsp;${r.boardContent }</td>
+								<td style="text-align:left;" class="b">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${r.boardDate } 
 								<c:if test="${id eq r.memberId || author eq '관리자'}">
 								<button type="button" class="button rosy small" onclick="replyDelete('${r.memberId}','${r.boardDate}')">DEL</button>
 								</c:if>
@@ -215,7 +250,7 @@ div table{
 		<!-- 구분선 -->
 		<div style="margin-left: 515px; margin-top: -15px;">
 			<c:if test="${not empty id}">
-				<button type="button" class="button black medium"
+				<button type="button" class="button rosy medium"
 					onclick="insertReply(replyContent.value)" style="cursor: pointer">덧글
 					등록</button>
 			</c:if>
@@ -237,7 +272,7 @@ div table{
 
 
 			<button type="button" class="button black bigrounded"
-				onclick="location.href='reviewSelectList.yd'"
+				onclick="location.href='qnaSelectList.yd'"
 				style="cursor: pointer">뒤로 가기</button>
 			&nbsp;&nbsp;
 		</div>

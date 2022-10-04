@@ -13,6 +13,10 @@
 <meta name="author" content="">
 
 <title>SB Admin 2 - Tables</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
+
 
 <style type="text/css">
 #content-wrapper {
@@ -110,6 +114,15 @@
 	background: -moz-linear-gradient(top,  #bf404f,  #f16c7c);
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#bf404f', endColorstr='#f16c7c');
 }
+
+body{
+font-family: 'Noto Serif KR', serif;
+}
+
+h6 {
+ font-family: 'Noto Serif KR', serif;"
+}
+
 </style>
 
 
@@ -182,7 +195,7 @@
 				<!-- DataTales Example -->
 				<div class="card shadow mb-4">
 					<div class="card-header py-3">
-						<h6 class="m-0 font-weight-bold text-primary">리뷰를 남기면 추첨을 통해 포인트 지급!</h6>
+						<h6 class="m-0 font-weight-bold text-primary">※리뷰를 남기면 추첨을 통해 포인트 지급!</h6>
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
