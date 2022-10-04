@@ -237,7 +237,7 @@ h6 {
 												onMouseover="this.style.width='200px';"
 												onMouseout="this.style.width='100px';"
 												
-												><img src="img/product-img/product-1.jpg" > </td>
+												><p><img src="img/product-img/${n.boardAttach}"/></p> </td>
 												<td onclick="selectReview('${n.boardId}','${n.boardRole}','${id}')" style="cursor:pointer">${n.boardTitle }</td>
 												<td align="center">${n.memberId }</td>
 												<td align="center">${n.boardDate }</td>

@@ -26,7 +26,7 @@
                                 <div class="welcome_slide_text">
                                     <h6 data-animation="bounceInDown" data-delay="0" data-duration="500ms">* Only today we offer free shipping</h6>
                                     <h2 data-animation="fadeInUp" data-delay="500ms" data-duration="500ms">Fashion Trends</h2>
-                                    <a href="#" class="btn karl-btn" data-animation="fadeInUp" data-delay="1s" data-duration="500ms">Shop Now</a>
+                                    <a href="top.yd	" class="btn karl-btn" data-animation="fadeInUp" data-delay="1s" data-duration="500ms">Shop Now</a>
                                 </div>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                                 <div class="welcome_slide_text">
                                     <h6 data-animation="fadeInDown" data-delay="0" data-duration="500ms">* Good Bye Summer *</h6>
                                     <h2 data-animation="fadeInUp" data-delay="500ms" data-duration="500ms">Off Clothes From Summer</h2>
-                                    <a href="#" class="btn karl-btn" data-animation="fadeInLeftBig" data-delay="1s" data-duration="500ms">Check Collection</a>
+                                    <a href="best.yd" class="btn karl-btn" data-animation="fadeInLeftBig" data-delay="1s" data-duration="500ms">Check Collection</a>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                                 <div class="welcome_slide_text">
                                     <h6 data-animation="fadeInDown" data-delay="0" data-duration="500ms">* Only This Week we offer free shipping</h6>
                                     <h2 data-animation="bounceInDown" data-delay="500ms" data-duration="500ms">New Autumn ARRIVALS</h2>
-                                    <a href="#" class="btn karl-btn" data-animation="fadeInRightBig" data-delay="1s" data-duration="500ms">Check Collection</a>
+                                    <a href="outer.yd" class="btn karl-btn" data-animation="fadeInRightBig" data-delay="1s" data-duration="500ms">Check Collection</a>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
         <!-- ****** Top Catagory Area Start ****** -->
         <section class="top_catagory_area d-md-flex clearfix">
             <!-- Single Catagory -->
-            <div class="single_catagory_area d-flex align-items-center bg-img" style="background-image: url(img/bg-img/bg-2.jpg);">
+            <div class="single_catagory_area d-flex align-items-center bg-img" style="background-image: url(img/bg-img/놀람세일.jpg);">
                 <div class="catagory-content">
                     <h6>Off Summer Clothes</h6>
                     <h2>Sale 20%</h2>
@@ -77,11 +77,11 @@
                 </div>
             </div>
             <!-- Single Catagory -->
-            <div class="single_catagory_area d-flex align-items-center bg-img" style="background-image: url(img/bg-img/bg-3.jpg);">
+            <div class="single_catagory_area d-flex align-items-center bg-img" style="background-image: url(img/bg-img/메인바지.jpg);">
                 <div class="catagory-content">
-                    <h6>in Bags excepting the new collection</h6>
-                    <h2>Designer bags</h2>
-                    <a href="#" class="btn karl-btn">SHOP NOW</a>
+                    <h6>in Pants excepting the new collection</h6>
+                    <h2>Designer Pants</h2>
+                    <a href="bottom.yd" class="btn karl-btn">SHOP NOW</a>
                 </div>
             </div>
         </section>
@@ -229,7 +229,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="section_heading text-center">
-                            <h2> 리 뷰 </h2>
+                            <h2> Reviews </h2>
                         </div>
                     </div>
                 </div>

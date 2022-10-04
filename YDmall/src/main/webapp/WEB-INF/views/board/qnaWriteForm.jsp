@@ -180,7 +180,7 @@ h4 {
 				</div>
 				<br>
 				<div align="center">
-					<input type="hidden" id="boardRole" name="boardRole" value="R">
+					<input type="hidden" id="boardRole" name="boardRole" value="Q">
 					<input type="button" class="button black" value="뒤로가기" onclick="location.href='qnaSelectList.yd'">
 					<input type="submit" class="button black" value="등록">&nbsp;&nbsp;&nbsp;
 				</div>

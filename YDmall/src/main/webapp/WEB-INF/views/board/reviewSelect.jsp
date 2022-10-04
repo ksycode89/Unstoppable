@@ -179,7 +179,7 @@ h4 {
 							test="${not empty vo.boardAttach}">
 							<!-- 첨부파일이 있으면 보이도록 -->
 							<p>
-								&nbsp;<img src="./img/resources/${vo.boardAttach}" />
+								&nbsp;<img src="img/product-img/${vo.boardAttach}" />
 							</p>
 						</c:if>&nbsp;${vo.boardContent }</td>
 				</tr>

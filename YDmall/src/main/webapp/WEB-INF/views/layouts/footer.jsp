@@ -83,10 +83,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     <div class="row">
                         <div class="col-12">
                             <div class="footer_social_area text-center">
-                                <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                <a href="https://ko-kr.facebook.com/" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                                <a href="https://ko-kr.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="https://ko-kr.facebook.com/" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="https://ko-kr.facebook.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>

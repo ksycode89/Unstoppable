@@ -15,7 +15,7 @@ public class BoardEditForm implements Command {
 		// 수정폼.
 		BoardService dao = new BoardServiceImpl();
 		BoardVO vo = new BoardVO();
-		
+		System.out.println(request.getParameter("bId"));
 		
 		vo.setBoardId(Integer.valueOf(request.getParameter("bId")));
 		vo.setBoardRole(request.getParameter("role"));

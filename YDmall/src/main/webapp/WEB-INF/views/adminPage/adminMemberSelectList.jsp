@@ -145,8 +145,6 @@ function chekcNull() {
 	let a = document.getElementById('member_stat').value;
 	
 	if(a == ""){
-	
-		
 		return "";
 	}
 	return "adminMemberSearch.yd";
