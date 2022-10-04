@@ -66,4 +66,9 @@ where board_role = 'N'
 	
 </select>
 
+<select id="salesSelectId" resultType="co.mall.prj.sales.service.SalesVO">
+	select * from sales where sales_id=#{salesId}
+
+</select>
+
 </mapper>

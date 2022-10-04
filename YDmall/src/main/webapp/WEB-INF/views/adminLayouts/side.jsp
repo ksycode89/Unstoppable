@@ -20,7 +20,7 @@ position: sticky;
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.yd">
                 <div class="sidebar-brand-icon rotate-n-15">
-                <div class="sidebar-brand-text mx-3">Muzhock<sup>2Zo</sup></div>
+                <div class="sidebar-brand-text mx-3">MZ2Z<sup>2Zo</sup></div>
                 </div>
             </a>
 
@@ -90,9 +90,7 @@ position: sticky;
                         <a class="collapse-item" href="adminChart.yd">매출 그래프(월)</a>
                         <a class="collapse-item" href="adminChart2.yd">매출 그래프(년)</a>
 
-                        <h6 class="collapse-header"> 매출 통계</h6>
-                        <a class="collapse-item" href="adminChart.yd">매출 그래프</a>
-                        <a class="collapse-item" href="adminSelectToDay.yd">당일 매출조회</a>
+                       
 
                     </div>
                 </div>
